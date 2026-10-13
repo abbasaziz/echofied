@@ -1,11 +1,13 @@
-/* Demo data for four industries. Western company and contact names. */
+/* Demo data for four industries. Western company and contact names.
+   Avatar gradients stay within the blue/gray family so the page theme remains
+   black / white / gray / notification blue. */
 window.ECHO_DEMO_DATA = {
   construction: {
     badgeCrm: 'Sheet',
     inbox: [
       {
         initials: 'NG',
-        c1: '#7c5cff', c2: '#39d2ff',
+        c1: '#0a84ff', c2: '#3aa0ff',
         name: 'Northgate Build Co.',
         from: 'dana.whitfield@northgatebuild.com',
         subject: 'Kitchen remodel quote for next month',
@@ -14,7 +16,7 @@ window.ECHO_DEMO_DATA = {
       },
       {
         initials: 'MR',
-        c1: '#ff7a59', c2: '#ff4d94',
+        c1: '#3aa0ff', c2: '#7ab8ff',
         name: 'Marlowe Residence',
         from: 'Inbound call · +1 (415) 555-0184',
         subject: 'Deck repair follow-up',
@@ -23,7 +25,7 @@ window.ECHO_DEMO_DATA = {
       },
       {
         initials: 'CF',
-        c1: '#22c55e', c2: '#39d2ff',
+        c1: '#1f1f1f', c2: '#4d4d4d',
         name: 'Copperfield Logistics',
         from: 'ops@copperfieldlogistics.com',
         subject: 'Warehouse partition — site visit request',
@@ -61,7 +63,7 @@ window.ECHO_DEMO_DATA = {
     inbox: [
       {
         initials: 'AR',
-        c1: '#7c5cff', c2: '#39d2ff',
+        c1: '#0a84ff', c2: '#3aa0ff',
         name: 'Aurora Retail Group',
         from: 'support@auroraretail.com',
         subject: 'Bulk order — 400 units of SKU AR-2210',
@@ -70,7 +72,7 @@ window.ECHO_DEMO_DATA = {
       },
       {
         initials: 'LM',
-        c1: '#f59e0b', c2: '#ff4d94',
+        c1: '#3aa0ff', c2: '#7ab8ff',
         name: 'Lena Morrison',
         from: 'lena.morrison@gmail.com',
         subject: 'Return request — order #48210',
@@ -79,7 +81,7 @@ window.ECHO_DEMO_DATA = {
       },
       {
         initials: 'BS',
-        c1: '#22c55e', c2: '#39d2ff',
+        c1: '#1f1f1f', c2: '#4d4d4d',
         name: 'Brightside Outfitters',
         from: 'Inbound call · +1 (312) 555-0177',
         subject: 'Wholesale application status',
@@ -117,7 +119,7 @@ window.ECHO_DEMO_DATA = {
     inbox: [
       {
         initials: 'HT',
-        c1: '#7c5cff', c2: '#39d2ff',
+        c1: '#0a84ff', c2: '#3aa0ff',
         name: 'Hearthline Realty',
         from: 'jordan.tate@hearthlinerealty.com',
         subject: 'New buyer lead — 3 bed in Willow Creek',
@@ -126,7 +128,7 @@ window.ECHO_DEMO_DATA = {
       },
       {
         initials: 'RM',
-        c1: '#ff7a59', c2: '#ff4d94',
+        c1: '#3aa0ff', c2: '#7ab8ff',
         name: 'Rachel Montgomery',
         from: 'Inbound call · +1 (206) 555-0113',
         subject: 'Showing request for 14 Alder Lane',
@@ -135,7 +137,7 @@ window.ECHO_DEMO_DATA = {
       },
       {
         initials: 'DW',
-        c1: '#22c55e', c2: '#39d2ff',
+        c1: '#1f1f1f', c2: '#4d4d4d',
         name: 'Daniel Wu',
         from: 'daniel.wu@protonmail.com',
         subject: 'Question about HOA fees at Cedar Park',
@@ -173,7 +175,7 @@ window.ECHO_DEMO_DATA = {
     inbox: [
       {
         initials: 'BD',
-        c1: '#7c5cff', c2: '#39d2ff',
+        c1: '#0a84ff', c2: '#3aa0ff',
         name: 'Brightwater Dental',
         from: 'priya.raman@brightwaterdental.com',
         subject: 'New patient — cleaning + X-ray',
@@ -182,7 +184,7 @@ window.ECHO_DEMO_DATA = {
       },
       {
         initials: 'MK',
-        c1: '#ff7a59', c2: '#ff4d94',
+        c1: '#3aa0ff', c2: '#7ab8ff',
         name: 'Michael Kensington',
         from: 'Inbound call · +1 (617) 555-0169',
         subject: 'Reschedule Thursday appointment',
@@ -191,7 +193,7 @@ window.ECHO_DEMO_DATA = {
       },
       {
         initials: 'SB',
-        c1: '#22c55e', c2: '#39d2ff',
+        c1: '#1f1f1f', c2: '#4d4d4d',
         name: 'Sophia Bennett',
         from: 'sophia.bennett@outlook.com',
         subject: 'Insurance coverage question',

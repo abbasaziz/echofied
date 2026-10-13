@@ -1,33 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#07070c"/>
-      <stop offset="1" stop-color="#12121f"/>
-    </linearGradient>
-    <radialGradient id="g1" cx="0.25" cy="0.2" r="0.6">
-      <stop offset="0" stop-color="#7c5cff" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#7c5cff" stop-opacity="0"/>
+    <radialGradient id="g" cx="0.5" cy="0.15" r="0.7">
+      <stop offset="0" stop-color="#0a84ff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#0a84ff" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="g2" cx="0.8" cy="0.25" r="0.5">
-      <stop offset="0" stop-color="#39d2ff" stop-opacity="0.45"/>
-      <stop offset="1" stop-color="#39d2ff" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#a78bfa"/>
-      <stop offset="0.5" stop-color="#39d2ff"/>
-      <stop offset="1" stop-color="#ff7a59"/>
-    </linearGradient>
   </defs>
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect width="1200" height="630" fill="url(#g1)"/>
-  <rect width="1200" height="630" fill="url(#g2)"/>
+  <rect width="1200" height="630" fill="#050505"/>
+  <rect width="1200" height="630" fill="url(#g)"/>
+
   <g transform="translate(80, 90)">
-    <rect x="0" y="0" width="44" height="44" rx="12" fill="url(#accent)"/>
-    <path d="M12 14h20M12 22h14M12 30h20" stroke="#0a0a12" stroke-width="3.4" stroke-linecap="round"/>
-    <text x="62" y="30" fill="#eef0f6" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="700">Echofied</text>
+    <rect x="0" y="0" width="44" height="44" rx="12" fill="#0a0a0a"/>
+    <rect x="0.75" y="0.75" width="42.5" height="42.5" rx="11.25" stroke="#262626" stroke-width="1.5"/>
+    <path d="M12 14h20M12 22h14M12 30h20" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round"/>
+    <circle cx="34" cy="22" r="3.2" fill="#0a84ff"/>
+    <text x="62" y="30" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="700">Echofied</text>
   </g>
-  <text x="80" y="270" fill="#eef0f6" font-family="Inter, system-ui, sans-serif" font-size="58" font-weight="700">AI receptionists for</text>
-  <text x="80" y="340" fill="url(#accent)" font-family="Inter, system-ui, sans-serif" font-size="58" font-weight="700">growing teams.</text>
-  <text x="80" y="410" fill="#b7bac7" font-family="Inter, system-ui, sans-serif" font-size="24">Calls, emails, CRM updates and follow-ups — handled automatically.</text>
-  <text x="80" y="450" fill="#83879a" font-family="Inter, system-ui, sans-serif" font-size="20">From $100/month · Live in days · echofied.com</text>
+
+  <text x="80" y="270" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="58" font-weight="700">AI receptionists for</text>
+  <text x="80" y="340" fill="#0a84ff" font-family="Inter, system-ui, sans-serif" font-size="58" font-weight="700">growing teams.</text>
+  <text x="80" y="410" fill="#b3b3b3" font-family="Inter, system-ui, sans-serif" font-size="24">Calls, emails, CRM updates and follow-ups — handled automatically.</text>
+  <text x="80" y="450" fill="#7a7a7a" font-family="Inter, system-ui, sans-serif" font-size="20">From $100/month · Live in days · echofied.com</text>
 </svg>

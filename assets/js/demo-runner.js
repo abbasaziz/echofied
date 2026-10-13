@@ -57,20 +57,6 @@
     if (els.play) { els.play.disabled = false; els.play.textContent = 'Run demo'; }
   }
 
-  function renderStatic() {
-    var data = current();
-    var inboxNodes = window.EchoEmails.render(els.inboxList, data.inbox, 150);
-    var crmNodes = window.EchoCrm.render(
-      els.crmTable,
-      data.crm,
-      ['Contact', 'Account', 'Status'],
-      0
-    );
-    // CRM rows start hidden until agent "writes" them
-    crmNodes.forEach(function (row) { row.style.opacity = '0'; row.style.transform = 'translateY(6px)'; });
-    return { inboxNodes: inboxNodes, crmNodes: crmNodes };
-  }
-
   function run() {
     if (state.running) return;
     state.running = true;
@@ -111,29 +97,25 @@
     });
 
     // 3) CRM writes
-    var crmNodes = [];
     data.crm.forEach(function (row, i) {
       later(function () {
-        if (els.crmTable) {
-          // Build header once
-          if (!els.crmTable.querySelector('.crm-row.header')) {
-            var header = document.createElement('div');
-            header.className = 'crm-row header';
-            header.innerHTML = '<span>Contact</span><span>Account</span><span>Status</span>';
-            els.crmTable.appendChild(header);
-          }
-          var r = document.createElement('div');
-          r.className = 'crm-row is-new';
-          r.style.animationDelay = '0ms';
-          r.innerHTML =
-            '<span>' + escapeHtml(row.name) + '</span>' +
-            '<span>' + escapeHtml(row.company) + '</span>' +
-            '<span>' + escapeHtml(row.status) +
-              (row.tag ? '<span class="tag">' + escapeHtml(row.tag) + '</span>' : '') +
-            '</span>';
-          els.crmTable.appendChild(r);
-          crmNodes.push(r);
+        if (!els.crmTable) return;
+        if (!els.crmTable.querySelector('.crm-row.header')) {
+          var header = document.createElement('div');
+          header.className = 'crm-row header';
+          header.innerHTML = '<span>Contact</span><span>Account</span><span>Status</span>';
+          els.crmTable.appendChild(header);
         }
+        var r = document.createElement('div');
+        r.className = 'crm-row is-new';
+        r.style.animationDelay = '0ms';
+        r.innerHTML =
+          '<span>' + escapeHtml(row.name) + '</span>' +
+          '<span>' + escapeHtml(row.company) + '</span>' +
+          '<span>' + escapeHtml(row.status) +
+            (row.tag ? '<span class="tag">' + escapeHtml(row.tag) + '</span>' : '') +
+          '</span>';
+        els.crmTable.appendChild(r);
       }, 1800 + i * 700);
     });
 
@@ -172,11 +154,9 @@
       t.setAttribute('aria-selected', String(active));
     });
     reset();
-    // Auto-run for instant feedback
     run();
   }
 
-  // Wire up
   els.tabs.forEach(function (t) {
     t.addEventListener('click', function () {
       switchIndustry(t.getAttribute('data-demo'));
@@ -185,9 +165,8 @@
   if (els.play) els.play.addEventListener('click', run);
   if (els.reset) els.reset.addEventListener('click', reset);
 
-  // Initial paint
   reset();
-  // Subtle auto-run when demo scrolls into view (once)
+
   if ('IntersectionObserver' in window) {
     var demoEl = document.getElementById('demo');
     if (demoEl) {
