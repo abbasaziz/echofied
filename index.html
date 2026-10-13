@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0a0a0f" />
+  <meta name="theme-color" content="#050505" />
 
   <title>Echofied — AI Receptionists & Workflow Automation for Growing Teams</title>
   <meta name="description" content="Echofied builds AI receptionists connected to Google Sheets, GoHighLevel, and custom CRMs. Handle calls, emails, and follow-ups automatically. Live in days, from $100/month." />
@@ -14,12 +14,18 @@
   <meta property="og:description" content="AI receptionists connected to Google Sheets, GoHighLevel, and custom CRMs. Live in days, from $100/month." />
   <meta property="og:url" content="https://echofied.com/" />
   <meta property="og:image" content="https://echofied.com/assets/img/og-image.png" />
+  <meta property="og:image:secure_url" content="https://echofied.com/assets/img/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Echofied — AI receptionists for growing teams." />
   <meta property="og:site_name" content="Echofied" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Echofied — AI Receptionists & Workflow Automation" />
   <meta name="twitter:description" content="AI receptionists connected to Google Sheets, GoHighLevel, and custom CRMs. Live in days, from $100/month." />
   <meta name="twitter:image" content="https://echofied.com/assets/img/og-image.png" />
+  <meta name="twitter:image:alt" content="Echofied — AI receptionists for growing teams." />
 
   <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
   <link rel="apple-touch-icon" href="/assets/img/favicon.svg" />
@@ -38,27 +44,9 @@
     "email": "hello@echofied.com",
     "sameAs": [],
     "offers": [
-      {
-        "@type": "Offer",
-        "name": "AI Receptionist + Google Sheets",
-        "price": "100",
-        "priceCurrency": "USD",
-        "description": "AI receptionist connected to a simple Google Sheets pipeline."
-      },
-      {
-        "@type": "Offer",
-        "name": "AI Receptionist + Your CRM",
-        "price": "200",
-        "priceCurrency": "USD",
-        "description": "AI receptionist connected to GoHighLevel or your existing CRM."
-      },
-      {
-        "@type": "Offer",
-        "name": "Custom AI Receptionist + AI ERP/CRM",
-        "price": "400",
-        "priceCurrency": "USD",
-        "description": "Fully custom AI receptionist plus a business-tailored AI-powered ERP/CRM."
-      }
+      { "@type": "Offer", "name": "AI Receptionist + Google Sheets", "price": "100", "priceCurrency": "USD", "description": "AI receptionist connected to a simple Google Sheets pipeline." },
+      { "@type": "Offer", "name": "AI Receptionist + Your CRM", "price": "200", "priceCurrency": "USD", "description": "AI receptionist connected to GoHighLevel or your existing CRM." },
+      { "@type": "Offer", "name": "Custom AI Receptionist + AI ERP/CRM", "price": "400", "priceCurrency": "USD", "description": "Fully custom AI receptionist plus a business-tailored AI-powered ERP/CRM." }
     ]
   }
   </script>
@@ -68,38 +56,10 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Who owns the code and the data?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You do. Every workflow, prompt, and integration lives in your accounts. If we part ways, everything keeps running."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How fast can an AI receptionist go live?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most receptionist deployments go live in 3 to 7 days. Custom ERP or CRM builds typically take 2 to 4 weeks."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What if the AI gets it wrong?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Every action runs inside guardrails. Anything outside the rules you set gets routed to a human for approval, and every decision is logged."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which CRMs do you connect to?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "GoHighLevel, HubSpot, Salesforce, Pipedrive, Zoho, and any CRM with an API. For simple workflows, we also connect directly to Google Sheets."
-        }
-      }
+      { "@type": "Question", "name": "Who owns the code and the data?", "acceptedAnswer": { "@type": "Answer", "text": "You do. Every workflow, prompt, and integration lives in your accounts. If we part ways, everything keeps running." } },
+      { "@type": "Question", "name": "How fast can an AI receptionist go live?", "acceptedAnswer": { "@type": "Answer", "text": "Most receptionist deployments go live in 3 to 7 days. Custom ERP or CRM builds typically take 2 to 4 weeks." } },
+      { "@type": "Question", "name": "What if the AI gets it wrong?", "acceptedAnswer": { "@type": "Answer", "text": "Every action runs inside guardrails. Anything outside the rules you set gets routed to a human for approval, and every decision is logged." } },
+      { "@type": "Question", "name": "Which CRMs do you connect to?", "acceptedAnswer": { "@type": "Answer", "text": "GoHighLevel, HubSpot, Salesforce, Pipedrive, Zoho, and any CRM with an API. For simple workflows, we also connect directly to Google Sheets." } }
     ]
   }
   </script>
@@ -119,7 +79,7 @@
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
       </nav>
-      <a class="btn btn-primary btn-sm" href="#contact">Book a 20-min call</a>
+      <a class="btn btn-primary btn-sm nav-cta" href="#contact">Book a call</a>
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span><span></span>
       </button>
@@ -148,7 +108,6 @@
         <p class="lede">
           Echofied builds AI receptionists that answer every call, reply to every email,
           update your CRM, and draft the follow-ups — from <strong>$100/month</strong>.
-          Live in days, owned by you.
         </p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#contact">Book a 20-min call</a>
@@ -218,12 +177,11 @@
           <p class="eyebrow"><span class="dot"></span>Live demo</p>
           <h2>Watch an agent handle the busywork.</h2>
           <p class="section-lede">
-            Pick an industry and press play. This is the same loop Echofied runs for clients
-            every day — inbox, CRM, and drafts, all handled.
+            Pick an industry and press play. This is the same loop Echofied runs for clients every day.
           </p>
         </header>
 
-        <div class="demo">
+        <div class="demo" data-compact>
           <div class="demo-tabs" role="tablist" aria-label="Industry demos">
             <button class="demo-tab is-active" role="tab" aria-selected="true" data-demo="construction">Construction</button>
             <button class="demo-tab" role="tab" aria-selected="false" data-demo="ecommerce">E-commerce</button>
@@ -231,7 +189,7 @@
             <button class="demo-tab" role="tab" aria-selected="false" data-demo="clinic">Clinic</button>
           </div>
 
-          <div class="demo-stage">
+          <div class="demo-stage" data-stage>
             <div class="demo-panel" data-panel="inbox">
               <header class="panel-head">
                 <h3>Inbox</h3>
@@ -263,6 +221,13 @@
               </header>
               <ul class="draft-list" data-list="drafts"></ul>
             </div>
+          </div>
+
+          <div class="demo-mobile-progress" data-progress hidden>
+            <span class="demo-mobile-step" data-step-dot="inbox" aria-hidden="true"></span>
+            <span class="demo-mobile-step" data-step-dot="agent" aria-hidden="true"></span>
+            <span class="demo-mobile-step" data-step-dot="crm" aria-hidden="true"></span>
+            <span class="demo-mobile-step" data-step-dot="drafts" aria-hidden="true"></span>
           </div>
 
           <div class="demo-controls">
@@ -341,7 +306,7 @@
           <figure class="testimonial">
             <blockquote>Our front desk used to miss one in four calls. Echofied picks up every one, and our booking rate is up 22%.</blockquote>
             <figcaption>
-              <span class="avatar" style="--c1:#7c5cff;--c2:#39d2ff">MB</span>
+              <span class="avatar" style="--c1:#0a84ff;--c2:#3aa0ff">MB</span>
               <span>
                 <strong>Marcus Bailey</strong>
                 <em>Owner, Northgate Build Co.</em>
@@ -351,7 +316,7 @@
           <figure class="testimonial">
             <blockquote>It answers in three languages and drops every order into our CRM. We cut two part-time shifts and grew revenue.</blockquote>
             <figcaption>
-              <span class="avatar" style="--c1:#ff7a59;--c2:#ff4d94">EC</span>
+              <span class="avatar" style="--c1:#3aa0ff;--c2:#7ab8ff">EC</span>
               <span>
                 <strong>Elena Cortez</strong>
                 <em>COO, Aurora Retail Group</em>
@@ -361,7 +326,7 @@
           <figure class="testimonial">
             <blockquote>We went live in five days. Every lead gets a follow-up within a minute. That alone paid for the year.</blockquote>
             <figcaption>
-              <span class="avatar" style="--c1:#22c55e;--c2:#39d2ff">JT</span>
+              <span class="avatar" style="--c1:#1f1f1f;--c2:#4d4d4d">JT</span>
               <span>
                 <strong>Jordan Tate</strong>
                 <em>Managing Broker, Hearthline Realty</em>
@@ -371,7 +336,7 @@
           <figure class="testimonial">
             <blockquote>The custom ERP replaced three spreadsheets. Scheduling, invoicing, reminders — all in one place.</blockquote>
             <figcaption>
-              <span class="avatar" style="--c1:#f59e0b;--c2:#ff4d94">PR</span>
+              <span class="avatar" style="--c1:#0a84ff;--c2:#7ab8ff">PR</span>
               <span>
                 <strong>Priya Raman</strong>
                 <em>Director, Brightwater Dental</em>

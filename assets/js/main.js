@@ -21,15 +21,25 @@
   var toggle = document.querySelector('.nav-toggle');
   var mobileNav = document.getElementById('mobileNav');
   if (toggle && mobileNav) {
+    var setOpen = function (open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      if (open) mobileNav.removeAttribute('hidden');
+      else mobileNav.setAttribute('hidden', '');
+      document.body.classList.toggle('nav-open', open);
+    };
+
     toggle.addEventListener('click', function () {
       var open = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!open));
-      mobileNav.hidden = open;
+      setOpen(!open);
     });
+
     mobileNav.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') {
-        toggle.setAttribute('aria-expanded', 'false');
-        mobileNav.hidden = true;
+      if (e.target.tagName === 'A') setOpen(false);
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 880 && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
       }
     });
   }
