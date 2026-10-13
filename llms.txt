@@ -1,0 +1,20 @@
+# Echofied
+
+> Echofied builds AI receptionists and workflow automation for small and medium businesses in the US, EU, and UK. We connect AI agents to Google Sheets, GoHighLevel, HubSpot, Salesforce, Pipedrive, Zoho, and custom ERPs. Agents answer calls, reply to emails, update CRMs, and draft follow-ups — with human-in-the-loop approvals for anything outside the rules.
+
+## Products
+- AI Receptionist + Google Sheets — $100/month. Logs every lead, sends instant SMS/email confirmations, answers calls and emails with business hours and FAQs.
+- AI Receptionist + Your CRM — $200/month. Two-way CRM sync (GoHighLevel, HubSpot, Pipedrive), calendar booking, and automated follow-up sequences.
+- Custom AI Receptionist + AI ERP/CRM — $400/month. A custom ERP/CRM built for the client's workflow, multi-location and multi-language support, quote and invoice agents, Slack and Teams integration.
+
+## Key facts
+- No setup fees.
+- Live in 3 to 7 days for receptionists, 2 to 4 weeks for custom ERP or CRM builds.
+- Clients own all code, prompts, data, and integrations.
+- Deployments support English, Spanish, French, German, and more.
+- Human-in-the-loop approval routing for anything outside the rules.
+- Data encrypted in transit and at rest, PII redacted before storage.
+
+## Links
+- Home: https://echofied.com/
+- Contact: info@echofied.com
