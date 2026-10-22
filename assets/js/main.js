@@ -2,6 +2,10 @@
 (function () {
   'use strict';
 
+  // Year in footer
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
   // Sticky header state
   var header = document.getElementById('siteHeader');
   if (header) {
@@ -13,7 +17,7 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  // Mobile nav toggle
+  // Mobile nav
   var toggle = document.querySelector('.nav-toggle');
   var mobileNav = document.getElementById('mobileNav');
   if (toggle && mobileNav) {
@@ -21,7 +25,7 @@
       toggle.setAttribute('aria-expanded', String(open));
       if (open) mobileNav.removeAttribute('hidden');
       else mobileNav.setAttribute('hidden', '');
-      document.body.style.overflow = open ? 'hidden' : '';
+      document.body.classList.toggle('nav-open', open);
     };
 
     toggle.addEventListener('click', function () {
@@ -32,10 +36,20 @@
     mobileNav.addEventListener('click', function (e) {
       if (e.target.tagName === 'A') setOpen(false);
     });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 880 && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
   }
 
-  // Reveal on scroll animations
-  var revealTargets = document.querySelectorAll('.reveal');
+  // Reveal on scroll
+  var revealTargets = document.querySelectorAll(
+    '.section-head, .step, .price-card, .testimonial, .demo, .cta-inner, .faq details'
+  );
+  revealTargets.forEach(function (el) { el.classList.add('reveal'); });
+
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -44,46 +58,27 @@
           io.unobserve(entry.target);
         }
       });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     revealTargets.forEach(function (el) { io.observe(el); });
   } else {
     revealTargets.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  // Accordion exclusive open logic (optional, closes others when one opens)
-  var details = document.querySelectorAll('details');
-  details.forEach(function(targetDetail) {
-    targetDetail.addEventListener('toggle', function() {
-      if (targetDetail.open) {
-        details.forEach(function(detail) {
-          if (detail !== targetDetail) {
-            detail.removeAttribute('open');
-          }
-        });
-      }
-    });
-  });
-
-  // Contact form validation (client-side only)
+  // Contact form (client-side only; replace action with your endpoint)
   var form = document.getElementById('contactForm');
   if (form) {
     var status = form.querySelector('.form-status');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!status) return;
-      
       var name = form.elements.namedItem('name');
       var email = form.elements.namedItem('email');
-      
-      if (!name || !name.value.trim()) { status.textContent = 'Please add your name.'; status.style.color = '#FF5A5A'; return; }
+      if (!name || !name.value.trim()) { status.textContent = 'Please add your name.'; return; }
       if (!email || !email.value.trim() || email.value.indexOf('@') < 1) {
         status.textContent = 'Please add a valid work email.';
-        status.style.color = '#FF5A5A';
         return;
       }
-      
       status.textContent = 'Thanks — we will reply within one business day.';
-      status.style.color = '#34C759';
       form.reset();
     });
   }

@@ -3,582 +3,459 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#FBFBF9" />
+  <meta name="theme-color" content="#050505" />
 
-  <title>Echofied — AI Marketing & Automation for Growing Teams</title>
-  <meta name="description" content="Echofied builds AI agents that research, create, launch and improve your campaigns inside your rules. Every change is previewed and confirmed first." />
+  <title>Echofied — AI Receptionists & Workflow Automation for Growing Teams</title>
+  <meta name="description" content="Echofied builds AI receptionists connected to Google Sheets, GoHighLevel, and custom CRMs. Handle calls, emails, and follow-ups automatically. Live in days, from $100/month." />
   <link rel="canonical" href="https://echofied.com/" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Echofied — AI Marketing & Automation" />
-  <meta property="og:description" content="AI agents that research, create, launch and improve your campaigns inside your rules." />
+  <meta property="og:title" content="Echofied — AI Receptionists & Workflow Automation" />
+  <meta property="og:description" content="AI receptionists connected to Google Sheets, GoHighLevel, and custom CRMs. Live in days, from $100/month." />
   <meta property="og:url" content="https://echofied.com/" />
   <meta property="og:image" content="https://echofied.com/assets/img/og-image.png" />
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <meta property="og:image:secure_url" content="https://echofied.com/assets/img/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Echofied — AI receptionists for growing teams." />
+  <meta property="og:site_name" content="Echofied" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Echofied — AI Receptionists & Workflow Automation" />
+  <meta name="twitter:description" content="AI receptionists connected to Google Sheets, GoHighLevel, and custom CRMs. Live in days, from $100/month." />
+  <meta name="twitter:image" content="https://echofied.com/assets/img/og-image.png" />
+  <meta name="twitter:image:alt" content="Echofied — AI receptionists for growing teams." />
 
   <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
+  <link rel="apple-touch-icon" href="/assets/img/favicon.svg" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preload" as="style" href="/assets/css/styles.css" />
   <link rel="stylesheet" href="/assets/css/styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Echofied",
+    "url": "https://echofied.com",
+    "logo": "https://echofied.com/assets/img/logo.svg",
+    "description": "AI receptionists and workflow automation for US, EU, and UK small and medium businesses.",
+    "email": "hello@echofied.com",
+    "sameAs": [],
+    "offers": [
+      { "@type": "Offer", "name": "AI Receptionist + Google Sheets", "price": "100", "priceCurrency": "USD", "description": "AI receptionist connected to a simple Google Sheets pipeline." },
+      { "@type": "Offer", "name": "AI Receptionist + Your CRM", "price": "200", "priceCurrency": "USD", "description": "AI receptionist connected to GoHighLevel or your existing CRM." },
+      { "@type": "Offer", "name": "Custom AI Receptionist + AI ERP/CRM", "price": "400", "priceCurrency": "USD", "description": "Fully custom AI receptionist plus a business-tailored AI-powered ERP/CRM." }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Who owns the code and the data?", "acceptedAnswer": { "@type": "Answer", "text": "You do. Every workflow, prompt, and integration lives in your accounts. If we part ways, everything keeps running." } },
+      { "@type": "Question", "name": "How fast can an AI receptionist go live?", "acceptedAnswer": { "@type": "Answer", "text": "Most receptionist deployments go live in 3 to 7 days. Custom ERP or CRM builds typically take 2 to 4 weeks." } },
+      { "@type": "Question", "name": "What if the AI gets it wrong?", "acceptedAnswer": { "@type": "Answer", "text": "Every action runs inside guardrails. Anything outside the rules you set gets routed to a human for approval, and every decision is logged." } },
+      { "@type": "Question", "name": "Which CRMs do you connect to?", "acceptedAnswer": { "@type": "Answer", "text": "GoHighLevel, HubSpot, Salesforce, Pipedrive, Zoho, and any CRM with an API. For simple workflows, we also connect directly to Google Sheets." } }
+    ]
+  }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- HEADER -->
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
-      <a class="brand" href="#top">
-        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 10.5h14M9 16h10M9 21.5h14" stroke="#1866EE" stroke-width="2.4" stroke-linecap="round"/>
-          <circle cx="24" cy="16" r="2.4" fill="#1866EE"/>
-        </svg>
+      <a class="brand" href="#top" aria-label="Echofied home">
+        <img src="/assets/img/logo.svg" alt="" width="28" height="28" />
         <span class="brand-name">Echofied</span>
       </a>
-      
       <nav class="nav" aria-label="Primary">
-        <a href="#integrations">Integrations</a>
-        <a href="#business-core">Business Core</a>
-        <a href="#ai-agents">AI Agents</a>
-        <a href="#company">Company</a>
-        <a href="#case-studies">Case Studies</a>
-        <a href="#industries">Industries</a>
+        <a href="#how">How it works</a>
+        <a href="#demo">Live demo</a>
         <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
       </nav>
-
-      <div class="header-actions">
-        <a href="tel:+18552562001" class="phone-link">(855) 256 2001</a>
-        <a class="btn btn-primary btn-sm" href="#contact">Book your demo</a>
-      </div>
-
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <a class="btn btn-primary btn-sm nav-cta" href="#contact">Book a call</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span><span></span>
       </button>
     </div>
     <div class="mobile-nav" id="mobileNav" hidden>
-      <a href="#integrations">Integrations</a>
-      <a href="#business-core">Business Core</a>
-      <a href="#ai-agents">AI Agents</a>
-      <a href="#company">Company</a>
-      <a href="#case-studies">Case Studies</a>
-      <a href="#industries">Industries</a>
+      <a href="#how">How it works</a>
+      <a href="#demo">Live demo</a>
       <a href="#pricing">Pricing</a>
-      <a class="btn btn-primary" href="#contact">Book your demo</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-primary" href="#contact">Book a 20-min call</a>
     </div>
   </header>
 
   <main id="main">
-    <!-- HERO -->
     <section class="hero" id="top">
+      <div class="hero-glow" aria-hidden="true"></div>
       <div class="container hero-inner">
-        <div class="hero-grid">
-          <div class="hero-content">
-            <h1>Automate support with AI agents that deliver results</h1>
-            <p class="hero-sub">Echofied automates tasks, manages customer conversations, and scales support faster, all powered by dependable, workflow-ready AI.</p>
-            <div class="hero-ctas">
-              <a href="#contact" class="btn btn-primary">Book a demo call</a>
-              <a href="#how-it-works" class="btn btn-ghost">See it in action ↓</a>
-            </div>
-          </div>
-          
-          <div class="hero-right">
-            <div class="check-list">
-              <div class="check-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1866EE" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                <span>Flexible pricing</span>
-              </div>
-              <div class="check-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1866EE" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                <span>No upfront</span>
-              </div>
-              <div class="check-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1866EE" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                <span>You own the code</span>
-              </div>
-              <div class="check-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1866EE" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                <span>USA · UAE · Pakistan</span>
-              </div>
-            </div>
-          </div>
+        <p class="eyebrow">
+          <span class="dot"></span>
+          AI receptionists &amp; workflow agents
+        </p>
+        <h1>
+          Your team's next hire is
+          <span class="grad">not a person.</span>
+        </h1>
+        <p class="lede">
+          Echofied builds AI receptionists that answer every call, reply to every email,
+          update your CRM, and draft the follow-ups — from <strong>$100/month</strong>.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#contact">Book a 20-min call</a>
+          <a class="btn btn-ghost" href="#demo">
+            <span class="play" aria-hidden="true"></span>
+            Watch an agent work
+          </a>
         </div>
+        <ul class="hero-points">
+          <li>No setup fee</li>
+          <li>Live in 3–7 days</li>
+          <li>You own the code</li>
+        </ul>
 
-        <!-- Dashboard Mockup Image -->
-        <div class="hero-mockup reveal">
-          <img src="/assets/img/dashboard-mockup.png" alt="Echofied Campaign Dashboard" />
-          <p class="mockup-caption">A simulation of a real Echofied deployment. Names and numbers are illustrative.</p>
+        <div class="hero-trust">
+          <p>Trusted by operators at</p>
+          <div class="trust-row">
+            <span>Northgate Build Co.</span>
+            <span>Aurora Retail Group</span>
+            <span>Hearthline Realty</span>
+            <span>Brightwater Dental</span>
+            <span>Copperfield Logistics</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- LOGO CLOUD -->
-    <section class="logo-cloud">
+    <section class="section" id="how">
       <div class="container">
-        <div class="logo-grid reveal">
-          <span>Duralex</span>
-          <span>Reevo</span>
-          <span>fatty15</span>
-          <span>Endy</span>
-          <span>SoftMoc</span>
-          <span>TRIP</span>
-          <span>Huffer</span>
-          <span>Parívie</span>
-          <span>Moon Juice</span>
-        </div>
+        <header class="section-head">
+          <p class="eyebrow"><span class="dot"></span>How it works</p>
+          <h2>Four steps. No black boxes.</h2>
+          <p class="section-lede">
+            We plug into the tools you already use, run everything inside guardrails,
+            and hand the exceptions to your team.
+          </p>
+        </header>
+
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num">01</span>
+            <h3>Connect</h3>
+            <p>We link your inbox, phone number, calendar, and CRM — Sheets, GoHighLevel, HubSpot, Salesforce, or anything with an API.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">02</span>
+            <h3>Train</h3>
+            <p>Your services, prices, hours, and tone. The agent learns what to say, what to ask, and when to escalate.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">03</span>
+            <h3>Run</h3>
+            <p>The agent answers calls, replies to emails, updates records, and books jobs. Everything is logged with a source.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">04</span>
+            <h3>Improve</h3>
+            <p>Weekly reviews. Every approval and correction makes the next month tighter. Fewer exceptions, more hours back.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <!-- HOW IT WORKS -->
-    <section class="how-it-works" id="how-it-works">
+    <section class="section section-alt" id="demo">
       <div class="container">
-        <div class="section-header reveal">
-          <p class="eyebrow">HOW IT WORKS</p>
-          <h2>Put your AI to work<br>while you remain in control.</h2>
-        </div>
+        <header class="section-head">
+          <p class="eyebrow"><span class="dot"></span>Live demo</p>
+          <h2>Watch an agent handle the busywork.</h2>
+          <p class="section-lede">
+            Pick an industry and press play. This is the same loop Echofied runs for clients every day.
+          </p>
+        </header>
 
-        <div class="cards-grid reveal">
-          <div class="how-card">
-            <span class="num">01</span>
-            <h3>Request received</h3>
-            <p>A customer reaches out through chat, email, a phone call, or a form.</p>
+        <div class="demo" data-compact>
+          <div class="demo-tabs" role="tablist" aria-label="Industry demos">
+            <button class="demo-tab is-active" role="tab" aria-selected="true" data-demo="construction">Construction</button>
+            <button class="demo-tab" role="tab" aria-selected="false" data-demo="ecommerce">E-commerce</button>
+            <button class="demo-tab" role="tab" aria-selected="false" data-demo="realestate">Real estate</button>
+            <button class="demo-tab" role="tab" aria-selected="false" data-demo="clinic">Clinic</button>
           </div>
-          <div class="how-card">
-            <span class="num">02</span>
-            <h3>AI takes action</h3>
-            <p>Your agent uses your business knowledge to draft a reply with the right steps.</p>
+
+          <div class="demo-stage" data-stage>
+            <div class="demo-panel" data-panel="inbox">
+              <header class="panel-head">
+                <h3>Inbox</h3>
+                <span class="panel-badge" data-badge="inbox">0 new</span>
+              </header>
+              <ul class="inbox-list" data-list="inbox"></ul>
+            </div>
+
+            <div class="demo-panel" data-panel="agent">
+              <header class="panel-head">
+                <h3>Echofied agent</h3>
+                <span class="panel-badge live">Live</span>
+              </header>
+              <ul class="agent-steps" data-list="agent"></ul>
+            </div>
+
+            <div class="demo-panel" data-panel="crm">
+              <header class="panel-head">
+                <h3>CRM</h3>
+                <span class="panel-badge" data-badge="crm">Sheet</span>
+              </header>
+              <div class="crm-table" data-list="crm"></div>
+            </div>
+
+            <div class="demo-panel" data-panel="drafts">
+              <header class="panel-head">
+                <h3>Drafts</h3>
+                <span class="panel-badge" data-badge="drafts">0 ready</span>
+              </header>
+              <ul class="draft-list" data-list="drafts"></ul>
+            </div>
           </div>
-          <div class="how-card active">
-            <span class="num">03</span>
-            <h3>Approval</h3>
-            <p>Important decisions arrive for your team. You approve with one click.</p>
+
+          <div class="demo-mobile-progress" data-progress hidden>
+            <span class="demo-mobile-step" data-step-dot="inbox" aria-hidden="true"></span>
+            <span class="demo-mobile-step" data-step-dot="agent" aria-hidden="true"></span>
+            <span class="demo-mobile-step" data-step-dot="crm" aria-hidden="true"></span>
+            <span class="demo-mobile-step" data-step-dot="drafts" aria-hidden="true"></span>
           </div>
-          <div class="how-card">
-            <span class="num">04</span>
-            <h3>Autopilot</h3>
-            <p>Every approved workflow gets your company's unique process and system.</p>
+
+          <div class="demo-controls">
+            <button class="btn btn-primary" data-action="play">Run demo</button>
+            <button class="btn btn-ghost" data-action="reset">Reset</button>
+            <span class="demo-hint">A scripted animation. No live data.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- DARK SECTION: HOW WE BUILD -->
-    <section class="dark-section build-section" id="business-core">
+    <section class="section" id="pricing">
       <div class="container">
-        <div class="split-header reveal">
-          <div>
-            <p class="eyebrow text-blue">HOW WE BUILD</p>
-            <h2>Start with what your<br>company knows</h2>
-          </div>
-          <div class="split-right">
-            <p>One knowledge layer first. Then the work and the calls that run on top of it.</p>
-            <a href="#contact" class="btn btn-primary">Book a demo</a>
-          </div>
-        </div>
+        <header class="section-head">
+          <p class="eyebrow"><span class="dot"></span>Pricing</p>
+          <h2>Three plans. One goal: give you hours back.</h2>
+          <p class="section-lede">No setup fees. Cancel anytime. Every plan includes human-in-the-loop approvals.</p>
+        </header>
 
-        <div class="build-grid reveal">
-          <!-- Business Core -->
-          <div class="build-card">
-            <h3>Business Core</h3>
-            <p>Everything your business knows, across documents and databases, answerable with sources. Built to get the exceptions right.</p>
-            
-            <div class="mock-ui">
-              <div class="mock-input">What is the refund window on corporate orders?</div>
-              <div class="mock-response">
-                <p>30 days from delivery, unless the signed contract sets its own terms.</p>
-                <div class="mock-tags">
-                  <span class="tag">Refund policy</span>
-                  <span class="tag">Contracts database</span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <h3>Starter</h3>
+            <p class="price"><span>$100</span>/mo</p>
+            <p class="price-sub">AI receptionist + Google Sheets</p>
+            <ul>
+              <li>AI receptionist for calls &amp; emails</li>
+              <li>Logs every lead into Google Sheets</li>
+              <li>Instant SMS/email confirmations</li>
+              <li>Business hours, holidays, FAQs</li>
+              <li>Email support, 48h response</li>
+            </ul>
+            <a class="btn btn-ghost" href="#contact">Start with Starter</a>
+          </article>
 
-          <!-- AI Agents -->
-          <div class="build-card">
-            <h3>AI Agents</h3>
-            <p>Support, sales admin, onboarding and finance ops. Agents that finish the task, with an approval seat for what matters.</p>
-            
-            <div class="mock-list">
-              <div class="mock-list-item done">
-                <div class="icon-check"></div>
-                <span>Invoice matched to purchase order</span>
-                <span class="status">Done</span>
-              </div>
-              <div class="mock-list-item done">
-                <div class="icon-check"></div>
-                <span>Onboarding pack sent to new client</span>
-                <span class="status">Done</span>
-              </div>
-              <div class="mock-list-item pending">
-                <div class="icon-dot"></div>
-                <span>Refund to customer</span>
-                <span class="status blue">Needs your OK</span>
-              </div>
-            </div>
-          </div>
+          <article class="price-card is-featured">
+            <span class="ribbon">Most popular</span>
+            <h3>Growth</h3>
+            <p class="price"><span>$200</span>/mo</p>
+            <p class="price-sub">AI receptionist + your CRM</p>
+            <ul>
+              <li>Everything in Starter</li>
+              <li>Two-way CRM sync — GoHighLevel, HubSpot, Pipedrive</li>
+              <li>Appointment booking into your calendar</li>
+              <li>Follow-up sequences on autopilot</li>
+              <li>Call recordings &amp; transcripts</li>
+              <li>Priority support, 24h response</li>
+            </ul>
+            <a class="btn btn-primary" href="#contact">Start with Growth</a>
+          </article>
 
-          <!-- Voice AI -->
-          <div class="build-card">
-            <h3>Voice AI</h3>
-            <p>Inbound and outbound calls in the caller's language. Warm transfer to a person with the context attached.</p>
-            
-            <div class="mock-chat">
-              <div class="chat-bubble user">
-                Hello, my laptop came with an issue, I'd like to use my warranty and get it replaced with a new one
-              </div>
-              <div class="chat-bubble agent">
-                <span class="agent-tag">Agent</span>
-                Hey Alex, let me complete the paperwork and will send you a new one right away.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="trust-bar reveal">
-          <div class="trust-item">
-            <strong>No Guesswork</strong>
-            <span>Every answer has a source, or a person takes over.</span>
-          </div>
-          <div class="trust-item">
-            <strong>Live in 2–4 weeks</strong>
-            <span>on your data, with your people approving</span>
-          </div>
-          <div class="trust-item">
-            <strong>Every call answered</strong>
-            <span>24/7, English, Arabic, Urdu and more</span>
-          </div>
+          <article class="price-card">
+            <h3>Custom</h3>
+            <p class="price"><span>$400</span>/mo</p>
+            <p class="price-sub">Custom AI receptionist + AI ERP/CRM</p>
+            <ul>
+              <li>Everything in Growth</li>
+              <li>Custom ERP/CRM built for your workflow</li>
+              <li>Multi-location, multi-language</li>
+              <li>Quote, invoice, and job scheduling agents</li>
+              <li>Slack/Teams integration</li>
+              <li>Dedicated engineer, same-day support</li>
+            </ul>
+            <a class="btn btn-ghost" href="#contact">Talk to us</a>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- INTEGRATIONS -->
-    <section class="integrations-section" id="integrations">
+    <section class="section section-alt" id="testimonials">
       <div class="container">
-        <div class="section-header reveal">
-          <p class="eyebrow">HOW AI INTELLIGENCE BUILT IN</p>
-          <h2>Seamless Integration. Zero Friction.</h2>
-          <p class="sub">Connect Echofied through APIs, MCP and legacy systems like SFTP, ODBC, and email. Every connection passes through our guardrails inside your own cloud.</p>
-        </div>
-
-        <div class="integration-diagram reveal">
-          <img src="/assets/img/integration-diagram.png" alt="Integration Architecture Diagram" />
-        </div>
-
-        <!-- Ask Data Section -->
-        <div class="ask-data-grid reveal">
-          <div class="ask-content">
-            <p class="eyebrow">HOW WE BUILD</p>
-            <h2>Ask a Question.<br>Get Real Answers.</h2>
-            <p>Connect your databases, Stripe, and spreadsheets. Ask questions in everyday language, and the agent queries your data while keeping your team no SQL for complex strings.</p>
-            <a href="#contact" class="btn btn-primary">Book a demo</a>
-          </div>
-          <div class="ask-mockup">
-            <div class="mock-data-header">
-              <span class="dot"></span> Data agent <span class="status">connected · Postgres · Stripe · Sheets</span>
-            </div>
-            <div class="mock-data-input">
-              <span class="cursor">Whic▍</span>
-            </div>
-            <div class="mock-data-result">
-              <div class="result-head">Case study · voice AI for restaurants</div>
-              <h4>An AI host that answers every restaurant call</h4>
-              <p>Restaurants miss the most calls at the busiest hour — exactly when guests want to book. Our voice AI answers every call, takes bookings and orders in the caller's language...</p>
-              
-              <div class="stat-row">
-                <div class="stat">
-                  <span class="stat-num">74%</span>
-                  <span class="stat-label">of calls handled without staff picking up</span>
-                </div>
-                <div class="stat">
-                  <span class="stat-num">136</span>
-                  <span class="stat-label">bookings taken by voice per venue, per month</span>
-                </div>
-                <div class="stat">
-                  <span class="stat-num">11 hrs</span>
-                  <span class="stat-label">of staff phone time returned per month</span>
-                </div>
-              </div>
-            </div>
-            <p class="fine-print">Read-Only Access · Full Query Transparency · Your Permissions, Always Applied</p>
-          </div>
+        <header class="section-head">
+          <p class="eyebrow"><span class="dot"></span>Results</p>
+          <h2>What operators say after 30 days.</h2>
+        </header>
+        <div class="testimonial-grid">
+          <figure class="testimonial">
+            <blockquote>Our front desk used to miss one in four calls. Echofied picks up every one, and our booking rate is up 22%.</blockquote>
+            <figcaption>
+              <span class="avatar" style="--c1:#0a84ff;--c2:#3aa0ff">MB</span>
+              <span>
+                <strong>Marcus Bailey</strong>
+                <em>Owner, Northgate Build Co.</em>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="testimonial">
+            <blockquote>It answers in three languages and drops every order into our CRM. We cut two part-time shifts and grew revenue.</blockquote>
+            <figcaption>
+              <span class="avatar" style="--c1:#3aa0ff;--c2:#7ab8ff">EC</span>
+              <span>
+                <strong>Elena Cortez</strong>
+                <em>COO, Aurora Retail Group</em>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="testimonial">
+            <blockquote>We went live in five days. Every lead gets a follow-up within a minute. That alone paid for the year.</blockquote>
+            <figcaption>
+              <span class="avatar" style="--c1:#1f1f1f;--c2:#4d4d4d">JT</span>
+              <span>
+                <strong>Jordan Tate</strong>
+                <em>Managing Broker, Hearthline Realty</em>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="testimonial">
+            <blockquote>The custom ERP replaced three spreadsheets. Scheduling, invoicing, reminders — all in one place.</blockquote>
+            <figcaption>
+              <span class="avatar" style="--c1:#0a84ff;--c2:#7ab8ff">PR</span>
+              <span>
+                <strong>Priya Raman</strong>
+                <em>Director, Brightwater Dental</em>
+              </span>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <!-- HOW WE PROCESS (Dark) -->
-    <section class="dark-section process-section" id="pricing">
+    <section class="section" id="faq">
       <div class="container">
-        <div class="process-grid">
-          <div class="process-content reveal">
-            <p class="eyebrow text-blue">HOW WE PROCESS</p>
-            <h2>Pay for outcomes,<br>not promises.</h2>
-            <p>No upfront fees. We agree on a measurable business outcome, establish the baseline, and set a clear target. Our fee is tied to results, not hours spent.</p>
-            <a href="#contact" class="btn btn-primary">Book a demo</a>
-          </div>
-          
-          <div class="process-cards reveal">
-            <div class="process-card">
-              <span class="num blue">01</span>
-              <h3>Discovery Call</h3>
-              <p>Identify your main workflow and the one metric it lives or dies on.</p>
-            </div>
-            <div class="process-card">
-              <span class="num blue">02</span>
-              <h3>Workflow Pilot</h3>
-              <p>One narrow workflow, live on your data, measured on the agreed target.</p>
-            </div>
-            <div class="process-card">
-              <span class="num blue">03</span>
-              <h3>Go Live</h3>
-              <p>Secure, monitored, and integrated so your team is always in control.</p>
-            </div>
-            <div class="process-card">
-              <span class="num blue">04</span>
-              <h3>Run & Improve</h3>
-              <p>We monitor performance, report the number monthly, and optimize the next workflow.</p>
-            </div>
-          </div>
+        <header class="section-head">
+          <p class="eyebrow"><span class="dot"></span>FAQ</p>
+          <h2>The questions that matter.</h2>
+        </header>
+        <div class="faq">
+          <details>
+            <summary>Who owns the code and the data?</summary>
+            <p>You do. Every workflow, prompt, integration, and dataset lives in your accounts. If we ever part ways, everything keeps running exactly as it is.</p>
+          </details>
+          <details>
+            <summary>How fast can an AI receptionist go live?</summary>
+            <p>Receptionist deployments usually go live in 3 to 7 days. Custom ERP or CRM builds take 2 to 4 weeks depending on scope.</p>
+          </details>
+          <details>
+            <summary>What if the agent gets something wrong?</summary>
+            <p>Every action runs inside guardrails you set. Anything ambiguous or outside your policy is routed to a human for approval, and every decision is logged with a source.</p>
+          </details>
+          <details>
+            <summary>Which CRMs do you connect to?</summary>
+            <p>GoHighLevel, HubSpot, Salesforce, Pipedrive, Zoho, and any CRM with an API. For simpler operations, we connect directly to Google Sheets.</p>
+          </details>
+          <details>
+            <summary>Is this secure?</summary>
+            <p>Yes. Data is encrypted in transit and at rest, access is scoped per user, and PII is redacted before storage. We can sign a DPA and follow your compliance requirements.</p>
+          </details>
+          <details>
+            <summary>Do you work with companies outside the US?</summary>
+            <p>Yes. We support clients across the US, EU, and UK, with voice agents fluent in English, Spanish, French, German, and more.</p>
+          </details>
         </div>
       </div>
     </section>
 
-    <!-- CASE STUDIES -->
-    <section class="case-studies" id="case-studies">
-      <div class="container">
-        <div class="section-header center reveal">
-          <p class="eyebrow">CASE STUDIES</p>
-          <h2>We think our track<br>records speak for itself</h2>
+    <section class="section section-cta" id="contact">
+      <div class="container cta-inner">
+        <div>
+          <h2>Book a 20-minute call.</h2>
+          <p>Tell us where your team loses the most time. If AI isn't the right fix, we'll say so.</p>
+          <ul class="cta-points">
+            <li>No pitch deck, no sales sequence</li>
+            <li>Plain recommendation within 48 hours</li>
+            <li>You talk to an engineer, not a rep</li>
+          </ul>
         </div>
-
-        <div class="case-grid reveal">
-          <div class="case-card">
-            <div class="case-logo">Gartner</div>
-            <div class="case-stat">4x</div>
-            <p>Twilio was named a Leader in the 2026 Gartner® Magic Quadrant™ for CPaaS.</p>
-            <a href="#" class="case-link">Read the report ↗</a>
-          </div>
-          <div class="case-card">
-            <div class="case-logo">Omdia</div>
-            <div class="case-stat">4x</div>
-            <p>Twilio was named a leader in the Omdia Universe: Customer Engagement Platforms (CEP).</p>
-            <a href="#" class="case-link">Read the report ↗</a>
-          </div>
-          <div class="case-card">
-            <div class="case-logo">IDC</div>
-            <div class="case-stat">5x</div>
-            <p>Twilio was named a leader in the IDC MarketScape: Worldwide CPaaS.</p>
-            <a href="#" class="case-link">View the excerpt ↗</a>
-          </div>
-        </div>
-        
-        <div class="center-cta reveal">
-          <a href="#" class="btn btn-primary">View all case studies</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMMAND CENTER (Dark) -->
-    <section class="dark-section command-center">
-      <div class="container command-grid reveal">
-        <div class="command-content">
-          <p class="eyebrow text-blue">HOW IT WORKS</p>
-          <h2>Your command center for<br>smarter call management</h2>
-          <p>Echofied handles the manual lifting, so your team can focus on conversations that close deals.</p>
-          <div class="command-actions">
-            <a href="#contact" class="btn btn-primary">Start for free</a>
-            <a href="#" class="link-underline">View pricing</a>
-          </div>
-        </div>
-        <div class="command-image">
-          <img src="/assets/img/command-center.png" alt="Call Management Dashboard" />
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq-section" id="company">
-      <div class="container">
-        <div class="section-header reveal">
-          <h2>A few good questions. Clear answers.</h2>
-        </div>
-
-        <div class="faq-grid reveal">
-          <div class="faq-image">
-            <img src="/assets/img/faq-team.png" alt="Echofied Team" />
-            <div class="faq-image-overlay">
-              <p>Need help with the automation?</p>
-              <a href="#contact" class="btn btn-ghost btn-sm">Contact us</a>
-            </div>
-          </div>
-          
-          <div class="faq-accordion">
-            <details open>
-              <summary>What does Echofied do? <span class="icon"></span></summary>
-              <div class="faq-content">
-                <p>Echofied is an AI marketing platform that researches, creates, launches and improves your campaigns inside your rules. Every change to your ad accounts is previewed and confirmed first.</p>
-              </div>
-            </details>
-            <details>
-              <summary>Do I need coding skills to use Salifact? <span class="icon"></span></summary>
-              <div class="faq-content">
-                <p>No. The platform is designed for marketers and operators. You describe what you want, and the AI builds the workflow.</p>
-              </div>
-            </details>
-            <details>
-              <summary>Which tools and services can I connect? <span class="icon"></span></summary>
-              <div class="faq-content">
-                <p>We integrate with Meta, Google, HubSpot, Salesforce, Stripe, and any tool with an open API or standard database connection.</p>
-              </div>
-            </details>
-            <details>
-              <summary>How secure is my data? <span class="icon"></span></summary>
-              <div class="faq-content">
-                <p>Data is encrypted in transit and at rest. Access is scoped per user, and PII is redacted before storage.</p>
-              </div>
-            </details>
-            <details>
-              <summary>Can Salifact scale with my team? <span class="icon"></span></summary>
-              <div class="faq-content">
-                <p>Yes. You can invite unlimited team members, set granular permission levels, and manage multiple client workspaces.</p>
-              </div>
-            </details>
-            <details>
-              <summary>How quickly can I get started? <span class="icon"></span></summary>
-              <div class="faq-content">
-                <p>Most clients go live in 2 to 4 weeks, depending on the complexity of their workflows and integrations.</p>
-              </div>
-            </details>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA / CONTACT -->
-    <section class="dark-section cta-section" id="contact">
-      <div class="container cta-grid reveal">
-        <div class="cta-content">
-          <h2>Book a free demo call.</h2>
-          <p>Tell us where your team loses the most time. You'll talk to someone who has built this before — and if AI isn't the right fix, we'll say so.</p>
-          
-          <div class="cta-steps">
-            <div class="cta-step">
-              <h4>Understand Your Workflow</h4>
-              <p>We assess your tools, tasks, and bottlenecks.</p>
-            </div>
-            <div class="cta-step">
-              <h4>Find What Matters</h4>
-              <p>Know what to automate and what to leave alone.</p>
-            </div>
-            <div class="cta-step">
-              <h4>Get Your Action Plan</h4>
-              <p>A clear automation proposal within three working days.</p>
-            </div>
-          </div>
-          <p class="cta-note">Prefer to read first? Download the Company Profile (PDF).</p>
-        </div>
-
-        <div class="cta-form-wrapper">
-          <form class="cta-form" id="contactForm" novalidate>
-            <div class="form-head">
-              <span class="eyebrow text-blue">PICK A TIME NOW</span>
-              <a href="#" class="btn btn-primary" style="width:100%; justify-content:center; margin-bottom: 8px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                Book a call on Calendly
-              </a>
-              <p class="calendly-note">30 minutes · free · instant confirmation</p>
-              
-              <div class="divider"><span>OR</span></div>
-              <p class="form-sub">Send us a note instead</p>
-            </div>
-
-            <label>
-              <span>Name</span>
-              <input type="text" name="name" required placeholder="Your name" />
-            </label>
-            <label>
-              <span>Work email</span>
-              <input type="email" name="email" required placeholder="you@company.com" />
-            </label>
-            <label>
-              <span>What should AI take off your plate?</span>
-              <select name="topic">
-                <option value="">Select a workflow</option>
-                <option value="support">Customer questions and support</option>
-                <option value="sales">Sales follow-ups</option>
-                <option value="ops">Back-office operations</option>
-              </select>
-            </label>
-            <label>
-              <span>In a sentence or two, what's the problem?</span>
-              <textarea name="message" rows="3" placeholder="e.g. We miss about 30 calls every Friday night and lose the bookings."></textarea>
-            </label>
-            
-            <button class="btn btn-primary" type="submit" style="width:100%;">Request my call</button>
-            <p class="form-note">One reply from a person. No newsletter.</p>
-            <p class="form-status" role="status" aria-live="polite"></p>
-          </form>
-        </div>
-      </div>
-      <div class="container">
-        <p class="cta-bottom-note">No upfront fee · No sales sequence · No 40-page questionnaire</p>
+        <form class="cta-form" id="contactForm" novalidate>
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" autocomplete="name" required placeholder="Marcus Bailey" />
+          </label>
+          <label>
+            <span>Work email</span>
+            <input type="email" name="email" autocomplete="email" required placeholder="marcus@northgatebuild.com" />
+          </label>
+          <label>
+            <span>Company</span>
+            <input type="text" name="company" autocomplete="organization" placeholder="Northgate Build Co." />
+          </label>
+          <label>
+            <span>What should AI take off your plate?</span>
+            <textarea name="message" rows="3" placeholder="We miss about 30 calls every Friday and lose the bookings."></textarea>
+          </label>
+          <button class="btn btn-primary" type="submit">Request my call</button>
+          <p class="form-note">One reply from a person. No newsletter.</p>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <a class="brand" href="#top">
-          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9 10.5h14M9 16h10M9 21.5h14" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"/>
-            <circle cx="24" cy="16" r="2.4" fill="#FFFFFF"/>
-          </svg>
-          <span class="brand-name text-white">Echofied</span>
-        </a>
-        <p>We build and run AI agents for startups and small businesses. Your people approve what matters. You own the code.</p>
-        <div class="social-links">
-          <a href="#">in</a>
-          <a href="#">X</a>
-        </div>
+        <img src="/assets/img/logo.svg" alt="" width="24" height="24" />
+        <span>Echofied</span>
+        <p>AI receptionists and workflow automation for growing teams.</p>
       </div>
-      
       <div class="footer-cols">
         <div>
-          <h4>What We Build</h4>
-          <a href="#">AI Agents</a>
-          <a href="#">Company Brain</a>
-          <a href="#">Voice AI Phone Agents</a>
-          <a href="#">Ask-your-data agent</a>
+          <h4>Product</h4>
+          <a href="#how">How it works</a>
+          <a href="#demo">Live demo</a>
+          <a href="#pricing">Pricing</a>
         </div>
         <div>
           <h4>Company</h4>
-          <a href="#">About Us</a>
-          <a href="#">Industries</a>
-          <a href="#">Case Studies</a>
-          <a href="#">Pricing</a>
-          <a href="#">FAQs</a>
-          <a href="#">Company Profile (PDF)</a>
+          <a href="#testimonials">Results</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
         </div>
         <div>
-          <h4>Contact Us</h4>
-          <a href="tel:+18552562001">(855) 256 2001</a>
-          <a href="mailto:info@echofied.com">info@echofied.com</a>
+          <h4>Contact</h4>
+          <a href="mailto:hello@echofied.com">hello@echofied.com</a>
+          <a href="https://echofied.com">echofied.com</a>
         </div>
       </div>
     </div>
-    
     <div class="container footer-bottom">
-      <p>© 2026 Echofied</p>
-      <div class="footer-legal">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Cookie settings</a>
-      </div>
+      <p>© <span id="year"></span> Echofied. All rights reserved.</p>
+      <p>Built for operators who'd rather grow than hire.</p>
     </div>
   </footer>
 
+  <script src="/assets/js/demo-data.js" defer></script>
+  <script src="/assets/js/demo-emails.js" defer></script>
+  <script src="/assets/js/demo-crm.js" defer></script>
+  <script src="/assets/js/demo-drafts.js" defer></script>
+  <script src="/assets/js/demo-runner.js" defer></script>
   <script src="/assets/js/main.js" defer></script>
 </body>
 </html>
