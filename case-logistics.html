@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Copperfield Logistics Case Study — Echofied</title>
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><path d="M9 10.5h14M9 16h10M9 21.5h14" stroke="#1866EE" stroke-width="2.4" stroke-linecap="round"/><circle cx="24" cy="16" r="2.4" fill="#1866EE"/></svg>
+        <span class="brand-name">Echofied</span>
+      </a>
+      <div class="header-actions" style="display:flex;">
+        <a class="btn btn-primary btn-sm" href="/#contact">Book your demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="cs-hero bg-light">
+      <div class="container">
+        <p class="eyebrow">CASE STUDY · LOGISTICS</p>
+        <h1>How Copperfield Logistics cut deadhead miles by 32% with AI dispatch.</h1>
+        <p>A mid-sized freight brokerage managing 400+ loads a week was losing margin to empty return trips. Echofied built an AI dispatch agent that monitors driver location and automatically matches them with backhaul loads.</p>
+        <div class="cs-tags">
+          <span class="cs-tag">McLeod TMS</span>
+          <span class="cs-tag">Samsara</span>
+          <span class="cs-tag">QuickBooks</span>
+          <span class="cs-tag">Slack</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        
+        <div class="cs-metrics-row">
+          <div class="cs-metric">
+            <div class="val">32%</div>
+            <div class="label">Reduction in deadhead miles</div>
+          </div>
+          <div class="cs-metric">
+            <div class="val">$142k</div>
+            <div class="label">Added gross margin in Year 1</div>
+          </div>
+          <div class="cs-metric">
+            <div class="val">18 hrs</div>
+            <div class="label">Dispatcher time saved per week</div>
+          </div>
+        </div>
+
+        <h2 style="margin-bottom: 32px;">The Before & After</h2>
+        <div class="cs-split">
+          <div class="cs-box before">
+            <h3>Before Echofied</h3>
+            <ul>
+              <li>Dispatchers manually checking 3 different boards to find backhauls.</li>
+              <li>Trucks driving 150+ miles empty after drop-offs.</li>
+              <li>Drivers waiting 4+ hours for dispatch instructions via phone.</li>
+              <li>Billing and invoicing handled 5 days after delivery.</li>
+            </ul>
+          </div>
+          <div class="cs-box after">
+            <h3>After Echofied</h3>
+            <ul>
+              <li>AI agent scans load boards and predicts optimal backhauls instantly.</li>
+              <li>Automated SMS sent to driver with next load 2 hours before drop-off.</li>
+              <li>Deadhead miles cut to under 20 miles per route.</li>
+              <li>Invoice auto-generated and pushed to QuickBooks upon delivery scan.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 style="margin-bottom: 32px;">The Technology Stack</h2>
+        <table class="cs-table">
+          <thead>
+            <tr>
+              <th>System</th>
+              <th>Role</th>
+              <th>How Echofied Connects</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>McLeod TMS</strong></td>
+              <td>Load management & dispatch</td>
+              <td>API Integration (Read/Write). Agent pulls active loads, writes new assignments.</td>
+            </tr>
+            <tr>
+              <td><strong>Samsara</strong></td>
+              <td>Fleet tracking & ELD</td>
+              <td>API Webhook. Triggered when truck status changes to "Empty".</td>
+            </tr>
+            <tr>
+              <td><strong>QuickBooks Online</strong></td>
+              <td>Accounting & Invoicing</td>
+              <td>API Integration. Generates invoices instantly based on delivery confirmation.</td>
+            </tr>
+            <tr>
+              <td><strong>Slack</strong></td>
+              <td>Team communication</td>
+              <td>MCP Server. Alerts dispatchers of exceptions or approval requests.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 style="margin-bottom: 32px;">The Automation Workflow</h2>
+        <div style="background: #F8F9FA; padding: 32px; border-radius: 16px; border: 1px solid var(--border-light);">
+          <ol style="margin-left: 24px; display: flex; flex-direction: column; gap: 16px; font-size: 16px; color: var(--text-main); line-height: 1.5;">
+            <li><strong>Trigger:</strong> Samsara sends a webhook that Truck #42 has dropped its load and is now empty.</li>
+            <li><strong>Action:</strong> Echofied agent queries McLeod TMS for available backhauls within a 50-mile radius.</li>
+            <li><strong>Match:</strong> Agent finds a load matching the driver's HOS (Hours of Service) and weight capacity.</li>
+            <li><strong>Approval:</strong> Agent sends a Slack message to the dispatcher: <em>"Match found: Load #8821. Approve?"</em></li>
+            <li><strong>Execution:</strong> Dispatcher clicks "Approve". Agent writes the assignment to McLeod and sends an SMS to the driver with the new route.</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+  </main>
+</body>
+</html>

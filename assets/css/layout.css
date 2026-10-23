@@ -1,0 +1,65 @@
+/* =========================================
+   LAYOUT: Containers, Grids, Sections
+   ========================================= */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Section Spacing & Backgrounds */
+.hero { padding: 160px 0 80px; }
+.how-it-works { padding: 100px 0; background: var(--bg-white); }
+.dark-section { background: var(--bg-dark); color: var(--text-light); padding: 100px 0; }
+.dark-section h2 { color: var(--text-light); }
+.dark-section p { color: var(--text-light-muted); }
+.integrations-section { padding: 100px 0; }
+.case-studies { padding: 100px 0; background: var(--bg-light); }
+.faq-section { padding: 100px 0; background: var(--bg-light); }
+
+/* Hero Grid */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+@media (min-width: 1024px) {
+  .hero-grid { grid-template-columns: 1.2fr 0.8fr; gap: 80px; }
+}
+
+/* Section Headers */
+.section-header { text-align: center; max-width: 700px; margin: 0 auto 60px; }
+.section-header h2 { margin-bottom: 20px; }
+.section-header .sub { font-size: 18px; }
+
+/* Generic 4-column grid (How it works) */
+.cards-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 20px; }
+@media (min-width: 768px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .cards-grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* 3-column grid (Build section, Case studies) */
+.build-grid, .case-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 60px; }
+@media (min-width: 900px) { 
+  .build-grid, .case-grid { grid-template-columns: repeat(3, 1fr); } 
+}
+
+/* Split layouts (Process, Ask Data, CTA) */
+.split-header { display: flex; flex-direction: column; gap: 30px; margin-bottom: 60px; }
+@media (min-width: 900px) {
+  .split-header { flex-direction: row; justify-content: space-between; align-items: flex-end; }
+  .split-header h2 { font-size: 50px; }
+}
+.split-right { max-width: 400px; }
+.split-right p { font-size: 18px; margin-bottom: 24px; }
+
+.ask-data-grid, .process-grid, .command-grid, .cta-grid { display: grid; grid-template-columns: 1fr; gap: 60px; align-items: center; }
+@media (min-width: 900px) { 
+  .ask-data-grid, .process-grid, .command-grid, .cta-grid { grid-template-columns: 1fr 1fr; gap: 80px; } 
+}
+
+.faq-grid { display: grid; grid-template-columns: 1fr; gap: 60px; align-items: start; }
+@media (min-width: 900px) { .faq-grid { grid-template-columns: 0.8fr 1.2fr; } }

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hearthline Realty Case Study — Echofied</title>
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><path d="M9 10.5h14M9 16h10M9 21.5h14" stroke="#1866EE" stroke-width="2.4" stroke-linecap="round"/><circle cx="24" cy="16" r="2.4" fill="#1866EE"/></svg>
+        <span class="brand-name">Echofied</span>
+      </a>
+      <div class="header-actions" style="display:flex;">
+        <a class="btn btn-primary btn-sm" href="/#contact">Book your demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="cs-hero bg-light">
+      <div class="container">
+        <p class="eyebrow">CASE STUDY · REAL ESTATE</p>
+        <h1>How Hearthline Realty saved 14 hours per agent weekly with an AI ISA.</h1>
+        <p>A 45-agent brokerage was losing high-value buyer leads because agents couldn't respond fast enough during showings. Echofied deployed an AI Inside Sales Agent to qualify leads and schedule showings instantly.</p>
+        <div class="cs-tags">
+          <span class="cs-tag">Follow Up Boss</span>
+          <span class="cs-tag">Google Calendar</span>
+          <span class="cs-tag">Twilio SMS</span>
+          <span class="cs-tag">Zillow Premier</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        
+        <div class="cs-metrics-row">
+          <div class="cs-metric">
+            <div class="val">14 hrs</div>
+            <div class="label">Saved per agent, per week</div>
+          </div>
+          <div class="cs-metric">
+            <div class="val">42%</div>
+            <div class="label">Increase in showings booked</div>
+          </div>
+          <div class="cs-metric">
+            <div class="val">2 min</div>
+            <div class="label">Average response time to new leads</div>
+          </div>
+        </div>
+
+        <h2 style="margin-bottom: 32px;">The Before & After</h2>
+        <div class="cs-split">
+          <div class="cs-box before">
+            <h3>Before Echofied</h3>
+            <ul>
+              <li>Leads sat for an average of 4 hours before an agent called them.</li>
+              <li>Agents spent 2 hours every evening manually updating Follow Up Boss.</li>
+              <li>Zillow leads were often lost to competitors who called faster.</li>
+              <li>Showings were booked via phone tag and messy text threads.</li>
+            </ul>
+          </div>
+          <div class="cs-box after">
+            <h3>After Echofied</h3>
+            <ul>
+              <li>AI agent texts new leads within 60 seconds, qualifies them, and answers HOA/property questions.</li>
+              <li>Agent checks Google Calendar and books the showing directly on the spot.</li>
+              <li>CRM (Follow Up Boss) is updated automatically with full conversation logs.</li>
+              <li>Agents only step in when the lead is ready for a contract or a complex negotiation.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 style="margin-bottom: 32px;">The Technology Stack</h2>
+        <table class="cs-table">
+          <thead>
+            <tr>
+              <th>System</th>
+              <th>Role</th>
+              <th>How Echofied Connects</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Follow Up Boss</strong></td>
+              <td>Real Estate CRM</td>
+              <td>API Integration. Reads new leads, writes conversation notes & tags.</td>
+            </tr>
+            <tr>
+              <td><strong>Zillow Premier Agent</strong></td>
+              <td>Lead Generation</td>
+              <td>Webhook. Triggers the AI the second a new lead fills out a form.</td>
+            </tr>
+            <tr>
+              <td><strong>Google Calendar</strong></td>
+              <td>Scheduling</td>
+              <td>API Integration. AI checks availability and creates the calendar event.</td>
+            </tr>
+            <tr>
+              <td><strong>Twilio</strong></td>
+              <td>SMS & Voice</td>
+              <td>API. Acts as the phone number the AI uses to text and call.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 style="margin-bottom: 32px;">The Automation Workflow</h2>
+        <div style="background: #F8F9FA; padding: 32px; border-radius: 16px; border: 1px solid var(--border-light);">
+          <ol style="margin-left: 24px; display: flex; flex-direction: column; gap: 16px; font-size: 16px; color: var(--text-main); line-height: 1.5;">
+            <li><strong>Trigger:</strong> A lead submits a "Request a Tour" form on Zillow for 14 Alder Lane.</li>
+            <li><strong>Action:</strong> Echofied agent texts the lead: <em>"Hi, this is Sarah with Hearthline. I see you're interested in 14 Alder Lane! It's a 3-bed, $705k. Would you like to see it this Saturday?"</em></li>
+            <li><strong>Qualification:</strong> The lead replies "Yes, Saturday at 11 AM." The AI answers 2 more questions about the HOA.</li>
+            <li><strong>Execution:</strong> AI checks the agent's Google Calendar, finds 11 AM open, books the event, and confirms via SMS.</li>
+            <li><strong>Logging:</strong> AI writes the entire transcript, the lead's budget, and the showing time into Follow Up Boss.</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+  </main>
+</body>
+</html>

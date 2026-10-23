@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurora Retail Group Case Study — Echofied</title>
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><path d="M9 10.5h14M9 16h10M9 21.5h14" stroke="#1866EE" stroke-width="2.4" stroke-linecap="round"/><circle cx="24" cy="16" r="2.4" fill="#1866EE"/></svg>
+        <span class="brand-name">Echofied</span>
+      </a>
+      <div class="header-actions" style="display:flex;">
+        <a class="btn btn-primary btn-sm" href="/#contact">Book your demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="cs-hero bg-light">
+      <div class="container">
+        <p class="eyebrow">CASE STUDY · E-COMMERCE</p>
+        <h1>How Aurora Retail achieved 4.8x ROI by auto-resolving support tickets.</h1>
+        <p>A high-volume D2C brand with 50,000+ orders a month was drowning in "Where is my order?" (WISMO) and return requests. Echofied built an AI support agent that connects directly to their Shopify and 3PL data.</p>
+        <div class="cs-tags">
+          <span class="cs-tag">Shopify Plus</span>
+          <span class="cs-tag">Zendesk</span>
+          <span class="cs-tag">Stripe</span>
+          <span class="cs-tag">ShipBob</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        
+        <div class="cs-metrics-row">
+          <div class="cs-metric">
+            <div class="val">72%</div>
+            <div class="label">Of tickets resolved without a human</div>
+          </div>
+          <div class="cs-metric">
+            <div class="val">4.8x</div>
+            <div class="label">ROI in the first 6 months</div>
+          </div>
+          <div class="cs-metric">
+            <div class="val">$45k</div>
+            <div class="label">Saved in outsourced support costs</div>
+          </div>
+        </div>
+
+        <h2 style="margin-bottom: 32px;">The Before & After</h2>
+        <div class="cs-split">
+          <div class="cs-box before">
+            <h3>Before Echofied</h3>
+            <ul>
+              <li>Support team of 8 (outsourced) handling 3,000+ tickets a month.</li>
+              <li>Customers waiting 12+ hours for a simple tracking number.</li>
+              <li>Refund requests required human approval, taking 3 days to process.</li>
+              <li>High churn due to poor post-purchase experience.</li>
+            </ul>
+          </div>
+          <div class="cs-box after">
+            <h3>After Echofied</h3>
+            <ul>
+              <li>AI agent answers WISMO instantly by fetching live data from ShipBob.</li>
+              <li>Returns processed automatically via Stripe if they meet the 30-day policy.</li>
+              <li>Human team reduced to 2 people, focused only on complex VIP escalations.</li>
+              <li>Customer satisfaction (CSAT) jumped from 3.2 to 4.8 stars.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 style="margin-bottom: 32px;">The Technology Stack</h2>
+        <table class="cs-table">
+          <thead>
+            <tr>
+              <th>System</th>
+              <th>Role</th>
+              <th>How Echofied Connects</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Shopify Plus</strong></td>
+              <td>E-commerce Platform</td>
+              <td>API. Reads order status, customer history, and tags.</td>
+            </tr>
+            <tr>
+              <td><strong>ShipBob</strong></td>
+              <td>3PL & Fulfillment</td>
+              <td>API. Fetches live tracking numbers and delivery exceptions.</td>
+            </tr>
+            <tr>
+              <td><strong>Zendesk</strong></td>
+              <td>Support Ticketing</td>
+              <td>API. Acts as the inbox; AI resolves and tags the ticket.</td>
+            </tr>
+            <tr>
+              <td><strong>Stripe</strong></td>
+              <td>Payments & Refunds</td>
+              <td>API (Scoped Key). Issues refunds automatically within policy rules.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 style="margin-bottom: 32px;">The Automation Workflow</h2>
+        <div style="background: #F8F9FA; padding: 32px; border-radius: 16px; border: 1px solid var(--border-light);">
+          <ol style="margin-left: 24px; display: flex; flex-direction: column; gap: 16px; font-size: 16px; color: var(--text-main); line-height: 1.5;">
+            <li><strong>Trigger:</strong> Customer emails support@auroraretail.com: <em>"Where is my order #48210?"</em></li>
+            <li><strong>Action:</strong> AI reads the order number, queries Shopify for order details, and queries ShipBob for the live tracking link.</li>
+            <li><strong>Decision:</strong> The package is delayed by the carrier. The AI detects this and drafts an apology email with the tracking link and a 10% discount code for the inconvenience.</li>
+            <li><strong>Execution:</strong> The AI sends the email, marks the Zendesk ticket as "Resolved", and logs the interaction.</li>
+            <li><strong>Edge Case:</strong> If the package is lost, the AI queries Stripe and issues a refund automatically, then notifies the human team via Slack.</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+  </main>
+</body>
+</html>
