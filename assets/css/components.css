@@ -30,12 +30,88 @@
   .nav-toggle, .mobile-nav { display: none !important; }
 }
 
-/* --- Hero Content --- */
-.hero h1 { margin-bottom: 24px; }
-.hero-sub { font-size: 20px; line-height: 1.5; max-width: 500px; margin-bottom: 32px; }
-.hero-ctas { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
-.check-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; background: var(--bg-white); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-light); box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
-.check-item { display: flex; align-items: center; gap: 10px; font-family: var(--font-ui); font-size: 14px; font-weight: 500; }
+/* =========================================
+   HERO SECTION
+   ========================================= */
+
+.hero {
+  padding: 160px 0 80px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: end;
+  margin-bottom: 60px;
+}
+
+/* Desktop Layout: Headline left, paragraph right */
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 60px;
+    align-items: flex-end; /* Aligns the paragraph with the bottom of the headline */
+  }
+}
+
+/* The Massive Headline */
+.hero h1 {
+  font-size: clamp(48px, 6vw, 80px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin-bottom: 32px;
+  color: var(--text-main);
+}
+
+/* The Right-side Paragraph */
+.hero-sub {
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.5;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0;
+  padding-bottom: 12px; /* Slight optical adjustment */
+}
+
+/* The CTA Buttons */
+.hero-ctas {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* The Horizontal Trust Bar */
+.hero-trust-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px 48px;
+  padding: 32px 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 60px;
+}
+
+.hero-trust-bar .check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .hero { padding: 120px 0 60px; }
+  .hero h1 { font-size: clamp(40px, 9vw, 56px); margin-bottom: 24px; }
+  .hero-ctas { flex-direction: column; align-items: stretch; gap: 16px; }
+  .hero-ctas .btn { width: 100%; text-align: center; justify-content: center; }
+  .hero-trust-bar { gap: 16px 24px; justify-content: flex-start; }
+}
 
 /* --- Logo Cloud --- */
 .logo-cloud { padding: 40px 0; border-bottom: 1px solid var(--border-light); }
@@ -53,7 +129,7 @@
 .how-card.active h3 { color: var(--text-light); }
 .how-card.active p { color: rgba(255,255,255,0.9); }
 
-.build-card, .process-card, .case-card { background: var(--bg-dark-card); border-radius: var(--radius-md); padding: 40px 32px; display: flex; flex-direction: column; }
+.process-card, .case-card { background: var(--bg-dark-card); border-radius: var(--radius-md); padding: 40px 32px; display: flex; flex-direction: column; }
 /* Find the .case-card styles in components.css and replace them with this: */
 
 .case-card {
@@ -131,8 +207,224 @@
 .build-card h3, .process-card h3 { color: var(--text-light); font-size: 24px; margin-bottom: 16px; }
 .build-card > p, .process-card p { font-size: 15px; margin-bottom: 32px; flex-grow: 1; }
 
+/* =========================================
+   BUILD SECTION (Premium Glassmorphism)
+   ========================================= */
+
+.build-card-premium {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.build-card-premium:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+.build-card-premium h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.build-card-premium > p {
+  font-size: 15px;
+  color: var(--text-light-muted);
+  line-height: 1.5;
+  margin-bottom: 32px;
+  flex-grow: 1;
+}
+
+/* --- Mock UI Container --- */
+.mock-ui-premium {
+  background: #0F1526;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* --- Chat UI (Business Core) --- */
+.chat-row { display: flex; gap: 10px; align-items: flex-start; }
+.chat-row.right { flex-direction: row-reverse; }
+.chat-row.left { flex-direction: row; }
+
+.avatar-small {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.user-avatar { background: #E2E8F0; color: #475569; }
+.ai-avatar { background: rgba(24,102,238,0.15); border: 1px solid rgba(24,102,238,0.3); }
+
+.chat-bubble-light {
+  background: #FFFFFF;
+  color: #0F1526;
+  font-size: 12px;
+  padding: 10px 14px;
+  border-radius: 12px 4px 12px 12px;
+  line-height: 1.4;
+}
+.chat-bubble-dark {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 12px;
+  padding: 12px;
+  border-radius: 4px 12px 12px 12px;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+.chat-bubble-dark p { margin-bottom: 10px; color: #fff; }
+.mock-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag-glow {
+  font-size: 10px; font-weight: 500;
+  color: #3A85FF; background: rgba(24,102,238,0.1);
+  padding: 4px 8px; border-radius: 4px;
+  border: 1px solid rgba(24,102,238,0.2);
+}
+
+/* --- Task List (AI Agents) --- */
+.agent-task-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.03);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.agent-task-row span:nth-child(2) { flex-grow: 1; color: #E2E8F0; }
+.icon-check {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: #34C759;
+  display: grid; place-items: center;
+}
+.icon-check::after { content: "✓"; color: #000; font-size: 10px; font-weight: bold; }
+.status-tag { font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: 4px; }
+.status-tag.done { background: rgba(52, 199, 89, 0.1); color: #34C759; }
+.status-tag.pending { background: rgba(24, 102, 238, 0.1); color: #3A85FF; }
+
+/* --- Voice UI (Voice AI) --- */
+.voice-visual {
+  background: #090E1C;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+/* The wrapper for the Avatar + Waveform */
+.voice-header-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+/* Make the waveform take up the remaining space and center its bars */
+.waveform {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Spreads bars evenly across the width */
+  flex-grow: 1;
+  height: 32px; /* Taller container for bigger bars */
+}
+
+/* The individual bars */
+.waveform span {
+  display: block;
+  width: 4px; /* Thicker bars */
+  background: #3A85FF;
+  border-radius: 4px;
+  animation: wave 1.2s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(58, 133, 255, 0.4); /* Premium glow */
+}
+
+/* Create a dynamic, random-looking wave pattern using nth-child */
+.waveform span:nth-child(1) { height: 12px; animation-delay: 0.1s; }
+.waveform span:nth-child(2) { height: 24px; animation-delay: 0.3s; }
+.waveform span:nth-child(3) { height: 16px; animation-delay: 0.2s; }
+.waveform span:nth-child(4) { height: 32px; animation-delay: 0.5s; }
+.waveform span:nth-child(5) { height: 20px; animation-delay: 0.1s; }
+.waveform span:nth-child(6) { height: 28px; animation-delay: 0.4s; }
+.waveform span:nth-child(7) { height: 14px; animation-delay: 0.2s; }
+.waveform span:nth-child(8) { height: 26px; animation-delay: 0.6s; }
+.waveform span:nth-child(9) { height: 18px; animation-delay: 0.3s; }
+.waveform span:nth-child(10) { height: 30px; animation-delay: 0.5s; }
+.waveform span:nth-child(11) { height: 16px; animation-delay: 0.2s; }
+.waveform span:nth-child(12) { height: 22px; animation-delay: 0.4s; }
+.waveform span:nth-child(13) { height: 10px; animation-delay: 0.1s; }
+.waveform span:nth-child(14) { height: 20px; animation-delay: 0.3s; }
+.waveform span:nth-child(15) { height: 14px; animation-delay: 0.5s; }
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.5); opacity: 0.6; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
+
+.voice-transcript {
+  font-size: 11px;
+  color: var(--text-light-muted);
+  font-style: italic;
+  background: rgba(255,255,255,0.03);
+  padding: 10px 12px;
+  border-radius: 6px;
+  margin-top: 4px;
+  text-align: center; /* Center the text */
+}
+
+.agent-reply-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px;
+  color: #0F1526;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.reply-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.reply-name {
+  font-size: 12px;
+  font-weight: 700;
+  display: flex; align-items: center; gap: 6px;
+}
+.agent-badge {
+  font-size: 8px;
+  background: #1866EE;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.agent-reply-box p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
+}
+
 /* --- Build Section Specifics --- */
-.mock-ui { background: #0F1428; border-radius: var(--radius-sm); padding: 20px; }
 .mock-input { background: rgba(255,255,255,0.05); padding: 12px 16px; border-radius: 8px; font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
 .mock-response { background: rgba(255,255,255,0.02); padding: 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
 .mock-response p { color: var(--text-light); font-size: 13px; margin-bottom: 12px; }

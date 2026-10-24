@@ -73,39 +73,44 @@
     <section class="hero" id="top">
       <div class="container hero-inner">
         <div class="hero-grid">
+          
+          <!-- Left: Massive Headline -->
           <div class="hero-content">
-            <h1>Automate support with AI agents that deliver results</h1>
-            <p class="hero-sub">Echofied automates tasks, manages customer conversations, and scales support faster, all powered by dependable, workflow-ready AI.</p>
+            <h1>Automate the busywork.<br>Scale your business.</h1>
             <div class="hero-ctas">
               <a href="#contact" class="btn btn-primary">Book a demo call</a>
-              <a href="#how-it-works" class="btn btn-ghost">See it in action ↓</a>
+              <a href="#demo" class="btn btn-ghost">See it in action ↓</a>
             </div>
           </div>
           
+          <!-- Right: Simple Explanation -->
           <div class="hero-right">
-            <div class="check-list">
-              <div class="check-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1866EE" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                <span>Flexible pricing</span>
-              </div>
-              <div class="check-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1866EE" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                <span>No upfront</span>
-              </div>
-              <div class="check-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1866EE" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                <span>You own the code</span>
-              </div>
-              <div class="check-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1866EE" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                <span>USA · UAE · Pakistan</span>
-              </div>
-            </div>
+            <p class="hero-sub">Echofied builds AI agents that answer your calls, reply to emails, and update your systems. You just review the important stuff.</p>
+          </div>
+        </div>
+
+        <!-- Bottom: Horizontal Trust Bar -->
+        <div class="hero-trust-bar reveal">
+          <div class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1866EE" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <span>Flexible pricing</span>
+          </div>
+          <div class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1866EE" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <span>No upfront fees</span>
+          </div>
+          <div class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1866EE" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <span>You own the code</span>
+          </div>
+          <div class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1866EE" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <span>USA · UAE · KSA</span>
           </div>
         </div>
 
         <!-- ANIMATED DASHBOARD MOCKUP -->
-        <div class="hero-mockup-wrapper reveal">
+        <div class="hero-mockup-wrapper reveal" id="demo" style="scroll-margin-top: 100px;">
           <div class="mockup-tabs" role="tablist">
             <button class="mockup-tab active" data-industry="construction">Construction</button>
             <button class="mockup-tab" data-industry="logistics">Logistics</button>
@@ -228,7 +233,7 @@
     </section>
 
     <!-- DARK SECTION: HOW WE BUILD -->
-    <section class="dark-section build-section" id="business-core">
+    <section class="dark-section build-section" id="business-core" style="background: #060B19;">
       <div class="container">
         <div class="split-header reveal">
           <div>
@@ -242,65 +247,113 @@
         </div>
 
         <div class="build-grid reveal">
-          <!-- Business Core -->
-          <div class="build-card">
+          
+          <!-- 1. Business Core -->
+          <div class="build-card-premium">
             <h3>Business Core</h3>
             <p>Everything your business knows, across documents and databases, answerable with sources. Built to get the exceptions right.</p>
             
-            <div class="mock-ui">
-              <div class="mock-input">What is the refund window on corporate orders?</div>
-              <div class="mock-response">
-                <p>30 days from delivery, unless the signed contract sets its own terms.</p>
-                <div class="mock-tags">
-                  <span class="tag">Refund policy</span>
-                  <span class="tag">Contracts database</span>
+            <div class="mock-ui-premium" style="justify-content: flex-end; height: 100%;">
+              <!-- User Question -->
+              <div class="chat-row right">
+                <div class="chat-bubble-light">What is the refund window on corporate orders?</div>
+                <div class="avatar-small user-avatar">👤</div>
+              </div>
+              
+              <!-- AI Answer -->
+              <div class="chat-row left">
+                <div class="avatar-small ai-avatar">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1866EE" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 12 2.1 12.1"></path><path d="M12 12 18.5 5.5"></path></svg>
+                </div>
+                <div class="chat-bubble-dark">
+                  <p>30 days from delivery, unless the signed contract sets its own terms.</p>
+                  <div class="mock-tags">
+                    <span class="tag-glow">Refund policy</span>
+                    <span class="tag-glow">Contracts database</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- AI Agents -->
-          <div class="build-card">
+          <!-- 2. AI Agents -->
+          <div class="build-card-premium">
             <h3>AI Agents</h3>
             <p>Support, sales admin, onboarding and finance ops. Agents that finish the task, with an approval seat for what matters.</p>
             
-            <div class="mock-list">
-              <div class="mock-list-item done">
+            <div class="mock-ui-premium" style="justify-content: flex-end; gap: 12px; height: 100%;">
+              <div class="agent-task-row">
                 <div class="icon-check"></div>
                 <span>Invoice matched to purchase order</span>
-                <span class="status">Done</span>
+                <span class="status-tag done">Done</span>
               </div>
-              <div class="mock-list-item done">
+              <div class="agent-task-row">
                 <div class="icon-check"></div>
                 <span>Onboarding pack sent to new client</span>
-                <span class="status">Done</span>
+                <span class="status-tag done">Done</span>
               </div>
-              <div class="mock-list-item pending">
-                <div class="icon-dot"></div>
+              <div class="agent-task-row">
+                <div class="avatar-small user-avatar">👤</div>
                 <span>Refund to customer</span>
-                <span class="status blue">Needs your OK</span>
+                <span class="status-tag pending">Needs your OK</span>
               </div>
             </div>
           </div>
 
-          <!-- Voice AI -->
-          <div class="build-card">
+          <!-- 3. Voice AI -->
+          <div class="build-card-premium">
             <h3>Voice AI</h3>
             <p>Inbound and outbound calls in the caller's language. Warm transfer to a person with the context attached.</p>
             
-            <div class="mock-chat">
-              <div class="chat-bubble user">
-                Hello, my laptop came with an issue, I'd like to use my warranty and get it replaced with a new one
+            <div class="mock-ui-premium" style="justify-content: flex-end; height: 100%;">
+              
+              <!-- The Voice Waveform Box -->
+              <div class="voice-visual">
+                <div class="voice-header-row">
+                  <div class="avatar-small user-avatar" style="width:40px; height:40px; font-size:20px; background: #E2E8F0;">👤</div>
+                  
+                  <!-- The Organic Waveform -->
+                  <div class="waveform">
+                    <span style="height:12px; animation-delay: 0.1s;"></span>
+                    <span style="height:24px; animation-delay: 0.3s;"></span>
+                    <span style="height:16px; animation-delay: 0.2s;"></span>
+                    <span style="height:32px; animation-delay: 0.5s;"></span>
+                    <span style="height:20px; animation-delay: 0.1s;"></span>
+                    <span style="height:28px; animation-delay: 0.4s;"></span>
+                    <span style="height:14px; animation-delay: 0.6s;"></span>
+                    <span style="height:36px; animation-delay: 0.2s;"></span>
+                    <span style="height:18px; animation-delay: 0.5s;"></span>
+                    <span style="height:30px; animation-delay: 0.3s;"></span>
+                    <span style="height:22px; animation-delay: 0.1s;"></span>
+                    <span style="height:16px; animation-delay: 0.4s;"></span>
+                    <span style="height:28px; animation-delay: 0.2s;"></span>
+                    <span style="height:12px; animation-delay: 0.5s;"></span>
+                    <span style="height:24px; animation-delay: 0.3s;"></span>
+                    <span style="height:18px; animation-delay: 0.1s;"></span>
+                    <span style="height:32px; animation-delay: 0.6s;"></span>
+                    <span style="height:14px; animation-delay: 0.2s;"></span>
+                  </div>
+                </div>
+                
+                <div class="voice-transcript">Hello, my laptop came with an issue, I'd like to use <span style="color:#3A85FF; font-weight: 500; font-style: normal;">my warranty</span> and get it replaced with a new one</div>
               </div>
-              <div class="chat-bubble agent">
-                <span class="agent-tag">Agent</span>
-                Hey Alex, let me complete the paperwork and will send you a new one right away.
+
+              <!-- The Agent Reply Box -->
+              <div class="agent-reply-box">
+                <div class="reply-header">
+                  <div class="reply-name">
+                    Danny R <span class="agent-badge">Agent</span>
+                  </div>
+                  <div class="avatar-small" style="width:24px; height:24px; background:#E2E8F0;">👤</div>
+                </div>
+                <p>Hey Alex, let me complete the paperwork and will send you a new one right away.</p>
               </div>
             </div>
           </div>
+
         </div>
 
-        <div class="trust-bar reveal">
+        <div class="trust-bar reveal" style="margin-top: 60px; border-top: none;">
           <div class="trust-item">
             <strong>No Guesswork</strong>
             <span>Every answer has a source, or a person takes over.</span>
