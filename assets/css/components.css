@@ -38,29 +38,30 @@
   padding: 160px 0 80px;
 }
 
+/* Desktop Layout: Headline left, paragraph right */
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
-  align-items: end;
+  /* FIXED: Aligns the text in the middle vertically */
+  align-items: center; 
   margin-bottom: 60px;
 }
 
-/* Desktop Layout: Headline left, paragraph right */
 @media (min-width: 1024px) {
   .hero-grid {
-    grid-template-columns: 1.3fr 0.7fr;
+    grid-template-columns: 1.2fr 0.8fr;
     gap: 60px;
-    align-items: flex-end; /* Aligns the paragraph with the bottom of the headline */
+    align-items: center; /* Ensure middle alignment on desktop */
   }
 }
 
 /* The Massive Headline */
 .hero h1 {
-  font-size: clamp(48px, 6vw, 80px);
+  font-size: 70px; /* FIXED: Set exactly to 70px */
   line-height: 1.05;
   letter-spacing: -0.04em;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
   color: var(--text-main);
 }
 
@@ -72,7 +73,7 @@
   max-width: 480px;
   margin: 0;
   padding-bottom: 12px; /* Slight optical adjustment */
-}
+  }
 
 /* The CTA Buttons */
 .hero-ctas {
