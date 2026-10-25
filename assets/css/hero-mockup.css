@@ -201,7 +201,7 @@
 .lead-card { background: #fff; border: 1px solid #EDEDED; border-radius: 16px; padding: 20px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.4s; }
 .lead-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
 .lead-details { display: flex; flex-direction: column; gap: 10px; }
-.check-item { font-size: 13px; color: #666; font-weight: 500; opacity: 0; transform: translateX(-10px); transition: all 0.4s; }
+.check-item { font-size: 13px; color: #666; font-weight: 500; transform: translateX(-10px); transition: all 0.4s; }
 .check-item.show { opacity: 1; transform: translateX(0); color: #1D8A4A; }
 
 .calendar-popup { background: #EBF3FF; border: 1px solid #D0E2FF; padding: 16px; border-radius: 12px; display: flex; align-items: center; gap: 16px; width: 100%; opacity: 0; transform: translateY(10px); transition: all 0.5s; }

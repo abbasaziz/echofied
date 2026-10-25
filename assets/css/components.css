@@ -43,9 +43,8 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
-  /* FIXED: Aligns the text in the middle vertically */
   align-items: center; 
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 @media (min-width: 1024px) {
@@ -89,10 +88,10 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 32px 48px;
-  padding: 32px 0;
+  padding: 24px 0; /* Reduced padding */
   border-top: 1px solid var(--border-light);
   border-bottom: 1px solid var(--border-light);
-  margin-bottom: 60px;
+  margin-bottom: 40px; /* Reduced from 60px */
 }
 
 .hero-trust-bar .check-item {
