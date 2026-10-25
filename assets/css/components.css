@@ -115,8 +115,21 @@
 
 /* --- Logo Cloud --- */
 .logo-cloud { padding: 40px 0; border-bottom: 1px solid var(--border-light); }
-.logo-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px 60px; opacity: 0.4; filter: grayscale(100%); }
-.logo-grid span { font-family: var(--font-headings); font-weight: 700; font-size: 20px; }
+.logo-grid { 
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  align-items: center;
+  gap: 40px 60px; 
+  opacity: 0.4; 
+  filter: grayscale(100%); 
+}
+.logo-grid img { 
+  height: 28px; /* Adjust this value if you want them larger or smaller */
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+}
 
 /* --- Standard Cards --- */
 .how-card { padding: 32px; border-radius: var(--radius-md); background: var(--bg-white); box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid var(--border-light); transition: var(--transition); }
