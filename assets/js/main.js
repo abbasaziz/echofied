@@ -75,7 +75,8 @@
   // --- 2. Hero Module Initialization ---
 
   const heroTabs = document.querySelectorAll('.mockup-tab');
-  let heroCurrentScenario = 'construction';
+  let currentScenario = 'construction';
+  let loopTimer;
 
   // These selectors map exactly to the HTML structure of the hero mockup
   const heroUiSelectors = {
@@ -86,15 +87,27 @@
     request: '#aiRequest',
     reasoning: '#aiReasoning',
     panel: '#mockAIPanel',
-    tbody: '#mockTableBody'
+    tbody: '#mockTableBody' // Not used in the new visual engine, but kept for safety
   };
 
-  function playHeroScenario(industryKey) {
-    const data = window.ECHO_HERO_DATA[industryKey];
+  function playScenario(industryKey, isLoop = false) {
+    if (!isLoop) {
+      currentScenario = industryKey;
+    }
+    
+    // Clear any pending loop timer
+    clearTimeout(loopTimer);
+    
+    const data = window.ECHO_HERO_DATA[currentScenario];
     if (!data) return;
     
     // Call the decoupled engine
-    window.EchoEngine.run(data, heroUiSelectors);
+    window.EchoEngine.run(data, heroUiSelectors, () => {
+      // When the engine finishes, wait 3 seconds and start the loop
+      loopTimer = setTimeout(() => {
+        playScenario(currentScenario, true);
+      }, 3000);
+    });
   }
 
   if (heroTabs.length > 0) {
@@ -106,15 +119,15 @@
         heroTabs.forEach(t => t.classList.remove('active'));
         this.classList.add('active');
         
-        heroCurrentScenario = this.getAttribute('data-industry');
-        playHeroScenario(heroCurrentScenario);
+        // Pass false for isLoop to force a new run and abort the old one
+        playScenario(this.getAttribute('data-industry'), false);
       });
     });
 
     // Auto-run first animation on load
     window.addEventListener('load', () => {
       setTimeout(() => {
-        playHeroScenario('construction');
+        playScenario('construction', false);
       }, 1000);
     });
   }

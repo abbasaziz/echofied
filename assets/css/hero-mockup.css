@@ -98,28 +98,42 @@
   top: 80px;
   right: 24px;
   width: 360px;
-  background: #0F1526;
+  /* CHANGED: Much more transparent with higher blur */
+  background: rgba(15, 21, 38, 0.5); 
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.1); /* Added subtle border for glass effect */
   border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   z-index: 20;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
   transform: translateY(10px);
-  opacity: 0.8;
+  opacity: 0.45;
 }
 
+/* Ensure active state keeps the blur and transparency */
 .echofied-agent-overlay.active {
   transform: translateY(0);
-  opacity: 1;
+  opacity: 0.65;
+  background: rgba(15, 21, 38, 0.6); /* Slightly darker when active for focus */
   box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--blue), 0 0 20px rgba(24,102,238,0.3);
 }
 
 .agent-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.1); }
-.agent-brand { display: flex; align-items: center; gap: 8px; font-family: var(--font-headings); font-size: 14px; font-weight: 700; color: #fff; }
-.agent-status { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #A0A0A0; font-weight: 500; }
-.spinner { width: 12px; height: 12px; border: 2px solid rgba(255,255,255,0.2); border-top-color: var(--blue); border-radius: 50%; animation: spin 1s linear infinite; }
+.agent-brand { 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+  font-family: var(--font-headings); 
+  font-size: 16px; /* Increased font size */
+  font-weight: 700; 
+  color: #fff; 
+}
+.agent-status { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #fefefe; font-weight: 500; }
+.spinner { width: 12px; height: 12px; border: 2px solid rgb(255, 255, 255); border-top-color: var(--blue); border-radius: 50%; animation: spin 1s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 .agent-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; min-height: 120px; }
@@ -127,8 +141,8 @@
 .ai-request .cursor { display: inline-block; width: 2px; height: 14px; background: var(--blue); animation: blink 1s step-end infinite; vertical-align: middle; }
 .ai-reasoning { display: none; flex-direction: column; gap: 8px; font-size: 12px; color: #A0A0A0; line-height: 1.4; margin-top: 4px; }
 .ai-reasoning.show { display: flex; }
-.ai-step { display: flex; align-items: flex-start; gap: 8px; }
-.ai-step .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 5px; }
+.ai-step { display: flex; align-items: flex-start; gap: 8px; color: #b5b5b5;}
+.ai-step .dot { width: 6px; height: 6px; border-radius: 50%; background: rgb(1, 1, 127); flex-shrink: 0; margin-top: 5px; }
 
 /* =========================================
    CONSTRUCTION ANIMATION
