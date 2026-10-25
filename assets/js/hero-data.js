@@ -1,97 +1,102 @@
-/* =========================================
-   HERO ANIMATION DATA
-   Add or edit scenarios here.
-   ========================================= */
-
 window.ECHO_HERO_DATA = {
   construction: {
     company: "Northgate Build",
     nav: "Jobs",
     title: "Active Jobs",
-    request: "Need a quote for a 200 sq ft kitchen remodel in Oakridge.",
+    tableHeaders: ["Job Status", "Job ID", "Client / Scope", "Actions"],
+    request: "Parse this 45-page architect PDF and create a material takeoff for the Oakridge kitchen.",
     reasoning: [
-      "Reading email from Dana Whitfield.",
-      "Checking service area: Oakridge is in-zone.",
-      "Calculating estimate range: $28k - $42k.",
-      "Drafting reply and scheduling site visit."
+      "Parsing 45-page architectural PDF...",
+      "Extracting 24 line items (cabinets, countertops, fixtures).",
+      "Cross-referencing pricing with supplier API.",
+      "Generating Bill of Materials (BOM) and updating job record."
     ],
     initialRows: [
-      { id: "JOB-104", name: "Dana Whitfield", detail: "Kitchen Remodel", value: "$35,000", status: "active", label: "In Progress" },
-      { id: "JOB-105", name: "Marlowe Residence", detail: "Deck Repair", value: "$4,500", status: "active", label: "In Progress" }
+      { id: "JOB-105", name: "Marlowe Residence", detail: "Deck Repair", value: "In Progress", status: "active", label: "In Progress" },
+      { id: "JOB-104", name: "Oakridge HOA", detail: "Clubhouse Reno", value: "$85,000", status: "active", label: "In Progress" }
     ],
-    newRow: { id: "JOB-106", name: "Dana Whitfield", detail: "Kitchen Remodel (New)", value: "$35,000", status: "new", label: "Needs Review" },
-    actionText: "Site Visit Booked"
+    activeRow: { id: "JOB-106", name: "Dana Whitfield", detail: "Kitchen Remodel", value: "PDF Received", status: "pending", label: "Needs Estimate" },
+    newRow: { id: "JOB-106", name: "Dana Whitfield", detail: "BOM Generated ($34,200)", value: "Ready for Review", status: "new", label: "Estimate Ready" },
+    actionText: "Review BOM"
   },
   logistics: {
     company: "Copperfield Freight",
     nav: "Dispatches",
     title: "Dispatch Board",
-    request: "Truck 42 broke down in Dallas. Reroute the load to Truck 19.",
+    tableHeaders: ["Load Status", "Load ID", "Route / Details", "Actions"],
+    request: "Truck #42 is stuck at the border. Extract the customs docs from my email and push them to the broker.",
     reasoning: [
-      "Receiving SMS from driver.",
-      "Checking Truck 19 location: 20 miles away.",
-      "Verifying HOS (Hours of Service) for Driver B.",
-      "Rerouting load and notifying client."
+      "Scanning driver email thread for attachments.",
+      "Found 3 missing customs documents (Commercial Invoice, Packing List).",
+      "Extracting load data from TMS and merging with PDFs.",
+      "Emailing completed packet to Customs Broker."
     ],
     initialRows: [
-      { id: "TRK-42", name: "Load #8821", detail: "Dallas -> Austin", value: "$1,200", status: "pending", label: "Broken Down" },
-      { id: "TRK-19", name: "Load #8822", detail: "Waco -> Houston", value: "$950", status: "active", label: "En Route" }
+      { id: "TRK-19", name: "Load #8822", detail: "Waco -> Houston", value: "En Route", status: "active", label: "En Route" },
+      { id: "TRK-77", name: "Load #8830", detail: "Austin -> Dallas", value: "Loading", status: "active", label: "Loading" }
     ],
-    newRow: { id: "TRK-19", name: "Load #8821", detail: "Dallas -> Austin (Rerouted)", value: "$1,200", status: "new", label: "Reassigned" },
-    actionText: "Route Updated"
+    activeRow: { id: "TRK-42", name: "Load #8821", detail: "Laredo Border Crossing", value: "Held at Border", status: "pending", label: "Customs Hold" },
+    newRow: { id: "TRK-42", name: "Load #8821", detail: "Laredo Border Crossing", value: "Docs Sent to Broker", status: "new", label: "Cleared for Entry" },
+    actionText: "View Docs"
   },
   retail: {
     company: "Aurora Supply",
-    nav: "Orders",
-    title: "Orders",
-    request: "Did the bulk order for 400 units of AR-2210 ship yet?",
+    nav: "Inventory",
+    title: "Inventory Sync",
+    tableHeaders: ["Sync Status", "SKU", "Product Name", "Actions"],
+    request: "Reconcile today's Shopify sales against the warehouse inventory spreadsheet.",
     reasoning: [
-      "Searching order database for AR-2210.",
-      "Found order #4810 for Aurora Retail Group.",
-      "Checking warehouse status: Packed.",
-      "Replying with tracking number."
+      "Pulling today's sales from Shopify API...",
+      "Reading current stock levels from Google Sheets.",
+      "Detected discrepancy: SKU-441 shows 0 stock but 3 orders pending.",
+      "Syncing data and issuing restock alert."
     ],
     initialRows: [
-      { id: "ORD-4809", name: "Lena Morrison", detail: "Retail Order", value: "$120", status: "active", label: "Shipped" },
-      { id: "ORD-4810", name: "Aurora Retail", detail: "Bulk Order (400x)", value: "$7,360", status: "pending", label: "Packing" }
+      { id: "SKU-109", name: "Tinned Fish", detail: "45 in stock", value: "Synced", status: "active", label: "Synced" },
+      { id: "SKU-882", name: "Olive Oil", detail: "14 in stock", value: "Synced", status: "active", label: "Synced" }
     ],
-    newRow: { id: "ORD-4810", name: "Aurora Retail", detail: "Bulk Order (400x)", value: "$7,360", status: "new", label: "Shipped" },
-    actionText: "Tracking Sent"
+    activeRow: { id: "SKU-441", name: "Holiday Gift Box", detail: "0 in stock", value: "Oversold", status: "pending", label: "Needs Attention" },
+    newRow: { id: "SKU-441", name: "Holiday Gift Box", detail: "0 in stock", value: "Restock Ordered (50)", status: "new", label: "Reconciled" },
+    actionText: "View PO"
   },
   realestate: {
     company: "Hearthline Realty",
-    nav: "Showings",
-    title: "Active Leads",
-    request: "Can we schedule a showing for 14 Alder Lane this Saturday?",
+    nav: "Leads",
+    title: "Lead Inbox",
+    tableHeaders: ["Lead Status", "Lead ID", "Property / Budget", "Actions"],
+    request: "A new Zillow lead just came in. Pre-qualify them and book a showing if they fit the Alder Lane property.",
     reasoning: [
-      "Checking calendar for Saturday.",
-      "Found open slot: 11:00 AM.",
-      "Matching property: 14 Alder Lane ($705k).",
-      "Sending confirmation SMS to buyer."
+      "Receiving Zillow webhook for Rachel Montgomery.",
+      "Checking buyer budget: Pre-approved up to $720k.",
+      "Property matches: 14 Alder Lane ($705k).",
+      "Sending SMS to buyer with 3 available showing times."
     ],
     initialRows: [
-      { id: "L-801", name: "Rachel Montgomery", detail: "Buyer - 3 Bed", value: "$700k", status: "active", label: "Active" },
-      { id: "L-802", name: "Daniel Wu", detail: "Buyer - HOA Qs", value: "$550k", status: "pending", label: "Follow-up" }
+      { id: "L-802", name: "Daniel Wu", detail: "Buyer - HOA Qs", value: "$550k", status: "active", label: "Follow-up" },
+      { id: "L-799", name: "Sarah Jenkins", detail: "Buyer - 3 Bed", value: "$800k", status: "active", label: "Showing Booked" }
     ],
-    newRow: { id: "L-801", name: "Rachel Montgomery", detail: "14 Alder Lane (Sat 11 AM)", value: "$705k", status: "new", label: "Showing Booked" },
-    actionText: "Calendar Updated"
+    activeRow: { id: "L-801", name: "Rachel Montgomery", detail: "14 Alder Lane Lead", value: "Unqualified", status: "pending", label: "New Lead" },
+    newRow: { id: "L-801", name: "Rachel Montgomery", detail: "14 Alder Lane (Sat 11 AM)", value: "Pre-approved", status: "new", label: "Showing Booked" },
+    actionText: "View Calendar"
   },
   dental: {
     company: "Brightwater Dental",
-    nav: "Appointments",
-    title: "Today's Schedule",
-    request: "I need to reschedule my cleaning from Thursday to next week.",
+    nav: "Claims",
+    title: "Insurance Claims",
+    tableHeaders: ["Claim Status", "Patient", "Procedure", "Actions"],
+    request: "Delta Dental denied claim #9921 for a root canal. Appeal the denial based on the attached X-ray.",
     reasoning: [
-      "Identifying patient: Michael Kensington.",
-      "Checking next week availability: Tue 10:30 AM.",
-      "Canceling Thursday 3:00 PM slot.",
-      "Issuing SMS confirmation link."
+      "Reading denial code (D3330) from Delta Dental portal.",
+      "Extracting clinical notes and X-ray from patient chart.",
+      "Drafting medical necessity appeal letter...",
+      "Submitting appeal via insurance API."
     ],
     initialRows: [
-      { id: "APT-201", name: "Sophia Bennett", detail: "New Patient Cleaning", value: "$150", status: "active", label: "Confirmed" },
-      { id: "APT-202", name: "Michael Kensington", detail: "Cleaning (Thursday)", value: "$150", status: "pending", label: "Scheduled" }
+      { id: "CLM-101", name: "Sophia Bennett", detail: "Cleaning", value: "Approved", status: "active", label: "Approved" },
+      { id: "CLM-102", name: "David Chen", detail: "Crown", value: "Processing", status: "active", label: "Processing" }
     ],
-    newRow: { id: "APT-202", name: "Michael Kensington", detail: "Cleaning (Tue 10:30 AM)", value: "$150", status: "new", label: "Rescheduled" },
-    actionText: "SMS Sent"
+    activeRow: { id: "CLM-103", name: "Michael Kensington", detail: "Root Canal", value: "Denied", status: "pending", label: "Claim Denied" },
+    newRow: { id: "CLM-103", name: "Michael Kensington", detail: "Root Canal", value: "Appeal Submitted", status: "new", label: "Under Appeal" },
+    actionText: "View Appeal"
   }
 };
