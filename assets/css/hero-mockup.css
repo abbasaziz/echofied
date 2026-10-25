@@ -13,7 +13,6 @@
   margin-right: auto;
 }
 
-/* The Tabs */
 .mockup-tabs {
   display: flex;
   gap: 8px;
@@ -38,13 +37,12 @@
 .mockup-tab:hover { background: rgba(255,255,255,0.2); color: #fff; }
 .mockup-tab.active { background: #fff; color: var(--blue); font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 
-/* The Main Window */
 .mockup-window {
   display: flex;
   background: #F8F9FA;
   border-radius: 12px 12px 0 0;
   overflow: hidden;
-  height: 540px;
+  height: 520px; /* Fixed height so it doesn't jump */
   border: 1px solid rgba(0,0,0,0.1);
   box-shadow: 0 20px 40px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1);
   font-family: var(--font-ui);
@@ -79,6 +77,18 @@
 .mock-badge { font-size: 12px; font-weight: 500; color: #1D8A4A; background: #E3F6E9; padding: 4px 10px; border-radius: 100px; display: flex; align-items: center; gap: 6px; }
 .mock-badge::before { content: ""; width: 6px; height: 6px; background: #1D8A4A; border-radius: 50%; }
 
+/* The Workflow Stage (Replaces Table) */
+#workflow-stage {
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+  background: #FAFAFA;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* =========================================
    THE ECHOFIED FLOATING OVERLAY
    ========================================= */
@@ -87,11 +97,11 @@
   position: absolute;
   top: 80px;
   right: 24px;
-  width: 380px;
-  background: #0F1526; /* Dark premium navy */
+  width: 360px;
+  background: #0F1526;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
-  z-index: 10;
+  z-index: 20;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -106,159 +116,99 @@
   box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--blue), 0 0 20px rgba(24,102,238,0.3);
 }
 
-.agent-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 16px;
-  background: rgba(255,255,255,0.05);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.agent-brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-headings);
-  font-size: 14px;
-  font-weight: 700;
-  color: #fff;
-}
-
-.agent-status {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: #A0A0A0;
-  font-weight: 500;
-}
+.agent-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.1); }
+.agent-brand { display: flex; align-items: center; gap: 8px; font-family: var(--font-headings); font-size: 14px; font-weight: 700; color: #fff; }
+.agent-status { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #A0A0A0; font-weight: 500; }
 .spinner { width: 12px; height: 12px; border: 2px solid rgba(255,255,255,0.2); border-top-color: var(--blue); border-radius: 50%; animation: spin 1s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-.agent-body {
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  min-height: 120px;
-}
-
-.ai-request {
-  font-size: 13px;
-  color: #fff;
-  font-weight: 500;
-  line-height: 1.5;
-}
-.ai-request .cursor {
-  display: inline-block; width: 2px; height: 14px; background: var(--blue); animation: blink 1s step-end infinite; vertical-align: middle;
-}
-
-.ai-reasoning {
-  display: none;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 12px;
-  color: #A0A0A0;
-  line-height: 1.4;
-  margin-top: 4px;
-}
+.agent-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; min-height: 120px; }
+.ai-request { font-size: 13px; color: #fff; font-weight: 500; line-height: 1.5; }
+.ai-request .cursor { display: inline-block; width: 2px; height: 14px; background: var(--blue); animation: blink 1s step-end infinite; vertical-align: middle; }
+.ai-reasoning { display: none; flex-direction: column; gap: 8px; font-size: 12px; color: #A0A0A0; line-height: 1.4; margin-top: 4px; }
 .ai-reasoning.show { display: flex; }
 .ai-step { display: flex; align-items: flex-start; gap: 8px; }
 .ai-step .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 5px; }
 
 /* =========================================
-   THE DATA TABLE
+   CONSTRUCTION ANIMATION
    ========================================= */
+.wf-construction { display: flex; gap: 40px; align-items: center; width: 100%; max-width: 700px; position: relative; }
+.pdf-doc { width: 260px; height: 340px; background: #fff; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 20px; position: relative; border: 1px solid #EDEDED; overflow: hidden; }
+.pdf-header { font-size: 11px; font-weight: 600; color: #666; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+.pdf-lines .line { height: 8px; background: #f0f0f0; border-radius: 4px; margin-bottom: 12px; width: 100%; }
+.pdf-lines .line:nth-child(2) { width: 80%; }
+.pdf-lines .line:nth-child(3) { width: 90%; }
+.pdf-lines .line:nth-child(4) { width: 60%; }
+.scan-laser { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--blue); box-shadow: 0 0 20px var(--blue), 0 0 40px var(--blue); opacity: 0; }
+.scan-laser.active { animation: scan 2s ease-in-out forwards; }
+@keyframes scan { 0% { top: 0; opacity: 1; } 90% { top: 100%; opacity: 1; } 100% { top: 100%; opacity: 0; } }
 
-.mock-table-container { flex-grow: 1; overflow-y: auto; padding: 24px; }
-.mock-table { width: 100%; border-collapse: separate; border-spacing: 0 8px; font-size: 13px; }
+.extracted-bom { display: flex; flex-direction: column; gap: 10px; width: 300px; }
+.bom-item { background: #fff; border: 1px solid #EDEDED; padding: 12px 16px; border-radius: 8px; font-size: 13px; font-weight: 500; color: #111; display: flex; align-items: center; gap: 10px; opacity: 0; transform: translateX(20px); transition: all 0.4s; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+.bom-item.show { opacity: 1; transform: translateX(0); border-color: rgba(24,102,238,0.3); background: #EBF3FF; }
 
-.mock-table th { 
-  text-align: left; padding: 0 16px 8px; font-weight: 500; color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;
-}
-.mock-table td { 
-  padding: 16px; background: #FFFFFF; border-top: 1px solid #EDEDED; border-bottom: 1px solid #EDEDED; color: #333; vertical-align: middle;
-}
-.mock-table td:first-child { border-left: 1px solid #EDEDED; border-radius: 8px 0 0 8px; }
-.mock-table td:last-child { border-right: 1px solid #EDEDED; border-radius: 0 8px 8px 0; }
+/* =========================================
+   LOGISTICS ANIMATION
+   ========================================= */
+.wf-logistics { display: flex; flex-direction: column; align-items: center; gap: 40px; width: 100%; max-width: 600px; }
+.route-map { position: relative; width: 100%; height: 100px; display: flex; align-items: center; }
+.route-line { position: absolute; top: 50%; left: 0; right: 0; height: 4px; background: #E8E8E8; border-radius: 2px; transform: translateY(-50%); }
+.truck-node { position: absolute; top: 50%; left: 10%; width: 44px; height: 44px; background: #1866EE; border-radius: 50%; display: grid; place-items: center; transform: translateY(-50%); box-shadow: 0 10px 20px rgba(24,102,238,0.3); transition: left 1.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 5; }
+.truck-node.move { left: 80%; }
+.border-gate { position: absolute; top: 50%; right: 0; transform: translateY(-50%); background: #FFF4E5; color: #B57400; border: 1px solid #FDE68A; padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 700; transition: all 0.4s; z-index: 4; }
+.border-gate.cleared { background: #E3F6E9; color: #1D8A4A; border-color: #BBF7D0; }
 
-.mock-table tr { transition: all 0.3s; }
-.mock-table tr.highlight td { background: rgba(24,102,238,0.04); border-color: rgba(24,102,238,0.2); }
-.mock-table tr.new-row { animation: slideIn 0.5s ease-out; }
-@keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+.docs-packet { display: flex; gap: 12px; opacity: 0; transform: translateY(20px); transition: all 0.5s; }
+.docs-packet.send { opacity: 1; transform: translateY(0); }
+.doc-icon { width: 50px; height: 65px; background: #fff; border: 1px solid #EDEDED; border-radius: 6px; display: grid; place-items: center; font-size: 24px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
 
-.status-pill { display: inline-block; padding: 4px 10px; border-radius: 100px; font-size: 11px; font-weight: 600; }
-.status-pill.active { background: #E3F6E9; color: #1D8A4A; }
-.status-pill.pending { background: #FFF4E5; color: #B57400; }
-.status-pill.new { background: #E8F0FE; color: var(--blue); }
+/* =========================================
+   RETAIL ANIMATION
+   ========================================= */
+.wf-retail { display: flex; flex-direction: column; align-items: center; gap: 40px; width: 100%; max-width: 500px; }
+.sync-columns { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0 20px; }
+.sync-source, .sync-dest { display: flex; flex-direction: column; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; color: #111; }
+.source-icon { width: 56px; height: 56px; background: #95BF47; color: #fff; border-radius: 16px; display: grid; place-items: center; font-size: 24px; font-weight: 800; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+.sync-track { flex-grow: 1; height: 4px; background: #E8E8E8; margin: 0 20px; position: relative; border-radius: 2px; }
+.data-packet { position: absolute; top: 50%; left: 0; width: 12px; height: 12px; background: var(--blue); border-radius: 50%; transform: translateY(-50%); box-shadow: 0 0 15px var(--blue); opacity: 0; }
+.data-packet.stream { animation: streamData 1.5s ease-in-out forwards; }
+@keyframes streamData { 0% { left: 0; opacity: 1; } 90% { left: 100%; opacity: 1; } 100% { left: 100%; opacity: 0; } }
 
-/* Mobile */
+.inventory-alert { background: #FFF5F5; border: 1px solid #FED7D7; padding: 16px; border-radius: 12px; display: flex; align-items: center; gap: 16px; font-size: 13px; color: #991B1B; font-weight: 500; opacity: 0; transform: scale(0.9); transition: all 0.4s; }
+.inventory-alert.show { opacity: 1; transform: scale(1); }
+.inventory-alert.resolved { background: #F0FDF4; border-color: #BBF7D0; color: #166534; }
+.alert-badge { background: #FEE2E2; color: #991B1B; padding: 4px 10px; border-radius: 100px; font-size: 11px; font-weight: 700; }
+
+/* =========================================
+   REAL ESTATE ANIMATION
+   ========================================= */
+.wf-realestate { display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 400px; align-items: flex-start; }
+.lead-card { background: #fff; border: 1px solid #EDEDED; border-radius: 16px; padding: 20px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.4s; }
+.lead-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.lead-details { display: flex; flex-direction: column; gap: 10px; }
+.check-item { font-size: 13px; color: #666; font-weight: 500; opacity: 0; transform: translateX(-10px); transition: all 0.4s; }
+.check-item.show { opacity: 1; transform: translateX(0); color: #1D8A4A; }
+
+.calendar-popup { background: #EBF3FF; border: 1px solid #D0E2FF; padding: 16px; border-radius: 12px; display: flex; align-items: center; gap: 16px; width: 100%; opacity: 0; transform: translateY(10px); transition: all 0.5s; }
+.calendar-popup.show { opacity: 1; transform: translateY(0); }
+.cal-icon { font-size: 24px; }
+
+/* =========================================
+   DENTAL ANIMATION
+   ========================================= */
+.wf-dental { display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 450px; }
+.claim-form { background: #fff; border: 1px solid #EDEDED; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.claim-header { background: #F8F9FA; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #EDEDED; font-weight: 700; font-size: 14px; }
+.claim-row { padding: 16px 20px; border-bottom: 1px solid #EDEDED; font-size: 13px; color: #333; font-weight: 500; display: flex; justify-content: space-between; }
+.claim-row:last-child { border-bottom: none; }
+
+/* Mobile Adjustments */
 @media (max-width: 900px) {
   .mockup-window { flex-direction: column; height: 600px; }
   .mock-sidebar { display: none; }
   .echofied-agent-overlay { position: relative; top: 0; right: 0; width: 100%; border-radius: 0; box-shadow: none; margin-bottom: 0; }
-  .mock-table-container { overflow-x: auto; }
-  .mock-table { min-width: 600px; }
-}
-/* =========================================
-   DYNAMIC AI WORKFLOW ANIMATIONS
-   ========================================= */
-
-/* The laser connecting the AI Agent to the data row */
-.agent-laser {
-  position: absolute;
-  height: 2px;
-  background: linear-gradient(90deg, var(--blue) 0%, #3A85FF 100%);
-  box-shadow: 0 0 10px var(--blue), 0 0 20px var(--blue);
-  z-index: 4; /* Below agent panel, above table */
-  opacity: 0;
-  transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
-  transform-origin: left center;
-  pointer-events: none;
-}
-.agent-laser.active {
-  opacity: 1;
-}
-
-/* The target row highlighting */
-.mock-table tr.is-processing {
-  background: #FFFFFF;
-  box-shadow: inset 4px 0 0 var(--blue), 0 0 20px rgba(24,102,238,0.1);
-  border-color: rgba(24, 102, 238, 0.3) !important;
-  transform: scale(1.01);
-  transition: all 0.3s;
-  z-index: 2;
-  position: relative;
-}
-.mock-table tr.is-processing td {
-  background: rgba(24, 102, 238, 0.02);
-}
-
-/* The "Processing" text that appears on the row */
-.processing-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #E8F0FE;
-  color: var(--blue);
-  padding: 4px 10px;
-  border-radius: 100px;
-  font-size: 11px;
-  font-weight: 600;
-  animation: pulse-bg 1.5s infinite;
-}
-@keyframes pulse-bg {
-  0% { box-shadow: 0 0 0 0 rgba(24, 102, 238, 0.4); }
-  70% { box-shadow: 0 0 0 6px rgba(24, 102, 238, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(24, 102, 238, 0); }
-}
-
-/* The success flash when a row is updated */
-.mock-table tr.success-flash {
-  animation: successFlash 1s ease-out;
-}
-@keyframes successFlash {
-  0% { background-color: rgba(52, 199, 89, 0.2); }
-  100% { background-color: transparent; }
+  #workflow-stage { padding: 20px; }
+  .wf-construction { flex-direction: column; gap: 20px; }
+  .pdf-doc { height: 200px; width: 100%; }
 }

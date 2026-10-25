@@ -31,52 +31,35 @@
 
     <!-- 2. Main Content Area -->
     <main class="mock-main">
-      
-      <!-- Client Header -->
-      <header class="mock-header">
-        <div class="mock-header-title">
-          <h2 id="mockPageTitle">System Overview</h2>
-        </div>
-        <div class="mock-header-actions">
-          <span class="mock-badge">System Live</span>
-        </div>
-      </header>
+        <header class="mock-header">
+            <div class="mock-header-title">
+            <h2 id="mockPageTitle">System Overview</h2>
+            </div>
+            <div class="mock-header-actions">
+            <span class="mock-badge">System Live</span>
+            </div>
+        </header>
 
-      <!-- The Echofied Floating Agent Overlay -->
-      <div class="echofied-agent-overlay" id="mockAIPanel">
-        <div class="agent-header">
-          <div class="agent-brand">
-            <svg width="14" height="14" viewBox="0 0 32 32" fill="none"><path d="M9 10.5h14M9 16h10M9 21.5h14" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="16" r="2.4" fill="#fff"/></svg>
-            Echofied Agent
-          </div>
-          <div class="agent-status" id="aiStatus">
-            <span class="spinner"></span> Listening...
-          </div>
+        <div class="echofied-agent-overlay" id="mockAIPanel">
+            <div class="agent-header">
+            <div class="agent-brand">
+                <svg width="14" height="14" viewBox="0 0 32 32" fill="none"><path d="M9 10.5h14M9 16h10M9 21.5h14" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="16" r="2.4" fill="#fff"/></svg>
+                Echofied Agent
+            </div>
+            <div class="agent-status" id="aiStatus">
+                <span class="spinner"></span> Listening...
+            </div>
+            </div>
+            
+            <div class="agent-body">
+            <div class="ai-request" id="aiRequest"></div>
+            <div class="ai-reasoning" id="aiReasoning"></div>
+            </div>
         </div>
-        
-        <div class="agent-body">
-          <div class="ai-request" id="aiRequest"></div>
-          <div class="ai-reasoning" id="aiReasoning"></div>
-        </div>
-      </div>
 
-      <!-- Client Data Table -->
-      <div class="mock-table-container">
-        <table class="mock-table">
-          <thead>
-            <tr>
-              <th>Status</th>
-              <th>ID / Name</th>
-              <th>Details</th>
-              <th>Value</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="mockTableBody">
-            <!-- Rows injected by JS -->
-          </tbody>
-        </table>
-      </div>
+        <!-- THIS IS THE NEW DYNAMIC STAGE -->
+        <div id="workflow-stage"></div>
+    
     </main>
   </div>
 </div>
