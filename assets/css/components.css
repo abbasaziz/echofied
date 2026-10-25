@@ -58,7 +58,7 @@
 
 /* The Massive Headline */
 .hero h1 {
-  font-size: 70px; /* FIXED: Set exactly to 70px */
+  font-size: 80px;
   line-height: 1.05;
   letter-spacing: -0.04em;
   margin-bottom: 40px;
