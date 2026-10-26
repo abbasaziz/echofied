@@ -224,132 +224,153 @@
         <div class="section-header reveal">
           <p class="eyebrow">HOW AI INTELLIGENCE IS BUILT IN</p>
           <h2>Seamless Integration. Zero Friction.</h2>
-          <p class="sub">Connect Echofied through APIs, MCP and legacy systems like SFTP, ODBC, and email. Every connection passes through our guardrails inside your own cloud.</p>
+          <p class="sub">Connect Echofied through APIs, MCP and legacy systems. Every connection passes through our guardrails inside your own cloud.</p>
         </div>
 
-        <!-- Integration Animation Wrapper -->
-        <div class="integration-diagram-wrapper reveal" id="integrationAnimationWrapper">
+        <div class="integration-wrapper reveal" id="integrationAnimationWrapper">
           
           <div class="integration-header">
-            <h3>How the automation layer works</h3>
+            <h3>The Automation Layer</h3>
             <div class="status-pill">
               <span class="status-dot"></span> <span id="integrationStatus">Select a system to begin</span>
             </div>
           </div>
 
-          <div class="conveyor-layout">
+          <div class="flow-layout">
             
-            <!-- 1. Left: Source Menu -->
-            <div class="source-menu">
-              <div class="menu-label">Your Systems</div>
+            <!-- LEFT: DATA SOURCES -->
+            <div class="flow-sources">
+              <div class="col-label">Your Systems</div>
               
-              <button class="source-tab active" data-key="salesforce">
-                <div class="tab-icon" style="color:#00A1E0">SF</div>
-                <div class="tab-name"><h4>Salesforce</h4><p>API</p></div>
+              <button class="source-node active" data-key="salesforce">
+                <div class="node-icon" style="color:#00A1E0">
+                  <img src="/assets/img/brand-1.svg" alt="Salesforce" onerror="this.style.display='none'">
+                  <span class="fallback-text">SF</span>
+                </div>
+                <div class="node-text"><h4>Salesforce</h4><p>API · OAuth</p></div>
               </button>
               
-              <button class="source-tab" data-key="stripe">
-                <div class="tab-icon" style="color:#635BFF">ST</div>
-                <div class="tab-name"><h4>Stripe</h4><p>API</p></div>
+              <button class="source-node" data-key="stripe">
+                <div class="node-icon" style="color:#635BFF">
+                  <img src="/assets/img/brand-2.svg" alt="Stripe" onerror="this.style.display='none'">
+                  <span class="fallback-text">ST</span>
+                </div>
+                <div class="node-text"><h4>Stripe</h4><p>API · Scoped Key</p></div>
               </button>
               
-              <button class="source-tab" data-key="xero">
-                <div class="tab-icon" style="color:#13B5EA">XR</div>
-                <div class="tab-name"><h4>Xero</h4><p>API · UK/EU</p></div>
+              <button class="source-node" data-key="xero">
+                <div class="node-icon" style="color:#13B5EA">
+                  <img src="/assets/img/brand-3.svg" alt="Xero" onerror="this.style.display='none'">
+                  <span class="fallback-text">XR</span>
+                </div>
+                <div class="node-text"><h4>Xero</h4><p>API · UK/EU</p></div>
               </button>
               
-              <button class="source-tab" data-key="sap">
-                <div class="tab-icon" style="color:#0FAAFF">SAP</div>
-                <div class="tab-name"><h4>SAP ERP</h4><p>Legacy</p></div>
+              <button class="source-node" data-key="sap">
+                <div class="node-icon" style="color:#0FAAFF">
+                  <img src="/assets/img/brand-4.svg" alt="SAP" onerror="this.style.display='none'">
+                  <span class="fallback-text">SAP</span>
+                </div>
+                <div class="node-text"><h4>SAP ERP</h4><p>ODBC · Legacy</p></div>
               </button>
             </div>
 
-            <!-- 2. Center: The Pipeline -->
-            <div class="pipeline-center">
-              
-              <!-- Intake Slot -->
-              <div class="intake-slot" id="intakeSlot">
-                <div class="intake-info">
-                  <h4 id="intakeName">Salesforce</h4>
-                  <p id="intakeMethod">Connected via API · OAuth</p>
-                </div>
-                <div class="intake-badge">Connected</div>
-              </div>
+            <!-- THE CONNECTING TRACK (Left) -->
+            <div class="flow-track track-left" id="track-left">
+              <div class="track-line"></div>
+              <div class="data-packet"></div>
+            </div>
 
-              <!-- Track & Shield -->
-              <div class="pipeline-track">
-                <div class="track-line"><div class="track-line-fill" id="trackFill"></div></div>
-                <div class="data-packet" id="packet"></div>
-                
-                <div class="security-shield" id="securityShield">
-                  <div class="shield-title">Echofied Security Shield</div>
-                  <div class="shield-grid">
-                    <div class="shield-item" id="sh-1">
-                      <h6>Permissions</h6><p>role-based access</p>
-                    </div>
-                    <div class="shield-item" id="sh-2">
-                      <h6>Redaction</h6><p>PII scrubbed</p>
-                    </div>
-                    <div class="shield-item" id="sh-3">
-                      <h6>Policy</h6><p>read/write rules</p>
-                    </div>
-                    <div class="shield-item" id="sh-4">
-                      <h6>Audit</h6><p>logged source</p>
-                    </div>
+            <!-- CENTER: THE ECHOFIED CORE -->
+            <div class="flow-core">
+              
+              <!-- Security Guardrails -->
+              <div class="core-guardrails" id="securityShield">
+                <div class="shield-header">Echofied Guardrails</div>
+                <div class="shield-steps">
+                  <div class="shield-step" id="sh-1">
+                    <div class="step-check"></div>
+                    <div class="step-text"><h6>Permissions</h6><p>role-based access</p></div>
+                  </div>
+                  <div class="shield-step" id="sh-2">
+                    <div class="step-check"></div>
+                    <div class="step-text"><h6>Redaction</h6><p>PII scrubbed</p></div>
+                  </div>
+                  <div class="shield-step" id="sh-3">
+                    <div class="step-check"></div>
+                    <div class="step-text"><h6>Policy</h6><p>read/write rules</p></div>
+                  </div>
+                  <div class="shield-step" id="sh-4">
+                    <div class="step-check"></div>
+                    <div class="step-text"><h6>Audit</h6><p>logged source</p></div>
                   </div>
                 </div>
               </div>
 
-              <!-- Brain -->
-              <div class="brain-node" id="brainNode">
+              <!-- Internal Track -->
+              <div class="core-internal-track">
+                <div class="track-line" id="internal-line"></div>
+                <div class="data-packet" id="internal-packet"></div>
+              </div>
+
+              <!-- The Brain -->
+              <div class="core-brain" id="brainNode">
+                <div class="brain-glow"></div>
+                <div class="brain-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 12 2.1 12.1"></path><path d="M12 12 18.5 5.5"></path></svg>
+                </div>
                 <h4>Company Brain</h4>
-                <p>Unified knowledge graph & live context</p>
+                <p>Unified Knowledge</p>
               </div>
 
             </div>
 
-            <!-- 3. Right: Outputs -->
-            <div class="output-stack">
+            <!-- THE CONNECTING TRACK (Right) -->
+            <div class="flow-track track-right" id="track-right">
+              <div class="track-line"></div>
+              <div class="data-packet"></div>
+            </div>
+
+            <!-- RIGHT: ACTIONS / OUTPUTS -->
+            <div class="flow-outputs">
+              <div class="col-label">Results</div>
               
-              <!-- Outcome 1: The Action -->
-              <div class="output-item" id="out-1">
+              <div class="output-node" id="out-1">
                 <div class="out-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3A85FF" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                 </div>
-                <div class="out-content">
-                  <h4 id="out-1-title">AI Agent Works</h4>
-                  <p id="out-1-text">Drafts follow-up email</p>
+                <div class="out-text">
+                  <h4 id="out-1-title">AI Agent</h4>
+                  <p id="out-1-text">Drafts follow-up</p>
                 </div>
               </div>
 
-              <!-- Outcome 2: The ROI/Approval -->
-              <div class="output-item" id="out-2">
+              <div class="output-node" id="out-2">
                 <div class="out-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3A85FF" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                 </div>
-                <div class="out-content">
-                  <h4 id="out-2-title">You Get</h4>
-                  <p id="out-2-text">Routed to Sales Rep</p>
+                <div class="out-text">
+                  <h4 id="out-2-title">Approval Seat</h4>
+                  <p id="out-2-text">Routed to human</p>
                 </div>
               </div>
-
             </div>
 
           </div>
 
           <!-- Bottom Explainer -->
-          <div class="explainer-strip" id="explainerBox">
+          <div class="explainer-strip">
             <div class="exp-box">
               <h5>Source</h5>
               <p id="explain-title">Salesforce</p>
             </div>
             <div class="exp-box">
               <h5>What we read</h5>
-              <p id="explain-read">Accounts, opportunities</p>
+              <p id="explain-read">Accounts, opportunities, cases</p>
             </div>
             <div class="exp-box">
               <h5>Guardrails applied</h5>
-              <p id="explain-guardrails">Each user sees only their access</p>
+              <p id="explain-guardrails">Each user sees only what they have access to.</p>
             </div>
             <div class="exp-box">
               <h5>Where it ends up</h5>
