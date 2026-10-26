@@ -786,12 +786,47 @@ details[open] .faq-content {
 @media (min-width: 900px) { .footer-inner { grid-template-columns: 1fr 2fr; } }
 .footer-brand .brand { margin-bottom: 16px; }
 .footer-brand p { font-size: 15px; max-width: 320px; margin-bottom: 24px; }
-.social-links { display: flex; gap: 16px; }
-.social-links a { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.1); font-size: 13px; font-weight: 600; color: var(--text-light); transition: var(--transition); }
-.social-links a:hover { background: var(--blue); }
+/* --- Footer Social Links --- */
+.footer-cols .social-links { 
+  display: flex; 
+  align-items: center;
+  gap: 12px; 
+  margin-top: 16px; 
+  padding-top: 8px; /* Slight breathing room from the email */
+}
+
+/* Override the general footer link styles */
+.footer-cols .social-links a { 
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 36px; 
+  height: 36px; 
+  border-radius: 50%; 
+  background: rgba(255,255,255,0.08); 
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text-light); 
+  margin-bottom: 0; /* Forces override of the general margin-bottom */
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.2, 0.7, 0.2, 1); 
+}
+
+.footer-cols .social-links a:hover { 
+  background: var(--blue); 
+  border-color: var(--blue);
+  transform: translateY(-2px);
+}
+
+/* Ensure the SVGs are perfectly sized and centered */
+.footer-cols .social-links svg {
+  width: 16px;
+  height: 16px;
+  display: block; /* Removes bottom whitespace */
+  fill: currentColor;
+}
 .footer-cols { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
 @media (min-width: 600px) { .footer-cols { grid-template-columns: repeat(3, 1fr); } }
-.footer-cols h4 { font-size: 15px; margin-bottom: 20px; font-weight: 700; }
+.footer-cols h4 { font-size: 15px; margin-bottom: 20px; font-weight: 700; color: white;}
 .footer-cols a { display: block; font-size: 15px; color: var(--text-light-muted); margin-bottom: 12px; transition: var(--transition); }
 .footer-cols a:hover { color: var(--text-light); }
 .footer-bottom { display: flex; flex-direction: column; gap: 16px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 14px; color: var(--text-light-muted); }
