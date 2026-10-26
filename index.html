@@ -779,75 +779,85 @@
 
     <!-- CTA / CONTACT -->
     <section class="dark-section cta-section" id="contact">
-      <div class="container cta-grid reveal">
-        <div class="cta-content">
-          <h2>Book a free demo call.</h2>
-          <p>Tell us where your team loses the most time. You'll talk to someone who has built this before — and if AI isn't the right fix, we'll say so.</p>
+      <div class="container">
+        <div class="cta-grid reveal">
           
-          <div class="cta-steps">
-            <div class="cta-step">
-              <h4>Understand Your Workflow</h4>
-              <p>We assess your tools, tasks, and bottlenecks.</p>
-            </div>
-            <div class="cta-step">
-              <h4>Find What Matters</h4>
-              <p>Know what to automate and what to leave alone.</p>
-            </div>
-            <div class="cta-step">
-              <h4>Get Your Action Plan</h4>
-              <p>A clear automation proposal within three working days.</p>
-            </div>
-          </div>
-          <p class="cta-note">Prefer to read first? Download the Company Profile (PDF).</p>
-        </div>
-
-        <div style = "display: flex; align-items: center; flex-direction: column";>
-          <div class="cta-form-wrapper">
-            <form class="cta-form" id="contactForm" novalidate>
-              <div class="form-head">
-                <span class="eyebrow text-blue">PICK A TIME NOW</span>
-                
-                <a href="#" class="btn btn-primary" style="width:100%; justify-content:center; margin-bottom: 8px;">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                  Book a call on Calendly
-                </a>
-                
-                <p class="calendly-note">30 minutes · free · instant confirmation</p>
-                
-                <div class="divider"><span>OR</span></div>
-                <p class="form-sub">Send us a note instead</p>
-              </div>
-
-              <label>
-                <span>Name</span>
-                <input type="text" name="name" required placeholder="Your name" />
-              </label>
-              <label>
-                <span>Work email</span>
-                <input type="email" name="email" required placeholder="you@company.com" />
-              </label>
-              <label>
-                <span>What should AI take off your plate?</span>
-                <select name="topic">
-                  <option value="">Select a workflow</option>
-                  <option value="support">Customer questions and support</option>
-                  <option value="sales">Sales follow-ups</option>
-                  <option value="ops">Back-office operations</option>
-                </select>
-              </label>
-              <label>
-                <span>In a sentence or two, what's the problem?</span>
-                <textarea name="message" rows="3" placeholder="e.g. We miss about 30 calls every Friday night and lose the bookings."></textarea>
-              </label>
-              
-              <button class="btn btn-primary" type="submit" style="width:100%;">Request my call</button>
-              <p class="form-note">One reply from a person. No newsletter.</p>
-              <p class="form-status" role="status" aria-live="polite"></p>
-            </form>
+          <!-- Left Side: Content -->
+          <div class="cta-content">
+            <h2>Book a free demo call.</h2>
+            <p>Show us where your team loses time. We'll identify what to automate, what to leave alone, and where AI can deliver real results.</p>
             
+            <div class="cta-steps">
+              <div class="cta-step">
+                <h4>Understand Your Workflow</h4>
+                <p>We assess your tools, tasks, and bottlenecks.</p>
+              </div>
+              <div class="cta-step">
+                <h4>Find What Matters</h4>
+                <p>Know what to automate and what to leave alone.</p>
+              </div>
+              <div class="cta-step">
+                <h4>Get Your Action Plan</h4>
+                <p>A clear automation proposal within three working days.</p>
+              </div>
+            </div>
+            
+            <p class="cta-note">Prefer to explore first? Download the Company Profile (PDF).</p>
           </div>
-          <!-- MOVED TEXT: Now sits under the form inside the wrapper -->
-          <p class="cta-bottom-note" style="margin-top: 24px; margin-bottom: 0;">No upfront fee · No sales sequence · No 40-page questionnaire</p>
+
+          <!-- Right Side: The Form -->
+          <div style="max-width: 465px;">
+            <div class="cta-form-wrapper">
+              <form class="cta-form" id="contactForm" novalidate>
+                
+                <div class="form-head">
+                  <span class="eyebrow text-blue" style="margin-bottom: 12px; display: block;">PICK A TIME NOW</span>
+                  
+                  <a href="#" class="btn btn-primary" style="width:100%; justify-content:center; margin-bottom: 12px;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    Book a call on Calendly
+                  </a>
+                  
+                  <p class="calendly-note">30 MINUTES · FREE · INSTANT CONFIRMATION</p>
+                  
+                  <div class="divider"><span>OR</span></div>
+                  <p class="form-sub">SEND US A NOTE INSTEAD</p>
+                </div>
+
+                <label>
+                  <span>Name</span>
+                  <input type="text" name="name" required placeholder="Your name" />
+                </label>
+                
+                <label>
+                  <span>Work email</span>
+                  <input type="email" name="email" required placeholder="you@company.com" />
+                </label>
+                
+                <label>
+                  <span>What should AI take off your plate?</span>
+                  <select name="topic">
+                    <option value="">Select a workflow</option>
+                    <option value="support">Customer questions and support</option>
+                    <option value="sales">Sales follow-ups</option>
+                    <option value="ops">Back-office operations</option>
+                  </select>
+                </label>
+                
+                <label>
+                  <span>In a sentence or two, what's the problem?</span>
+                  <textarea name="message" rows="3" placeholder="e.g. We miss about 30 calls every Friday night and lose the bookings."></textarea>
+                </label>
+                
+                <button class="btn btn-primary" type="submit" style="width:100%; margin-top: 8px;">Request my call</button>
+                
+                <p class="form-note">One reply from a person. No newsletter.</p>
+                <p class="form-status" role="status" aria-live="polite"></p>
+              </form>
+            </div>
+            <!-- MOVED TEXT: Now sits under the form inside the wrapper -->
+            <p class="cta-bottom-note" style="margin-top: 10px; margin-bottom: 0;">No upfront fee · No sales sequence · No 40-page questionnaire</p>
+          </div>
         </div>
       </div>
     </section>

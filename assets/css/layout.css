@@ -56,9 +56,20 @@
 .split-right { max-width: 400px; }
 .split-right p { font-size: 18px; margin-bottom: 24px; }
 
-.ask-data-grid, .process-grid, .command-grid, .cta-grid { display: grid; grid-template-columns: 1fr; gap: 60px; align-items: center; }
+.ask-data-grid, .process-grid, .command-grid, .cta-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
+
 @media (min-width: 900px) { 
-  .ask-data-grid, .process-grid, .command-grid, .cta-grid { grid-template-columns: 1fr 1fr; gap: 50px; } 
+  .ask-data-grid, .process-grid, .command-grid { 
+    grid-template-columns: 1fr 1fr; 
+    gap: 50px; 
+  } 
+  
+  /* Reset CTA grid to equal columns */
+  .cta-grid {
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px; /* Generous gap */
+    align-items: center; 
+  }
 }
 
 .faq-grid { display: grid; grid-template-columns: 1fr; gap: 60px; align-items: start; }
