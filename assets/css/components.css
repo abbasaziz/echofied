@@ -744,23 +744,35 @@ details[open] .faq-content {
   opacity: 1;
 }
 
-/* The Icon inside the card */
-.step-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  /* DEFAULT: Light gray background, dark text */
-  background: #F4F6F8;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  color: #000D25;
-  transition: all 0.3s;
+/* =========================================
+   NEW PROCESS SECTION (Interactive Board)
+   ========================================= */
+
+.process-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-/* HOVER: Semi-transparent white background, white text */
-.process-step:hover .step-icon {
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
+
+.process-content h2 {
+  font-size: clamp(36px, 4vw, 48px);
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.process-content p {
+  font-size: 18px;
+  margin-bottom: 24px; /* Reduced slightly to balance */
+  color: var(--text-light-muted);
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+/* ADD THIS NEW RULE */
+.process-content .btn {
+  margin-top: 16px; /* Gives the button breathing room from the paragraph */
+  align-self: flex-start; /* Ensures the button doesn't stretch full width */
 }
 
 /* The Text inside the card */
