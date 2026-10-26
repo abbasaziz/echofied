@@ -255,58 +255,6 @@
   flex-grow: 1;
 }
 
-/* --- Mock UI Container --- */
-.mock-ui-premium {
-  background: #0F1526;
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 12px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-/* --- Chat UI (Business Core) --- */
-.chat-row { display: flex; gap: 10px; align-items: flex-start; }
-.chat-row.right { flex-direction: row-reverse; }
-.chat-row.left { flex-direction: row; }
-
-.avatar-small {
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  display: grid; place-items: center;
-  flex-shrink: 0;
-}
-.user-avatar { background: #E2E8F0; color: #475569; }
-.ai-avatar { background: rgba(24,102,238,0.15); border: 1px solid rgba(24,102,238,0.3); }
-
-.chat-bubble-light {
-  background: #FFFFFF;
-  color: #0F1526;
-  font-size: 12px;
-  padding: 10px 14px;
-  border-radius: 12px 4px 12px 12px;
-  line-height: 1.4;
-}
-.chat-bubble-dark {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  color: #fff;
-  font-size: 12px;
-  padding: 12px;
-  border-radius: 4px 12px 12px 12px;
-  line-height: 1.5;
-  flex-grow: 1;
-}
-.chat-bubble-dark p { margin-bottom: 10px; color: #fff; }
-.mock-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-.tag-glow {
-  font-size: 10px; font-weight: 500;
-  color: #3A85FF; background: rgba(24,102,238,0.1);
-  padding: 4px 8px; border-radius: 4px;
-  border: 1px solid rgba(24,102,238,0.2);
-}
 
 /* --- Task List (AI Agents) --- */
 .agent-task-row {
@@ -341,55 +289,6 @@
   flex-direction: column;
   gap: 16px;
   position: relative;
-}
-
-/* The wrapper for the Avatar + Waveform */
-.voice-header-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
-}
-
-/* Make the waveform take up the remaining space and center its bars */
-.waveform {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Spreads bars evenly across the width */
-  flex-grow: 1;
-  height: 32px; /* Taller container for bigger bars */
-}
-
-/* The individual bars */
-.waveform span {
-  display: block;
-  width: 4px; /* Thicker bars */
-  background: #3A85FF;
-  border-radius: 4px;
-  animation: wave 1.2s ease-in-out infinite;
-  box-shadow: 0 0 8px rgba(58, 133, 255, 0.4); /* Premium glow */
-}
-
-/* Create a dynamic, random-looking wave pattern using nth-child */
-.waveform span:nth-child(1) { height: 12px; animation-delay: 0.1s; }
-.waveform span:nth-child(2) { height: 24px; animation-delay: 0.3s; }
-.waveform span:nth-child(3) { height: 16px; animation-delay: 0.2s; }
-.waveform span:nth-child(4) { height: 32px; animation-delay: 0.5s; }
-.waveform span:nth-child(5) { height: 20px; animation-delay: 0.1s; }
-.waveform span:nth-child(6) { height: 28px; animation-delay: 0.4s; }
-.waveform span:nth-child(7) { height: 14px; animation-delay: 0.2s; }
-.waveform span:nth-child(8) { height: 26px; animation-delay: 0.6s; }
-.waveform span:nth-child(9) { height: 18px; animation-delay: 0.3s; }
-.waveform span:nth-child(10) { height: 30px; animation-delay: 0.5s; }
-.waveform span:nth-child(11) { height: 16px; animation-delay: 0.2s; }
-.waveform span:nth-child(12) { height: 22px; animation-delay: 0.4s; }
-.waveform span:nth-child(13) { height: 10px; animation-delay: 0.1s; }
-.waveform span:nth-child(14) { height: 20px; animation-delay: 0.3s; }
-.waveform span:nth-child(15) { height: 14px; animation-delay: 0.5s; }
-
-@keyframes wave {
-  0%, 100% { transform: scaleY(0.5); opacity: 0.6; }
-  50% { transform: scaleY(1); opacity: 1; }
 }
 
 .voice-transcript {
