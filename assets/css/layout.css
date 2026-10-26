@@ -42,7 +42,7 @@
 @media (min-width: 1024px) { .cards-grid { grid-template-columns: repeat(4, 1fr); } }
 
 /* 3-column grid (Build section, Case studies) */
-.build-grid, .case-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 60px; }
+.build-grid, .case-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 20px; }
 @media (min-width: 900px) { 
   .build-grid, .case-grid { grid-template-columns: repeat(3, 1fr); } 
 }
