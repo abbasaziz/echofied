@@ -58,7 +58,7 @@
 
 .ask-data-grid, .process-grid, .command-grid, .cta-grid { display: grid; grid-template-columns: 1fr; gap: 60px; align-items: center; }
 @media (min-width: 900px) { 
-  .ask-data-grid, .process-grid, .command-grid, .cta-grid { grid-template-columns: 1fr 1fr; gap: 80px; } 
+  .ask-data-grid, .process-grid, .command-grid, .cta-grid { grid-template-columns: 1fr 1fr; gap: 50px; } 
 }
 
 .faq-grid { display: grid; grid-template-columns: 1fr; gap: 60px; align-items: start; }

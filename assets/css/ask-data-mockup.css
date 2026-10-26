@@ -1,15 +1,18 @@
 /* =========================================
-   ASK DATA MOCKUP (Premium Light Theme)
+   ASK DATA MOCKUP (Premium & Compact)
    ========================================= */
 
 .ask-data-mockup {
   background: #FFFFFF;
   border: 1px solid var(--border-light);
-  border-radius: 20px;
-  box-shadow: 0 30px 60px -15px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.02);
+  border-radius: 14px;
+  box-shadow: 0 16px 32px -8px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.02);
   overflow: hidden;
   font-family: var(--font-ui);
   position: relative;
+  width: 100%;
+  max-width: 580px; /* Reduced from 640px */
+  margin: 0 auto;
 }
 
 /* Header */
@@ -17,33 +20,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 24px;
+  padding: 10px 14px; /* Reduced */
   border-bottom: 1px solid var(--border-light);
   background: #FAFAFA;
 }
-.terminal-dots { display: flex; gap: 6px; }
-.terminal-dot { width: 10px; height: 10px; border-radius: 50%; background: #E0E0E0; }
+.terminal-dots { display: flex; gap: 4px; }
+.terminal-dot { width: 7px; height: 7px; border-radius: 50%; background: #E0E0E0; }
 .terminal-dot:nth-child(1) { background: #FF5F56; }
 .terminal-dot:nth-child(2) { background: #FFBD2E; }
 .terminal-dot:nth-child(3) { background: #27C93F; }
 
 .terminal-title {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 13px; font-weight: 600; color: var(--text-main);
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 600; color: var(--text-main); /* Reduced */
 }
 .terminal-title .status-dot {
-  width: 8px; height: 8px; border-radius: 50%; background: #27C93F;
-  box-shadow: 0 0 8px rgba(39, 201, 63, 0.4);
+  width: 5px; height: 5px; border-radius: 50%; background: #27C93F;
+  box-shadow: 0 0 6px rgba(39, 201, 63, 0.4);
 }
 .terminal-meta {
-  font-size: 12px; color: var(--text-muted);
+  font-size: 10px; color: var(--text-muted); /* Reduced */
 }
 
 /* The Terminal Area */
 .terminal-body {
-  padding: 32px 24px;
-  /* FIX: Strict height so the UI never jumps */
-  min-height: 680px; 
+  padding: 16px 14px; /* Reduced */
+  min-height: 420px; /* Reduced from 420px */
   display: flex;
   flex-direction: column;
   position: relative;
@@ -52,61 +54,51 @@
 /* User Prompt */
 .user-prompt {
   display: flex;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 10px;
+  margin-bottom: 12px; 
 }
 .prompt-avatar {
-  width: 32px; height: 32px;
-  border-radius: 8px;
+  width: 24px; height: 24px; /* Reduced */
+  border-radius: 6px;
   background: var(--bg-light);
   border: 1px solid var(--border-light);
   display: grid; place-items: center;
-  font-size: 12px; font-weight: 700; color: var(--text-muted);
+  font-size: 9px; font-weight: 700; color: var(--text-muted);
   flex-shrink: 0;
 }
 .prompt-bubble {
   background: #F4F6F8;
-  padding: 14px 20px;
-  border-radius: 4px 16px 16px 16px;
-  font-size: 15px;
+  padding: 8px 12px; /* Reduced */
+  border-radius: 4px 10px 10px 10px;
+  font-size: 13px; /* Reduced */
   color: var(--text-main);
   font-weight: 500;
   flex-grow: 1;
+  line-height: 1.4;
 }
-.typing-cursor {
-  display: inline-block;
-  width: 2px; height: 15px;
-  background: var(--blue);
-  animation: blink 1s step-end infinite;
-  vertical-align: middle;
-  margin-left: 2px;
-}
-@keyframes blink { 50% { opacity: 0; } }
 
-/* Processing State (The new "Thinking" animation) */
+/* Processing State (Pill design) */
 .processing-state {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px 20px;
+  gap: 6px;
+  padding: 6px 10px; /* Reduced */
   background: #F8F9FA;
   border: 1px solid var(--border-light);
-  border-radius: 12px;
-  margin-bottom: 24px;
+  border-radius: 100px;
+  margin-bottom: 12px;
   opacity: 0;
   transform: translateY(5px);
   transition: all 0.3s;
+  width: fit-content; 
 }
 .processing-state.show {
   opacity: 1;
   transform: translateY(0);
 }
-.processing-dots {
-  display: flex;
-  gap: 4px;
-}
+.processing-dots { display: flex; gap: 3px; }
 .processing-dots span {
-  width: 6px; height: 6px;
+  width: 4px; height: 4px;
   background: var(--blue);
   border-radius: 50%;
   animation: bounce 1.4s infinite ease-in-out both;
@@ -118,7 +110,7 @@
   40% { transform: scale(1); }
 }
 .processing-text {
-  font-size: 13px;
+  font-size: 11px; /* Reduced */
   color: var(--text-muted);
   font-weight: 500;
 }
@@ -126,15 +118,15 @@
 /* AI Response */
 .ai-response {
   display: flex;
-  gap: 16px;
+  gap: 10px;
   opacity: 0;
   transform: translateY(10px);
   transition: all 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
   position: absolute;
-  top: 130px; /* Adjust based on user prompt height */
-  left: 24px;
-  right: 24px;
-  bottom: 24px;
+  top: 70px; /* Adjusted for smaller prompt */
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
 }
 .ai-response.show {
   opacity: 1;
@@ -143,47 +135,61 @@
   top: 0; left: 0; right: 0; bottom: 0;
 }
 .ai-avatar {
-  width: 32px; height: 32px;
-  border-radius: 8px;
-  background: rgba(24,102,238,0.1);
+  width: 24px; height: 24px; /* Reduced */
+  border-radius: 6px;
+  background: #ffffff; 
+  border: 1px solid var(--border-light);
   display: grid; place-items: center;
   flex-shrink: 0;
 }
+.ai-avatar img { width: 14px; height: 14px; object-fit: contain; } /* Scaled down logo */
 .ai-content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
 }
 
 .ai-text {
-  font-size: 15px;
+  font-size: 13px; /* Reduced */
   color: var(--text-main);
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 /* The Insight Card */
 .insight-card {
   background: #F8F9FA;
   border: 1px solid var(--border-light);
-  border-radius: 12px;
-  padding: 16px;
+  border-radius: 8px;
+  padding: 10px; /* Reduced */
 }
 .insight-card h5 {
-  font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;
-  color: var(--text-muted); margin-bottom: 12px; font-weight: 600;
+  font-size: 9px; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--text-muted); margin-bottom: 6px; font-weight: 600; 
 }
-.insight-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.insight-table th { text-align: left; padding: 8px 0; color: var(--text-muted); font-weight: 500; border-bottom: 1px solid var(--border-light); }
-.insight-table td { padding: 12px 0; color: var(--text-main); font-weight: 500; border-bottom: 1px solid var(--border-light); }
+.insight-table { width: 100%; border-collapse: collapse; font-size: 11px; } /* Reduced */
+.insight-table th { 
+  text-align: left; 
+  padding: 5px 0; 
+  color: var(--text-muted); 
+  font-weight: 500; 
+  border-bottom: 1px solid var(--border-light); 
+  font-size: 10px; 
+}
+.insight-table td { 
+  padding: 7px 0; 
+  color: var(--text-main); 
+  font-weight: 500; 
+  border-bottom: 1px solid var(--border-light); 
+}
 .insight-table tr:last-child td { border-bottom: none; }
 .insight-table td.amount { font-weight: 600; }
 .insight-total {
   display: flex; justify-content: space-between; align-items: center;
-  margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--border-light);
+  margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border-light); 
 }
-.insight-total p { font-size: 13px; color: var(--text-muted); }
-.insight-total strong { font-size: 18px; color: var(--blue); font-family: var(--font-headings); }
+.insight-total p { font-size: 11px; color: var(--text-muted); }
+.insight-total strong { font-size: 14px; color: var(--blue); font-family: var(--font-headings); } 
 
 /* Data Row Animation */
 .insight-table tr.row-animate {
@@ -199,11 +205,12 @@
 /* Action Button in AI response */
 .ai-action-btn {
   align-self: flex-start;
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; gap: 6px;
   background: #fff; border: 1px solid var(--border-light);
-  padding: 8px 16px; border-radius: 100px;
-  font-size: 13px; font-weight: 600; color: var(--text-main);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+  padding: 5px 10px; border-radius: 100px; /* Reduced */
+  font-size: 11px; font-weight: 600; color: var(--text-main); /* Reduced */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
   cursor: pointer; transition: all 0.2s;
 }
+.ai-action-btn svg { width: 12px; height: 12px; } 
 .ai-action-btn:hover { border-color: var(--blue); color: var(--blue); }
