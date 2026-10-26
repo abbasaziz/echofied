@@ -512,28 +512,28 @@
 }
 
 /* --- Right Side: Accordion --- */
+/* --- FAQ --- */
 .faq-accordion {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px; 
 }
 
 details {
   background: #F8F9FA;
-  border-radius: 12px;
+  border-radius: 16px; 
   border: 1px solid transparent;
-  overflow: hidden;
   transition: all 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-details:not([open]):hover {
+details:hover:not([open]) {
   background: #F0F4F8;
 }
 
 details[open] {
   background: #FFFFFF;
   border-color: var(--blue);
-  box-shadow: 0 10px 30px rgba(24,102,238,0.08);
+  box-shadow: 0 12px 30px rgba(24,102,238,0.06);
 }
 
 summary {
@@ -547,12 +547,13 @@ summary {
   align-items: center;
   color: var(--text-main);
   list-style: none;
+  transition: color 0.2s;
 }
+
 summary::-webkit-details-marker { display: none; }
 
-/* The Icon (+ / -) */
+/* The Icon Container */
 summary .icon {
-  position: relative;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -560,47 +561,51 @@ summary .icon {
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  transition: all 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-summary .icon::before, summary .icon::after {
-  content: "";
-  position: absolute;
-  background: var(--text-main);
-  border-radius: 2px;
+  color: var(--text-main); /* The SVG inherits this color */
   transition: all 0.3s;
 }
-summary .icon::before { width: 12px; height: 2px; }
-summary .icon::after { width: 2px; height: 12px; }
 
-details:not([open]):hover summary .icon { background: #D0D0D0; }
+details:hover summary .icon {
+  background: #D0D0D0;
+}
 
-details[open] summary { color: var(--blue); }
+/* The SVG inside the icon */
+summary .icon svg {
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* OPEN STATE */
+details[open] summary {
+  color: var(--blue);
+}
+
 details[open] summary .icon {
   background: var(--blue);
-  transform: rotate(135deg); 
+  color: #ffffff; /* SVG lines turn white */
 }
-details[open] summary .icon::before { background: #fff; }
-details[open] summary .icon::after { background: #fff; transform: scaleY(0); }
 
-/* =========================================
-   SMOOTH SLIDE DOWN ANIMATION FOR ACCORDION
-   ========================================= */
+/* Rotate the SVG 45 degrees to turn the + into an x */
+details[open] summary .icon svg {
+  transform: rotate(45deg);
+}
 
-/* We wrap the content in a div to animate it smoothly */
+/* Content Animation */
 .faq-content {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
-  padding: 0 24px; /* Remove bottom padding for animation */
+  padding: 0 24px;
 }
+
 .faq-content > div {
   overflow: hidden;
 }
+
 .faq-content p {
   font-size: 16px;
   color: var(--text-muted);
   line-height: 1.6;
-  padding-bottom: 24px; /* Add padding to the paragraph instead */
+  padding-bottom: 24px;
   margin: 0;
 }
 
