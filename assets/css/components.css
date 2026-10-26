@@ -908,7 +908,6 @@ details[open] .faq-content {
   border-radius: 16px;
   padding: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  animation: float 6s ease-in-out infinite;
   z-index: 10;
 }
 
@@ -917,7 +916,6 @@ details[open] .faq-content {
   top: 15%;
   right: 0%;
   width: 160px;
-  animation-delay: 0s;
 }
 .gauge-wrap {
   position: relative;
@@ -968,7 +966,6 @@ details[open] .faq-content {
   bottom: 25%; /* Adjusted to sit nicely over the shoulder */
   left: -5%;
   width: 200px;
-  animation-delay: 3s; 
 }
 .rev-header {
   display: flex;
@@ -993,13 +990,6 @@ details[open] .faq-content {
   font-weight: 700;
   color: #fff;
   letter-spacing: -0.02em;
-}
-
-/* The Floating Animation */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0px); }
 }
 
 /* Mobile Responsive */
