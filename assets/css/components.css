@@ -12,7 +12,7 @@
 .brand { display: flex; align-items: center; gap: 4px; }
 .brand-name { font-family: var(--font-headings); font-weight: 700; font-size: 20px; color: var(--text-main); }
 .nav { display: none; gap: 28px; }
-.nav a { font-family: var(--font-ui); font-size: 14px; font-weight: 500; color: var(--text-main); transition: var(--transition); }
+.nav a { font-family: var(--font-headings); font-size: 14px; font-weight: 500; color: var(--text-main); transition: var(--transition); }
 .nav a:hover { color: var(--blue); }
 .header-actions { display: none; align-items: center; gap: 20px; }
 .phone-link { font-family: var(--font-ui); font-size: 14px; font-weight: 500; }
@@ -68,7 +68,7 @@
 .hero-sub {
   font-size: clamp(18px, 2vw, 22px);
   line-height: 1.5;
-  color: var(--text-muted);
+  color: var(--bg-dark);
   max-width: 480px;
   margin: 0;
   padding-bottom: 12px; /* Slight optical adjustment */
