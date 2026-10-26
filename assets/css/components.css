@@ -145,78 +145,98 @@
 .process-card, .case-card { background: var(--bg-dark-card); border-radius: var(--radius-md); padding: 40px 32px; display: flex; flex-direction: column; }
 /* Find the .case-card styles in components.css and replace them with this: */
 
+/* =========================================
+   CASE STUDIES CARDS (Exact Image Match)
+   ========================================= */
+
 .case-card {
-  background: var(--bg-dark-card); /* Dark card background */
-  border-radius: var(--radius-md);
-  padding: 40px 32px;
+  background: #131B2E; /* Deep navy base */
+  border-radius: 28px; /* Heavier rounding */
+  padding: 48px; /* Huge padding */
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* Pushes action to bottom */
   text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.05);
-  transition: all 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+  border: 1px solid rgba(255,255,255,0.03);
+  transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
   position: relative;
   overflow: hidden;
+  min-height: 540px; /* Tall and portrait */
 }
 
+/* Subtle top gradient to mimic the 3D lighting in the image */
 .case-card::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.06), transparent 40%);
-  opacity: 0;
-  transition: opacity 0.3s;
+  top: 0; left: 0; right: 0;
+  height: 200px;
+  background: radial-gradient(ellipse at top left, rgba(255,255,255,0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 
 .case-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255,255,255,0.15);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  transform: translateY(-6px);
+  border-color: rgba(255,255,255,0.12);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
 }
 
-.case-card:hover::before {
-  opacity: 1;
+.case-top {
+  display: flex;
+  flex-direction: column;
 }
 
 .case-logo {
+  margin-bottom: 60px;
+}
+
+.case-metric {
   font-family: var(--font-headings);
   font-weight: 700;
-  font-size: 20px;
-  color: var(--text-light);
+  font-size: 80px;
+  color: var(--blue);
+  line-height: 1;
+  letter-spacing: -0.04em;
   margin-bottom: 32px;
+}
+
+.case-desc {
+  font-family: var(--font-headings);
+  font-size: 26px;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 1.35;
   letter-spacing: -0.01em;
 }
 
-.case-stat {
+/* The Link & Arrow at the bottom */
+.case-action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  color: #FFFFFF;
+  margin-top: 40px;
+}
+
+.case-action span {
   font-family: var(--font-headings);
-  font-weight: 700;
-  font-size: 72px;
-  color: var(--blue);
-  margin-bottom: 16px;
-  line-height: 1;
-  letter-spacing: -0.04em;
-}
-
-.case-card p {
-  font-size: 16px;
-  color: var(--text-light-muted);
-  flex-grow: 1;
-  margin-bottom: 32px;
-  line-height: 1.5;
-}
-
-.case-link {
-  font-size: 15px;
-  color: var(--text-light);
+  font-size: 22px;
+  font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 4px;
-  font-weight: 500;
-  transition: color 0.2s;
 }
 
-.case-card:hover .case-link {
-  color: var(--blue);
+.case-action svg {
+  width: 34px;
+  height: 34px;
+  stroke-width: 1.5;
+  transition: transform 0.3s;
 }
+
+.case-card:hover .case-action svg {
+  transform: translate(4px, -4px); /* Arrow nudges up-right on hover */
+}
+
 .build-card h3, .process-card h3 { color: var(--text-light); font-size: 24px; margin-bottom: 16px; }
 .build-card > p, .process-card p { font-size: 15px; margin-bottom: 32px; flex-grow: 1; }
 
@@ -366,7 +386,7 @@
 
 .case-logo { font-family: var(--font-headings); font-weight: 700; font-size: 24px; color: var(--text-light); margin-bottom: 32px; }
 .case-stat { font-family: var(--font-headings); font-weight: 700; font-size: 64px; color: var(--blue); margin-bottom: 16px; line-height: 1; }
-.case-card p { font-size: 18px; color: var(--text-light); flex-grow: 1; margin-bottom: 32px; }
+.case-card p { font-size: 28px; color: var(--text-light); flex-grow: 1; margin-bottom: 32px; }
 .case-link { font-size: 16px; color: var(--text-light); text-decoration: underline; text-underline-offset: 4px; transition: color 0.2s; }
 .case-link:hover { color: var(--blue); }
 
