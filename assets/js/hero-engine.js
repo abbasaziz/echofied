@@ -139,7 +139,7 @@ window.EchoEngine = (function () {
         </div>
         <div class="mock-agent-status">
           <div class="avatar">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <img src="assets/img/logo-e-white-transparent.svg" alt="echofied-white-logo">
           </div>
           <div><h4>Echofied AI agent online</h4><p>Monitoring new leads.</p></div>
         </div>
@@ -187,7 +187,7 @@ window.EchoEngine = (function () {
         <div class="system-badge">System Live</div>
         <div class="agent-header">
           <div class="agent-logo">
-            <svg width="12" height="12" viewBox="0 0 32 32" fill="none"><path d="M9 10.5h14M9 16h10M9 21.5h14" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="16" r="2.4" fill="#fff"/></svg>
+            <img src="assets/img/logo-e-white-transparent.svg" alt="echofied-white-logo">
           </div>
           <h3>Echofied Agent</h3>
         </div>

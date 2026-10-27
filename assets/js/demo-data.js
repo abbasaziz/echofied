@@ -26,8 +26,8 @@ window.ECHO_DEMO_DATA = {
       {
         initials: 'CF',
         c1: '#1f1f1f', c2: '#4d4d4d',
-        name: 'Copperfield Logistics',
-        from: 'ops@copperfieldlogistics.com',
+        name: 'Vertex Freight',
+        from: 'ops@vertexfreight.com',
         subject: 'Warehouse partition — site visit request',
         body: 'Can someone visit our Sacramento warehouse on Thursday to scope a partition wall?',
         channel: 'Email'
@@ -42,7 +42,7 @@ window.ECHO_DEMO_DATA = {
     crm: [
       { name: 'Dana Whitfield', company: 'Northgate Build Co.', status: 'New lead', tag: 'High' },
       { name: 'Marlowe Residence', company: 'Homeowner', status: 'Follow-up', tag: 'Warm' },
-      { name: 'Copperfield Logistics', company: 'Copperfield Logistics', status: 'Site visit', tag: 'Booked' }
+      { name: 'Vertex Freight', company: 'Vertex Freight', status: 'Site visit', tag: 'Booked' }
     ],
     drafts: [
       {
@@ -120,8 +120,8 @@ window.ECHO_DEMO_DATA = {
       {
         initials: 'HT',
         c1: '#0a84ff', c2: '#3aa0ff',
-        name: 'Hearthline Realty',
-        from: 'jordan.tate@hearthlinerealty.com',
+        name: 'Summit Realty',
+        from: 'jordan.tate@Summit Realty.com',
         subject: 'New buyer lead — 3 bed in Willow Creek',
         body: 'A couple is pre-approved up to $720k for a 3 bed in Willow Creek. Looking to move within 60 days.',
         channel: 'Email'
@@ -152,13 +152,13 @@ window.ECHO_DEMO_DATA = {
       'Creating a deal in HubSpot and setting follow-up for tomorrow 9 AM.'
     ],
     crm: [
-      { name: 'Jordan Tate', company: 'Hearthline Realty', status: 'Deal created', tag: 'Buyer' },
+      { name: 'Jordan Tate', company: 'Summit Realty', status: 'Deal created', tag: 'Buyer' },
       { name: 'Rachel Montgomery', company: 'Buyer', status: 'Showing booked', tag: 'Sat 11' },
       { name: 'Daniel Wu', company: 'Buyer', status: 'Question', tag: 'HOA' }
     ],
     drafts: [
       {
-        to: 'jordan.tate@hearthlinerealty.com',
+        to: 'jordan.tate@Summit Realty.com',
         subject: 'Re: New buyer lead — 3 bed in Willow Creek',
         body: 'Hi Jordan, matched your buyers to three active Willow Creek listings: 14 Alder Lane ($705k), 22 Birch Court ($712k), and 8 Fern Way ($698k). All three fit the 60-day timeline. Want me to book back-to-back showings this Saturday?'
       },

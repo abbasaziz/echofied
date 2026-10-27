@@ -19,7 +19,7 @@ window.AskDataEngine = (function () {
       thead: `<tr><th>Client</th><th>Days Late</th><th style="text-align:right;">Amount</th></tr>`,
       rows: [
         `<tr><td>Aurora Retail</td><td>45 days</td><td class="amount" style="text-align:right; color:#D32F2F;">$4,200</td></tr>`,
-        `<tr><td>Hearthline Realty</td><td>32 days</td><td class="amount" style="text-align:right; color:#D32F2F;">$12,500</td></tr>`,
+        `<tr><td>Summit Realty</td><td>32 days</td><td class="amount" style="text-align:right; color:#D32F2F;">$12,500</td></tr>`,
         `<tr><td>Brightwater Dental</td><td>15 days</td><td class="amount" style="text-align:right; color:#D32F2F;">$1,800</td></tr>`
       ],
       totalLabel: "Total overdue",

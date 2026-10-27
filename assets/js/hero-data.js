@@ -1,6 +1,6 @@
 window.ECHO_HERO_DATA = {
   realestate: {
-    company: "Hearthline Realty",
+    company: "Summit Realty",
     nav: "Overview",
     title: "Dashboard",
     workflowType: "realestate",
@@ -69,7 +69,7 @@ window.ECHO_HERO_DATA = {
     }
   },
   logistics: {
-    company: "Copperfield Freight",
+    company: "Vertex Freight",
     nav: "Overview",
     title: "Dashboard",
     workflowType: "logistics",

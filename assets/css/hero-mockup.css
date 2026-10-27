@@ -6,8 +6,8 @@
   margin-top: 40px;
   background: var(--blue);
   padding: 12px 12px 0 12px; /* Reduced */
-  border-radius: 20px;
-  box-shadow: 0 40px 100px -20px rgba(24,102,238,0.3);
+  border-radius: 15px;
+  box-shadow: 6px 4px 50px 0px rgba(24, 102, 238, 0.3);
   max-width: 1000px; /* Reduced from 1100px */
   margin-left: auto;
   margin-right: auto;
@@ -81,7 +81,7 @@
   background: #FFFFFF; border-radius: 8px; padding: 8px;
   display: flex; align-items: center; gap: 6px;
 }
-.mock-agent-status .avatar { width: 24px; height: 24px; border-radius: 6px; background: #0F172A; display: grid; place-items: center; color: #fff; }
+.mock-agent-status .avatar { width: 24px; height: 24px; border-radius: 50%; padding: 2px; background: #0F172A; display: grid; place-items: center; color: #fff; }
 .mock-agent-status h4 { font-size: 9px; font-weight: 600; color: #0F172A; margin-bottom: 1px; }
 .mock-agent-status p { font-size: 8px; color: #64748B; }
 
@@ -107,7 +107,7 @@
   overflow: hidden;
   height: 210px; /* Reduced */
 }
-.agent-image-card img { width: 100%; height: 100%; object-position: top; }
+.agent-image-card img { max-width: 250px; height: 100%; object-position: top; }
 
 .voice-pill {
   position: absolute; bottom: 10px; left: 10px; right: 10px;
@@ -169,7 +169,7 @@
 .system-badge::before { content: ""; width: 4px; height: 4px; background: #22C55E; border-radius: 50%; animation: pulse 1s infinite alternate; }
 
 .agent-header { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
-.agent-logo { width: 20px; height: 20px; border-radius: 50%; background: #0F172A; display: grid; place-items: center; color: #fff; }
+.agent-logo { width: 20px; height: 20px; padding: 2px; border-radius: 50%; background: #0F172A; display: grid; place-items: center; color: #fff; }
 .agent-header h3 { font-size: 11px; font-weight: 700; color: #0F172A; }
 
 .agent-chat-bubble {
@@ -371,4 +371,16 @@
   border-left: 2px dashed #93C5FD;
   margin: -2px 0;
   opacity: 0.6;
+}
+/* =========================================
+   MOCKUP DISCLAIMER
+   ========================================= */
+
+.mockup-disclaimer {
+  text-align: center;
+  color: #9CA3AF; /* Light grey matching the screenshot */
+  font-size: 13px;
+  font-family: var(--font-ui);
+  margin-top: 16px;
+  margin-bottom: 0;
 }

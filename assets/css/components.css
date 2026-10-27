@@ -57,7 +57,7 @@
 
 /* The Massive Headline */
 .hero h1 {
-  font-size: 80px;
+  font-size: 60px;
   line-height: 1.05;
   letter-spacing: -0.04em;
   margin-bottom: 40px;
@@ -146,99 +146,95 @@
 /* Find the .case-card styles in components.css and replace them with this: */
 
 /* =========================================
-   CASE STUDIES CARDS (Exact Image Match)
+   CASE STUDIES CARDS (Quote Design)
    ========================================= */
 
-.case-card {
-  background: #131B2E; /* Deep navy base */
-  border-radius: 28px; /* Heavier rounding */
-  padding: 48px; /* Huge padding */
+.case-card-new {
+  background: #191F36; /* Exact navy from your CSS */
+  border-radius: 22px; /* Rounded corners */
+  padding: 40px 32px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Pushes action to bottom */
   text-decoration: none;
   border: 1px solid rgba(255,255,255,0.03);
   transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
   position: relative;
   overflow: hidden;
-  min-height: 540px; /* Tall and portrait */
+  min-height: 460px; /* Fixed height as per your CSS */
 }
 
-/* Subtle top gradient to mimic the 3D lighting in the image */
-.case-card::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 200px;
-  background: radial-gradient(ellipse at top left, rgba(255,255,255,0.06) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.case-card:hover {
+.case-card-new:hover {
   transform: translateY(-6px);
   border-color: rgba(255,255,255,0.12);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
 }
 
-.case-top {
-  display: flex;
-  flex-direction: column;
-}
-
-.case-logo {
-  margin-bottom: 60px;
-}
-
-.case-metric {
+/* The Quote Text */
+.case-quote {
   font-family: var(--font-headings);
-  font-weight: 700;
-  font-size: 80px;
-  color: var(--blue);
-  line-height: 1;
-  letter-spacing: -0.04em;
-  margin-bottom: 32px;
+  font-size: 19.5px; /* Exact size from your CSS */
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 30px; /* Exact line-height from your CSS */
+  flex-grow: 1; /* Pushes the author and footer down */
 }
 
-.case-desc {
-  font-family: var(--font-headings);
-  font-size: 26px;
-  font-weight: 500;
-  color: #FFFFFF;
-  line-height: 1.35;
-  letter-spacing: -0.01em;
+.case-quote strong {
+  font-weight: 600;
+  color: var(--blue-2); /* Highlight the metrics */
 }
 
-/* The Link & Arrow at the bottom */
-.case-action {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  color: #FFFFFF;
+/* The Author / Company */
+.case-author {
   margin-top: 40px;
+  margin-bottom: 24px;
 }
 
-.case-action span {
+.case-author h4 {
   font-family: var(--font-headings);
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.case-author p {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  color: #94A3B8;
+}
+
+/* The Footer (Read more + Quote Icon) */
+.case-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: auto;
+}
+
+.case-link {
+  font-family: var(--font-headings);
+  font-size: 16.2px; /* Exact size from your CSS */
+  color: #FFFFFF;
   text-decoration: underline;
   text-underline-offset: 4px;
+  font-weight: 400;
+  transition: color 0.2s;
 }
 
-.case-action svg {
-  width: 34px;
-  height: 34px;
-  stroke-width: 1.5;
-  transition: transform 0.3s;
+.case-card-new:hover .case-link {
+  color: var(--blue);
 }
 
-.case-card:hover .case-action svg {
-  transform: translate(4px, -4px); /* Arrow nudges up-right on hover */
+/* The large quote SVG icon */
+.quote-icon {
+  width: 76px;
+  height: 76px;
+  color: #FFFFFF;
+  opacity: 0.9;
+  transform: translateY(10px); /* Optical adjustment to align with the link */
 }
-
-.build-card h3, .process-card h3 { color: var(--text-light); font-size: 24px; margin-bottom: 16px; }
-.build-card > p, .process-card p { font-size: 15px; margin-bottom: 32px; flex-grow: 1; }
 
 /* =========================================
    BUILD SECTION (Premium Glassmorphism)
