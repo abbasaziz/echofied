@@ -40,6 +40,55 @@ window.EchoEngine = (function () {
       });
     }
 
+    // --- BUILD OUTCOME HTML ---
+    let outcomeHTML = '';
+    if (scenario.outcome.type === "booking") {
+      outcomeHTML = `
+        <div class="result-card anim-hidden" id="result-card">
+          <div class="result-card-header">
+            <div class="result-avatar" style="background:${scenario.outcome.avatarColor}">${scenario.outcome.initials}</div>
+            <div>
+              <h4>${scenario.outcome.name}</h4>
+              <p>${scenario.outcome.sub}</p>
+            </div>
+          </div>
+          <p>${scenario.outcome.details.join('<br>')}</p>
+        </div>
+        <div class="success-card anim-hidden" id="success-card">
+          <div class="success-icon calendar">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </div>
+          <div>
+            <h4>${scenario.outcome.successTitle}</h4>
+            <p>${scenario.outcome.successSub}</p>
+          </div>
+        </div>
+      `;
+    } else if (scenario.outcome.type === "integration") {
+      outcomeHTML = `
+        <div class="integration-flow anim-hidden" id="integration-flow">
+          <div class="integration-node">
+            <div class="int-icon shopify">S</div>
+            <span>${scenario.outcome.source}</span>
+          </div>
+          <div class="integration-dots"></div>
+          <div class="integration-node">
+            <div class="int-icon sheets">G</div>
+            <span>${scenario.outcome.dest}</span>
+          </div>
+        </div>
+        <div class="success-card anim-hidden" id="success-card">
+          <div class="success-icon sync">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+          </div>
+          <div>
+            <h4>${scenario.outcome.successTitle}</h4>
+            <p>${scenario.outcome.successSub}</p>
+          </div>
+        </div>
+      `;
+    }
+
     // 1. Build layout HTML
     const leadsHTML = scenario.leads.map((lead, i) => `
       <tr class="lead-row anim-hidden" id="lead-row-${i}">
@@ -55,9 +104,7 @@ window.EchoEngine = (function () {
             <span class="score-num">${lead.score}</span>
           </div>
         </td>
-        <td style="text-align:right;" id="action-cell-${i}">
-          <button class="btn-outline" id="btn-lead-${i}">Contact</button>
-        </td>
+        <td style="text-align:right;"><button class="btn-outline" id="btn-lead-${i}">Contact</button></td>
       </tr>
     `).join('');
 
@@ -102,9 +149,6 @@ window.EchoEngine = (function () {
         <div class="top-row">
           <div class="agent-image-card">
             <img src="/assets/img/agent-${scenario.workflowType}.png" alt="AI Agent" id="agent-image" style="opacity:0;">
-            <div class="voice-pill">
-              <span id="agent-role">AI ${scenario.workflowType.charAt(0).toUpperCase() + scenario.workflowType.slice(1)} Agent</span>
-            </div>
           </div>
           <div class="activity-card">
             <div class="activity-header">
@@ -157,18 +201,11 @@ window.EchoEngine = (function () {
           <ul id="agent-reasoning-list"></ul>
         </div>
 
-        <div class="result-card anim-hidden" id="result-card">
-          <div class="result-card-header">
-            <div class="result-avatar">AM</div>
-            <div>
-              <h4>Alex Montgomery</h4>
-              <p>Zillow lead</p>
-            </div>
-          </div>
-          <p>Budget: $720k (Pass)<br>Match: 14 Alder Lane</p>
+        <div id="outcome-container">
+          ${outcomeHTML}
         </div>
 
-        <div class="outcome-footer">
+        <div class="outcome-footer anim-hidden" id="outcome-footer">
           <p>Outcome</p>
           <strong>✓ Routed to results 2.1s</strong>
         </div>
@@ -182,7 +219,11 @@ window.EchoEngine = (function () {
     const reasoningList = document.getElementById('agent-reasoning-list');
     const requestBubble = document.getElementById('agent-request-bubble');
     const processingPill = document.getElementById('agent-processing');
-    const resultCard = document.getElementById('result-card');
+    
+    // Get the dynamically generated outcome elements
+    const resultCard = document.getElementById('result-card') || document.getElementById('integration-flow');
+    const successCard = document.getElementById('success-card');
+    const outcomeFooter = document.getElementById('outcome-footer');
     const agentImage = document.getElementById('agent-image');
     const activityList = document.getElementById('activity-list-container');
 
@@ -191,7 +232,7 @@ window.EchoEngine = (function () {
       if (agentImage.complete) agentImage.style.opacity = '1';
     }
 
-    // --- DYNAMIC SEQUENCE START ---
+    // --- ANIMATION SEQUENCE ---
     await sleep(500);
     if (myRunId !== activeRunId) return;
     
@@ -229,7 +270,7 @@ window.EchoEngine = (function () {
     processingPill.classList.add('show');
     requestBubble.classList.remove('anim-hidden');
     requestBubble.classList.add('anim-show');
-    await typeText(requestText, scenario.request, 30);
+    await typeText(requestText, scenario.request, 25);
     
     await sleep(400);
     if (myRunId !== activeRunId) return;
@@ -250,10 +291,7 @@ window.EchoEngine = (function () {
       li.textContent = scenario.reasoning[i];
       reasoningList.appendChild(li);
 
-      // Update the live activity text halfway through
-      if (i === 1) {
-        document.getElementById('live-act-text').textContent = "Qualifying lead...";
-      }
+      if (i === 1) document.getElementById('live-act-text').textContent = "Qualifying data...";
     }
 
     await sleep(600);
@@ -270,10 +308,30 @@ window.EchoEngine = (function () {
     }
 
     processingPill.classList.remove('show');
-    resultCard.classList.remove('anim-hidden');
-    resultCard.classList.add('anim-show');
+    
+    // Reveal the dynamically built outcome cards
+    if (resultCard) {
+      resultCard.classList.remove('anim-hidden');
+      resultCard.classList.add('anim-show');
+    }
+    
+    await sleep(400);
+    if (myRunId !== activeRunId) return;
+    
+    if (successCard) {
+      successCard.classList.remove('anim-hidden');
+      successCard.classList.add('anim-show');
+    }
 
-    await sleep(2000);
+    await sleep(400);
+    if (myRunId !== activeRunId) return;
+
+    if (outcomeFooter) {
+      outcomeFooter.classList.remove('anim-hidden');
+      outcomeFooter.classList.add('anim-show');
+    }
+
+    await sleep(2500);
     if (myRunId !== activeRunId) return;
 
     if (onComplete) onComplete();

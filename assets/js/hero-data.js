@@ -22,7 +22,18 @@ window.ECHO_HERO_DATA = {
       { text: "Replied to Noah Williams", meta: "Shared 5 matching properties", time: "8m" },
       { text: "Property tour scheduled", meta: "The Waverly · Tomorrow, 2:00 PM", time: "18m" },
       { text: "Seller follow-up completed", meta: "Emma Davis · Seller inquiry", time: "31m" }
-    ]
+    ],
+    outcome: {
+      type: "booking",
+      name: "Alex Montgomery",
+      sub: "Zillow lead",
+      initials: "AM",
+      avatarColor: "#F8B17F",
+      details: ["Budget: $720k (Pass)", "Match: 14 Alder Lane"],
+      successTitle: "Yayy! Booked",
+      successSub: "Sat, 11:00 AM",
+      icon: "calendar"
+    }
   },
   ecommerce: {
     company: "Aurora Supply",
@@ -47,7 +58,15 @@ window.ECHO_HERO_DATA = {
       { text: "Abandoned cart recovered", meta: "Maya Patel, $184 order, email follow-up", time: "8m" },
       { text: "Restock order drafted", meta: "Linen Tote, Sand, 12 units left", time: "18m" },
       { text: "Return request resolved", meta: "Emma Davis, order #4821, refund issued", time: "31m" }
-    ]
+    ],
+    outcome: {
+      type: "integration",
+      source: "Shopify",
+      dest: "Google Sheets",
+      successTitle: "Syncing",
+      successSub: "Restock PO generated",
+      icon: "sync"
+    }
   },
   logistics: {
     company: "Copperfield Freight",
@@ -72,6 +91,17 @@ window.ECHO_HERO_DATA = {
       { text: "Replied to Noah Williams", meta: "Shared tracking for 5 open shipments", time: "8m" },
       { text: "Pickup scheduled", meta: "Warehouse 3, tomorrow, 2:00 PM", time: "18m" },
       { text: "Carrier follow-up completed", meta: "Atlas Freight, delay inquiry", time: "31m" }
-    ]
+    ],
+    outcome: {
+      type: "booking",
+      name: "Customs Packet",
+      sub: "Load #SH-2041",
+      initials: "CP",
+      avatarColor: "#93C5FD",
+      details: ["Docs: Invoice & Packing", "Broker: Atlas Freight"],
+      successTitle: "Cleared for Entry",
+      successSub: "ETA Thu, 4:30 PM",
+      icon: "calendar"
+    }
   }
 };
