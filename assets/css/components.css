@@ -1206,3 +1206,189 @@ details[open] .faq-content {
 .build-trust-bar .trust-item {
   text-align: center;
 }
+/* =========================================
+   PRICING SECTION
+   ========================================= */
+
+.pricing-section {
+  padding: 100px 0;
+  background: var(--bg-white);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: start; /* Ensures the middle card can stick up higher */
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+@media (min-width: 900px) {
+  .pricing-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pricing-card {
+  background: #181C32; 
+  /* Top corners are squared (0), bottom corners are rounded (16px) */
+  border-radius: 0 0 16px 16px; 
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.3s;
+}
+
+/* Push the side cards down to create the staggered effect */
+.pricing-card:not(.is-popular) {
+  margin-top: 36px; 
+}
+
+/* Center Card Specifics */
+.pricing-card.is-popular {
+  box-shadow: 0 15px 40px rgba(24, 102, 238, 0.15);
+  z-index: 2;
+  border-radius: 16px; /* Rounded top corners for the middle card */
+}
+
+/* Card Headers */
+.pricing-card-header {
+  background: #D7E2FF; 
+  color: var(--blue);
+  text-align: center;
+  padding: 10px 16px; /* Standard height for side cards */
+  font-family: var(--font-headings);
+  font-weight: 700;
+  font-size: 25px;
+  letter-spacing: 0.05em;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pricing-card.is-popular .pricing-card-header {
+  background: var(--blue);
+  color: #fff;
+  /* Taller top and bottom padding so the header extends upwards and leaves room for the badge */
+  padding: 5px 16px 50px 16px; 
+}
+
+/* The Badge */
+.popular-badge {
+  position: absolute;
+  bottom: 16px; /* Sits nicely inside the bottom of the blue header */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Card Body */
+.pricing-card-body {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.pricing-desc {
+  color: #E2E8F0;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 24px;
+  line-height: 1.5;
+  min-height: 42px; 
+}
+
+.pricing-price {
+  font-family: var(--font-headings);
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--blue);
+  text-align: center;
+  line-height: 1;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.pricing-price span {
+  font-size: 28px;
+  margin-top: 6px;
+  margin-right: 2px;
+}
+
+.pricing-currency {
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+
+/* Button */
+.pricing-btn {
+  width: auto;
+  min-width: 160px;
+  align-self: center;
+  margin-bottom: 32px;
+  background: var(--blue);
+  color: #fff;
+  border-radius: 100px;
+  padding: 10px 24px;
+  font-weight: 600;
+  text-align: center;
+  transition: var(--transition);
+  font-size: 14px;
+}
+
+.pricing-btn:hover {
+  background: var(--blue-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(24, 102, 238, 0.3);
+}
+
+/* Features List */
+.pricing-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+}
+
+.pricing-features li {
+  color: #A0AABF;
+  font-size: 13px;
+  line-height: 1.4;
+  position: relative;
+  padding-left: 24px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.pricing-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  color: #22C55E; 
+  font-weight: bold;
+  font-size: 14px;
+}
