@@ -1,260 +1,283 @@
 /* =========================================
-   ECHO ANIMATION ENGINE (Abortable & Looping)
+   ECHO ANIMATION ENGINE (Saddlepoint UI)
    ========================================= */
 
 window.EchoEngine = (function () {
   'use strict';
 
-  let activeTimers = [];
-  let runId = 0;
+  let timeouts = [];
+  let activeRunId = 0;
 
   function clearTimers() {
-    activeTimers.forEach(clearTimeout);
-    activeTimers = [];
+    timeouts.forEach(clearTimeout);
+    timeouts = [];
   }
 
   async function run(scenario, uiSelectors, onComplete) {
-    // Increment runId to abort any previous running sequence
-    runId++;
-    const myRunId = runId;
+    const myRunId = ++activeRunId;
     clearTimers();
 
-    // A sleep function that only resolves if this run is still the active one
     function sleep(ms) {
       return new Promise((resolve) => {
         const t = setTimeout(() => {
-          if (myRunId === runId) resolve();
+          if (myRunId === activeRunId) resolve();
         }, ms);
-        activeTimers.push(t);
+        timeouts.push(t);
       });
     }
 
-    function typeText(el, text, speed = 35) {
+    function typeText(el, text, speed = 30) {
       return new Promise(async (resolve) => {
         el.innerHTML = '';
         for (let i = 0; i < text.length; i++) {
-          if (myRunId !== runId) return; // Abort if a new run started
+          if (myRunId !== activeRunId) return;
           el.innerHTML = text.substring(0, i + 1) + '<span class="cursor"></span>';
           await sleep(speed);
         }
-        if (myRunId !== runId) return;
+        if (myRunId !== activeRunId) return;
         el.innerHTML = text;
         resolve();
       });
     }
 
-    // --- HTML Generators ---
-    const builders = {
-      construction: () => `
-        <div class="wf-construction">
-          <div class="pdf-doc" id="pdf-doc">
-            <div class="pdf-header">Architectural_Plan_Rev4.pdf</div>
-            <div class="pdf-lines">
-              <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
-            </div>
-            <div class="scan-laser" id="scan-laser"></div>
+    // 1. Build layout HTML
+    const leadsHTML = scenario.leads.map((lead, i) => `
+      <tr class="lead-row anim-hidden" id="lead-row-${i}">
+        <td>
+          <div class="lead-profile">
+            <div class="lead-avatar" style="background:${lead.c1}; color:${lead.c2}">${lead.initials}</div>
+            <div class="lead-name"><h4>${lead.name}</h4><p>${lead.interest}</p></div>
           </div>
-          <div class="extracted-bom" id="bom-list"></div>
+        </td>
+        <td>
+          <div class="score-bar">
+            <div class="score-track"><div class="score-fill" data-target="${lead.score}" style="width:0%"></div></div>
+            <span class="score-num">${lead.score}</span>
+          </div>
+        </td>
+        <td style="text-align:right;" id="action-cell-${i}">
+          <button class="btn-outline" id="btn-lead-${i}">Contact</button>
+        </td>
+      </tr>
+    `).join('');
+
+    const activityHTML = scenario.activity.map((act, i) => `
+      <div class="activity-item anim-hidden" id="act-item-${i}">
+        <div>
+          <h4>${act.text}</h4>
+          <p>${act.meta}</p>
         </div>
-      `,
-      logistics: () => `
-        <div class="wf-logistics">
-          <div class="route-map">
-            <div class="route-line"></div>
-            <div class="truck-node" id="truck-node">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-            </div>
-            <div class="border-gate" id="border-gate">Customs Hold</div>
-          </div>
-          <div class="docs-packet" id="docs-packet">
-            <div class="doc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1866EE" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
-            <div class="doc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1866EE" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
-            <div class="doc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1866EE" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
-          </div>
+        <span>${act.time}</span>
+      </div>
+    `).join('');
+
+    const layoutHTML = `
+      <div class="mock-sidebar">
+        <div class="mock-logo">
+          <div class="icon">S</div>
+          <span>${scenario.company}</span>
         </div>
-      `,
-      retail: () => `
-        <div class="wf-retail">
-          <div class="sync-columns">
-            <div class="sync-source">
-              <div class="source-icon">S</div>
-              <span>Shopify</span>
-            </div>
-            <div class="sync-track">
-              <div class="data-packet" id="data-packet"></div>
-            </div>
-            <div class="sync-dest">
-              <div class="source-icon" style="background:#0F9D58; color:#fff;">G</div>
-              <span>Google Sheets</span>
-            </div>
-          </div>
-          <div class="inventory-alert" id="inv-alert">
-            <span class="alert-badge">Oversold</span>
-            <span>SKU-441 (Gift Box) — 0 stock, 3 pending</span>
-          </div>
+        <nav class="mock-nav">
+          <a href="javascript:void(0)" class="active">Overview <span class="count">6</span></a>
+          <a href="javascript:void(0)">Inbox <span class="count">2</span></a>
+          <a href="javascript:void(0)">Needs approval <span class="count">4</span></a>
+          <a href="javascript:void(0)">AI Agents</a>
+          <a href="javascript:void(0)">Company Brain</a>
+          <a href="javascript:void(0)">Automations</a>
+        </nav>
+        <div class="sidebar-stats">
+          <div>Handled by agents</div><div>1,082</div>
+          <div>Approved by people</div><div>3</div>
+          <div>Hours returned</div><div>168.1H</div>
         </div>
-      `,
-      realestate: () => `
-        <div class="wf-realestate">
-          <div class="lead-card" id="lead-card">
-            <div class="lead-header">
-              <div class="avatar-small" style="background: #E2E8F0; width: 36px; height: 36px;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              </div>
-              <div><strong>Rachel Montgomery</strong><br><span style="font-size:11px; color:#888">Zillow Lead</span></div>
-            </div>
-            <div class="lead-details">
-              <div class="check-item" id="check-budget">☑ Budget: $720k (Pass)</div>
-              <div class="check-item" id="check-property">☑ Match: 14 Alder Lane</div>
-            </div>
+        <div class="mock-agent-status">
+          <div class="avatar">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
-          <div class="calendar-popup" id="cal-popup">
-            <div class="cal-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1866EE" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
-            <div><strong>Showing Booked</strong><br><span style="font-size:11px; color:#888">Sat, 11:00 AM</span></div>
-          </div>
+          <div><h4>Echofied AI agent online</h4><p>Monitoring new leads.</p></div>
         </div>
-      `,
-      dental: () => `
-        <div class="wf-dental">
-          <div class="claim-form" id="claim-form">
-            <div class="claim-header">
-              <span>Claim #9921</span>
-              <span class="status-pill pending" id="claim-status">Denied</span>
+      </div>
+
+      <div class="mock-main">
+        <div class="top-row">
+          <div class="agent-image-card">
+            <img src="/assets/img/agent-${scenario.workflowType}.png" alt="AI Agent" id="agent-image" style="opacity:0;">
+            <div class="voice-pill">
+              <span id="agent-role">AI ${scenario.workflowType.charAt(0).toUpperCase() + scenario.workflowType.slice(1)} Agent</span>
             </div>
-            <div class="claim-row">Procedure: Root Canal (D3330)</div>
-            <div class="claim-row" id="xray-row">X-Ray: <span style="color:#aaa">Pending attachment...</span></div>
-            <div class="claim-row" id="appeal-row">Appeal: <span style="color:#aaa">Drafting...</span></div>
+          </div>
+          <div class="activity-card">
+            <div class="activity-header">
+              <h3>AI activity</h3>
+              <span>Live</span>
+            </div>
+            <div class="activity-list" id="activity-list-container">
+              ${activityHTML}
+            </div>
           </div>
         </div>
-      `
-    };
+        <div class="leads-card">
+          <div class="leads-header">
+            <div>
+              <h3>Top leads</h3>
+              <p>Prioritized by AI intent score</p>
+            </div>
+            <a href="javascript:void(0)">View all →</a>
+          </div>
+          <table class="mock-table">
+            <thead>
+              <tr>
+                <th>Lead</th>
+                <th>AI Score</th>
+                <th style="text-align:right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="leads-tbody">
+              ${leadsHTML}
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-    try {
-      // 1. Update Static UI
-      if (uiSelectors.company) document.querySelector(uiSelectors.company).textContent = scenario.company;
-      if (uiSelectors.nav) document.querySelector(uiSelectors.nav).innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg> <span>${scenario.nav}</span>`;
-      if (uiSelectors.title) document.querySelector(uiSelectors.title).textContent = scenario.title;
+      <div class="mock-right-panel">
+        <div class="system-badge">System Live</div>
+        <div class="agent-header">
+          <div class="agent-logo">
+            <svg width="12" height="12" viewBox="0 0 32 32" fill="none"><path d="M9 10.5h14M9 16h10M9 21.5h14" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="16" r="2.4" fill="#fff"/></svg>
+          </div>
+          <h3>Echofied Agent</h3>
+        </div>
 
-      // 2. Setup the Stage
-      const stage = document.getElementById('workflow-stage');
-      stage.innerHTML = builders[scenario.workflowType]();
+        <div class="processing-pill" id="agent-processing">
+          <span class="spinner-dot"></span> Processing...
+        </div>
 
-      // 3. Reset AI Panel
-      const statusEl = document.querySelector(uiSelectors.status);
-      const requestEl = document.querySelector(uiSelectors.request);
-      const reasoningEl = document.querySelector(uiSelectors.reasoning);
-      const panelEl = document.querySelector(uiSelectors.panel);
+        <div class="agent-chat-bubble anim-hidden" id="agent-request-bubble">
+          <p id="agent-request-text"></p>
+          <ul id="agent-reasoning-list"></ul>
+        </div>
 
-      statusEl.innerHTML = '<span class="spinner"></span> Listening...';
-      statusEl.style.color = '#A0A0A0';
-      statusEl.firstChild.style.animation = 'spin 1s linear infinite';
-      requestEl.innerHTML = '';
-      reasoningEl.innerHTML = '';
-      reasoningEl.classList.remove('show');
-      panelEl.classList.remove('active');
+        <div class="result-card anim-hidden" id="result-card">
+          <div class="result-card-header">
+            <div class="result-avatar">AM</div>
+            <div>
+              <h4>Alex Montgomery</h4>
+              <p>Zillow lead</p>
+            </div>
+          </div>
+          <p>Budget: $720k (Pass)<br>Match: 14 Alder Lane</p>
+        </div>
 
-      await sleep(600);
-      if (myRunId !== runId) return;
-      panelEl.classList.add('active');
-      await typeText(requestEl, scenario.request, 35);
-      if (myRunId !== runId) return;
-      
-      await sleep(800);
-      if (myRunId !== runId) return;
-      statusEl.innerHTML = '<span class="spinner"></span> Processing...';
-      reasoningEl.classList.add('show');
-      
-      for (let i = 0; i < scenario.reasoning.length; i++) {
-        await sleep(600);
-        if (myRunId !== runId) return;
-        const step = document.createElement('div');
-        step.className = 'ai-step';
-        step.innerHTML = `<span class="dot"></span> ${scenario.reasoning[i]}`;
-        reasoningEl.appendChild(step);
-      }
+        <div class="outcome-footer">
+          <p>Outcome</p>
+          <strong>✓ Routed to results 2.1s</strong>
+        </div>
+      </div>
+    `;
 
-      await sleep(500);
-      if (myRunId !== runId) return;
-      statusEl.innerHTML = '<span class="spinner"></span> Executing...';
+    const stage = document.getElementById('workflow-stage');
+    if (stage) stage.innerHTML = layoutHTML;
 
-      if (scenario.workflowType === 'construction') {
-        document.getElementById('scan-laser').classList.add('active');
-        await sleep(1000);
-        if (myRunId !== runId) return;
-        document.getElementById('bom-list').innerHTML = `
-          <div class="bom-item">✓ 24x Base Cabinets</div>
-          <div class="bom-item">✓ 12x Upper Cabinets</div>
-          <div class="bom-item">✓ 45 sq ft Quartz Countertop</div>
-          <div class="bom-item">✓ Plumbing & Electrical</div>
-        `;
-        document.querySelectorAll('.bom-item').forEach((item, i) => {
-          setTimeout(() => item.classList.add('show'), i * 300);
-        });
-        await sleep(1500);
-      } 
-      else if (scenario.workflowType === 'logistics') {
-        document.getElementById('truck-node').classList.add('move');
-        await sleep(1200);
-        if (myRunId !== runId) return;
-        document.getElementById('docs-packet').classList.add('send');
-        await sleep(1000);
-        if (myRunId !== runId) return;
-        document.getElementById('border-gate').innerHTML = 'Cleared';
-        document.getElementById('border-gate').classList.add('cleared');
-        await sleep(1000);
-      }
-      else if (scenario.workflowType === 'retail') {
-        document.getElementById('data-packet').classList.add('stream');
-        await sleep(1500);
-        if (myRunId !== runId) return;
-        document.getElementById('inv-alert').classList.add('show');
-        await sleep(1000);
-        if (myRunId !== runId) return;
-        document.getElementById('inv-alert').classList.add('resolved');
-        document.getElementById('inv-alert').innerHTML = `<span class="alert-badge" style="background:#E3F6E9; color:#1D8A4A;">Synced</span><span>Restock PO generated</span>`;
-        await sleep(1000);
-      }
-      else if (scenario.workflowType === 'realestate') {
-        document.getElementById('check-budget').classList.add('show');
-        await sleep(500);
-        if (myRunId !== runId) return;
-        document.getElementById('check-property').classList.add('show');
-        await sleep(800);
-        if (myRunId !== runId) return;
-        document.getElementById('cal-popup').classList.add('show');
-        await sleep(1500);
-      }
-      else if (scenario.workflowType === 'dental') {
-        document.getElementById('claim-status').innerHTML = 'Appealing...';
-        document.getElementById('claim-status').className = 'status-pill active';
-        await sleep(800);
-        if (myRunId !== runId) return;
-        document.getElementById('xray-row').innerHTML = 'X-Ray: <span style="color:#1866EE">attached_xray.png</span>';
-        await sleep(800);
-        if (myRunId !== runId) return;
-        document.getElementById('appeal-row').innerHTML = 'Appeal: <span style="color:#1866EE">Medical necessity letter generated.</span>';
-        await sleep(1000);
-        if (myRunId !== runId) return;
-        document.getElementById('claim-status').innerHTML = 'Submitted';
-        document.getElementById('claim-status').style.background = '#E8F0FE';
-        document.getElementById('claim-status').style.color = '#1866EE';
-        await sleep(1000);
-      }
+    const requestText = document.getElementById('agent-request-text');
+    const reasoningList = document.getElementById('agent-reasoning-list');
+    const requestBubble = document.getElementById('agent-request-bubble');
+    const processingPill = document.getElementById('agent-processing');
+    const resultCard = document.getElementById('result-card');
+    const agentImage = document.getElementById('agent-image');
+    const activityList = document.getElementById('activity-list-container');
 
-      if (myRunId !== runId) return;
-      statusEl.innerHTML = `<span class="spinner" style="border-top-color:#34C759"></span> Done.`;
-      statusEl.style.color = '#34C759';
-      statusEl.firstChild.style.animation = 'none';
-
-      await sleep(2000);
-      if (myRunId !== runId) return;
-      
-      if (onComplete) onComplete();
-
-    } catch (e) {
-      // Ignore aborted errors
+    if (agentImage) {
+      agentImage.onload = () => { agentImage.style.opacity = '1'; };
+      if (agentImage.complete) agentImage.style.opacity = '1';
     }
+
+    // --- DYNAMIC SEQUENCE START ---
+    await sleep(500);
+    if (myRunId !== activeRunId) return;
+    
+    // 1. Fade in Activity & Leads
+    document.querySelectorAll('.activity-item').forEach((el, i) => {
+      setTimeout(() => el.classList.add('anim-show'), i * 100);
+    });
+    document.querySelectorAll('.lead-row').forEach((el, i) => {
+      setTimeout(() => el.classList.add('anim-show'), i * 100);
+    });
+
+    // 2. Animate Score Bars
+    setTimeout(() => {
+      document.querySelectorAll('.score-fill').forEach(bar => {
+        bar.style.width = bar.getAttribute('data-target') + '%';
+      });
+    }, 600);
+
+    // 3. Inject a "Live" processing activity item
+    const liveActivity = document.createElement('div');
+    liveActivity.className = 'activity-item new-slide-in';
+    liveActivity.innerHTML = `
+      <div>
+        <h4 id="live-act-text" style="color: #1866EE;">Processing new request...</h4>
+        <p id="live-act-meta">Running AI workflow</p>
+      </div>
+      <span>Just now</span>
+    `;
+    activityList.insertBefore(liveActivity, activityList.firstChild);
+
+    await sleep(1000);
+    if (myRunId !== activeRunId) return;
+
+    // 4. AI starts typing in the right panel
+    processingPill.classList.add('show');
+    requestBubble.classList.remove('anim-hidden');
+    requestBubble.classList.add('anim-show');
+    await typeText(requestText, scenario.request, 30);
+    
+    await sleep(400);
+    if (myRunId !== activeRunId) return;
+
+    // 5. Change Action Button State
+    const btn1 = document.getElementById('btn-lead-0');
+    if (btn1) {
+      btn1.className = 'btn-outline processing';
+      btn1.innerHTML = 'Syncing...';
+    }
+
+    // 6. Show reasoning steps
+    for (let i = 0; i < scenario.reasoning.length; i++) {
+      await sleep(400);
+      if (myRunId !== activeRunId) return;
+      
+      const li = document.createElement('li');
+      li.textContent = scenario.reasoning[i];
+      reasoningList.appendChild(li);
+
+      // Update the live activity text halfway through
+      if (i === 1) {
+        document.getElementById('live-act-text').textContent = "Qualifying lead...";
+      }
+    }
+
+    await sleep(600);
+    if (myRunId !== activeRunId) return;
+
+    // 7. Finalize everything
+    document.getElementById('live-act-text').textContent = "Workflow complete";
+    document.getElementById('live-act-meta').textContent = "Data synced to CRM";
+    document.getElementById('live-act-text').style.color = "#16A34A";
+    
+    if (btn1) {
+      btn1.className = 'btn-outline success';
+      btn1.innerHTML = 'Done ✓';
+    }
+
+    processingPill.classList.remove('show');
+    resultCard.classList.remove('anim-hidden');
+    resultCard.classList.add('anim-show');
+
+    await sleep(2000);
+    if (myRunId !== activeRunId) return;
+
+    if (onComplete) onComplete();
   }
 
-  return { run: run };
+  return { run };
 })();
