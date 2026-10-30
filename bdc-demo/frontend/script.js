@@ -2,7 +2,66 @@ let currentLanguage = null;
 let chatHistory = [];
 let userBudget = null;
 let userLocation = null;
-let conversationStep = 0; // Tracks fallback progression
+let conversationStep = 0;
+let idleTimer = null;
+let idleNudgeIndex = 0;
+
+const nudgesEn = [
+    "Just checking in, are you still there?",
+    "Take your time. Let me know when you're ready.",
+    "Did you have any questions for me?",
+    "I'm here whenever you're ready.",
+    "Would you like to see our available properties?",
+    "Let me know if you need any help.",
+    "Still with me?",
+    "No rush at all, just let me know.",
+    "Can I answer anything else for you?",
+    "Whenever you're ready, I can help.",
+    "Take a moment to think, I'll wait.",
+    "Is there a specific feature you're looking for?",
+    "Let me know if you want to schedule a visit.",
+    "I'm standing by to assist.",
+    "Are you still looking for a property?"
+];
+
+const nudgesAr = [
+    "أتفقدك فقط، هل ما زلت هنا؟",
+    "خذ وقتك. أخبرني عندما تكون مستعداً.",
+    "هل لديك أي أسئلة لي؟",
+    "أنا هنا عندما تكون مستعداً.",
+    "هل ترغب في رؤية العقارات المتاحة لدينا؟",
+    "أخبرني إذا كنت بحاجة إلى أي مساعدة.",
+    "هل ما زلت معي؟",
+    "لا داعي للاستعجال، فقط أخبرني.",
+    "هل يمكنني الإجابة على أي شيء آخر لك؟",
+    "عندما تكون مستعداً، يمكنني المساعدة.",
+    "خذ لحظة للتفكير، سأنتظر.",
+    "هل هناك ميزة معينة تبحث عنها؟",
+    "أخبرني إذا كنت تريد تحديد موعد للزيارة.",
+    "أنا بانتظار مساعدتك.",
+    "هل ما زلت تبحث عن عقار؟"
+];
+
+function clearIdleTimer() {
+    if (idleTimer) {
+        clearTimeout(idleTimer);
+        idleTimer = null;
+    }
+}
+
+function startIdleTimer() {
+    clearIdleTimer();
+    // Random delay between 20 and 30 seconds
+    const delay = Math.floor(Math.random() * 10000) + 20000; 
+    
+    idleTimer = setTimeout(async () => {
+        const nudge = currentLanguage === 'en' ? nudgesEn[idleNudgeIndex] : nudgesAr[idleNudgeIndex];
+        idleNudgeIndex = (idleNudgeIndex + 1) % nudgesEn.length; // Cycle through array
+        
+        await simulateBotResponse(nudge);
+        startIdleTimer(); // Restart timer in case they are still idle
+    }, delay);
+}
 
 window.addEventListener('load', () => {
     setTimeout(() => {
@@ -43,7 +102,6 @@ async function selectLanguage(lang) {
     currentLanguage = lang;
     const chatBody = document.getElementById('chatBody');
     
-    // Show Connecting Animation
     chatBody.innerHTML = `
         <div class="connecting-state">
             <div class="spinner"></div>
@@ -52,9 +110,8 @@ async function selectLanguage(lang) {
         </div>
     `;
 
-    await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
-    // Clear connecting state and enable inputs
     chatBody.innerHTML = '';
     const inputEn = document.getElementById('chatInput');
     const inputAr = document.getElementById('chatInputAr');
@@ -75,7 +132,6 @@ async function selectLanguage(lang) {
         inputAr.disabled = false;
         btnAr.disabled = false;
         inputAr.focus();
-        // NEW WARMER ARABIC MESSAGE
         simulateBotResponse("أهلاً بك في صفقة الأعمال. أنا زارا، مديرة العقارات. سواء كنت تبحث عن منزل جديد أو استثمار، يسعدني مساعدتك. ما نوع العقار الذي تبحث عنه اليوم؟");
     }
 }
@@ -88,7 +144,6 @@ function addMessage(sender, text) {
     
     let metaHtml = '';
     if (sender === 'user') {
-        // Single check for Sent
         metaHtml = `
             <div class="message-meta" id="meta-${Date.now()}">
                 <span class="time">Just now</span>
@@ -107,11 +162,9 @@ function addMessage(sender, text) {
 async function simulateBotResponse(text) {
     const chatBody = document.getElementById('chatBody');
     
-    // 1. Wait 2-3 seconds to simulate Zara reading/thinking
     const thinkDelay = Math.floor(Math.random() * 1000) + 2000;
     await new Promise(resolve => setTimeout(resolve, thinkDelay));
 
-    // 2. Show Typing Indicator
     const typingDiv = document.createElement('div');
     typingDiv.className = 'message bot';
     typingDiv.id = 'typing-indicator';
@@ -119,13 +172,14 @@ async function simulateBotResponse(text) {
     chatBody.appendChild(typingDiv);
     chatBody.scrollTop = chatBody.scrollHeight;
 
-    // 3. Calculate typing time based on text length (approx 40ms per character)
     const typeDelay = (text.length * 40) + 800;
     await new Promise(resolve => setTimeout(resolve, typeDelay));
     
-    // 4. Remove typing and show message
     document.getElementById('typing-indicator').remove();
     addMessage('bot', text);
+
+    // START IDLE TIMER AFTER ZARA SENDS A MESSAGE
+    startIdleTimer(); 
 }
 
 async function sendMessage() {
@@ -134,17 +188,16 @@ async function sendMessage() {
     
     if (!text || !currentLanguage) return;
     
+    // CLEAR IDLE TIMER WHEN USER SENDS A MESSAGE
+    clearIdleTimer();
+
     input.value = '';
-    
-    // Add user message
     const userMsgNode = addMessage('user', text);
     const metaNode = userMsgNode.querySelector('.message-meta svg');
 
-    // Simulate Zara reading the message after 1.5 seconds
     setTimeout(() => {
         if (metaNode) {
             metaNode.classList.add('read-mark');
-            // Change to double check for Read
             metaNode.innerHTML = `<polyline points="18 6 7 17 2 12"></polyline><polyline points="22 6 11 17 6 12"></polyline>`;
         }
     }, 1500);
@@ -178,7 +231,6 @@ async function sendMessage() {
     } catch (error) {
         console.log("Backend offline. Using exact transcript fallback.");
         
-        // Exact conversation flow provided by user
         const fallbacksEn = [
             "I'd be glad to help. Are you looking for a villa or a floor, and which area of Riyadh interests you most?",
             "Great choice. We currently have two villas available at The Royal Al Munsiyah in Riyadh, priced at 4,100,000 SAR with smart home and solar power features. Is this for your primary residence or an investment?",
@@ -199,13 +251,12 @@ async function sendMessage() {
             "شكراً لك. نتطلع لرؤيتك. أتمنى لك يوماً رائعاً."
         ];
 
-        // Prevent step from going out of bounds
         if (conversationStep >= fallbacksEn.length) {
             conversationStep = fallbacksEn.length - 1;
         }
 
         const reply = currentLanguage === 'en' ? fallbacksEn[conversationStep] : fallbacksAr[conversationStep];
-        conversationStep++; // Move to next step for the next message
+        conversationStep++;
 
         await simulateBotResponse(reply);
         chatHistory.push({ role: 'user', content: text });
