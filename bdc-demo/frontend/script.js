@@ -207,7 +207,7 @@ async function sendMessage() {
 
     try {
         console.log("Attempting to connect to backend...");
-        const response = await fetch('http://localhost:8000/api/chat', {
+        const response = await fetch('https://subtly-tropistic-wanita.ngrok-free.dev/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
